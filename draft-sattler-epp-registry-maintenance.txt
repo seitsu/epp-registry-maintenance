@@ -71,30 +71,32 @@ Table of Contents
    4.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  12
      4.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  12
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  16
+     5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
    7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  17
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  18
-   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  18
-     A.1.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  18
-     A.2.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  18
-     A.3.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  18
-     A.4.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  18
-     A.5.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  18
-     A.6.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
-     A.7.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  19
-     A.8.  Change from 07 to EPPMAINT 00 . . . . . . . . . . . . . .  19
-     A.9.  Change from EPPMAINT 00 to EPPMAINT 01  . . . . . . . . .  19
-     A.10. Change from EPPMAINT 01 to EPPMAINT 02  . . . . . . . . .  19
-     A.11. Change from EPPMAINT 02 to EPPMAINT 03  . . . . . . . . .  19
-     A.12. Change from EPPMAINT 03 to EPPMAINT 04  . . . . . . . . .  19
-     A.13. Change from EPPMAINT 04 to EPPMAINT 05  . . . . . . . . .  19
-     A.14. Change from EPPMAINT 05 to EPPMAINT 06  . . . . . . . . .  19
-     A.15. Change from EPPMAINT 06 to EPPMAINT 07  . . . . . . . . .  20
-     A.16. Change from EPPMAINT 07 to EPPMAINT 08  . . . . . . . . .  20
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  20
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  19
+     A.1.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
+     A.2.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
+     A.3.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
+     A.4.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  19
+     A.5.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  19
+     A.6.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
+     A.7.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  20
+     A.8.  Change from 07 to EPPMAINT 00 . . . . . . . . . . . . . .  20
+     A.9.  Change from EPPMAINT 00 to EPPMAINT 01  . . . . . . . . .  20
+     A.10. Change from EPPMAINT 01 to EPPMAINT 02  . . . . . . . . .  20
+     A.11. Change from EPPMAINT 02 to EPPMAINT 03  . . . . . . . . .  20
+     A.12. Change from EPPMAINT 03 to EPPMAINT 04  . . . . . . . . .  20
+     A.13. Change from EPPMAINT 04 to EPPMAINT 05  . . . . . . . . .  20
+     A.14. Change from EPPMAINT 05 to EPPMAINT 06  . . . . . . . . .  20
+     A.15. Change from EPPMAINT 06 to EPPMAINT 07  . . . . . . . . .  21
+     A.16. Change from EPPMAINT 07 to EPPMAINT 08  . . . . . . . . .  21
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 Sattler, et al.           Expires May 11, 2019                  [Page 2]
 
@@ -811,7 +813,52 @@ Internet-Draft          EPP Registry Maintenance           November 2018
 
 5.  IANA Considerations
 
-   TBD
+5.1.  XML Namespace
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [RFC3688].
+   
+   Registration request for the maintenance namespace:
+
+      URI: urn:ietf:params:xml:ns:maintenance-1.0
+      
+      Registrant Contact: IESG
+      
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the maintenance schema:
+
+      URI: urn:ietf:params:xml:schema:maintenance-1.0
+      
+      Registrant Contact: IESG
+      
+      XML: See the "Formal Syntax" section of this document.
+      
+Sattler, et al.           Expires May 11, 2019                 [Page 16]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+5.2.  EPP Extension Registry
+
+   The following registration of the EPP Extension Registry, described
+   in [RFC7451], is requested:
+
+   Name of Extension: "Registry Maintenance Notifications for the
+   Extensible Provisioning Protocol (EPP)"
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: IESG, <iesg@ietf.org>
+
+   TLDs: Any
+
+   IPR Disclosure: None
+
+   Status: Active
+
+   Notes: None
 
 6.  Security Considerations
 
@@ -819,10 +866,6 @@ Internet-Draft          EPP Registry Maintenance           November 2018
    security services beyond those described by EPP [RFC5730] and
    protocol layers used by EPP. The security considerations described in
    these other specifications apply to this specification as well.
-
-Sattler, et al.           Expires May 11, 2019                 [Page 16]
-
-Internet-Draft          EPP Registry Maintenance           November 2018
 
 7.  Implementation Status
 
@@ -841,6 +884,10 @@ Internet-Draft          EPP Registry Maintenance           November 2018
    be construed to be, a catalog of available implementations or their
    features.  Readers are advised to note that other implementations may
    exist.
+   
+Sattler, et al.           Expires May 11, 2019                 [Page 17]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
 
    According to [RFC7942], "this will allow reviewers and working groups
    to assign due consideration to documents that have the benefit of
@@ -858,6 +905,10 @@ Internet-Draft          EPP Registry Maintenance           November 2018
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+              
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/info/rfc3688>.
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, August 2009,
@@ -873,10 +924,6 @@ Internet-Draft          EPP Registry Maintenance           November 2018
               Applications (IDNA): Protocol", RFC 5891, August 2010,
               <https://www.rfc-editor.org/info/rfc5891>.
 
-Sattler, et al.           Expires May 11, 2019                 [Page 17]
-
-Internet-Draft          EPP Registry Maintenance           November 2018
-
    [RFC4122]  Leach, P., Mealling, M. and Salz, R., "A Universally
               Unique IDentifier (UUID) URN Namespace", RFC 4122, July
               2015,
@@ -886,10 +933,18 @@ Internet-Draft          EPP Registry Maintenance           November 2018
               Address Text Representation", RFC 5952, August 2010,
               <https://www.rfc-editor.org/info/rfc5952>.
 
+   [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
+              February 2015, <https://www.rfc-editor.org/info/rfc7451>.
+
    [RFC7942]  Sheffer, Y. and Farrel, A., "Improving Awareness of
               Running Code: The Implementation Status Section", RFC
               7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
+              
+Sattler, et al.           Expires May 11, 2019                 [Page 18]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
 
 Appendix A.  Change History
 
@@ -926,7 +981,7 @@ A.5.  Change from 04 to 05
    Common Data Types. Rephrased Abstract and Introduction. Added
    Implementation Status Section.
 
-Sattler, et al.           Expires May 11, 2019                 [Page 18]
+Sattler, et al.           Expires May 11, 2019                 [Page 19]
 
 Internet-Draft          EPP Registry Maintenance           November 2018
 
@@ -983,7 +1038,7 @@ A.14. Change from EPPMAINT 05 to EPPMAINT 06
 
    Added Roger Carney and Jody Kolker as Co-Authors to this draft.
 
-Sattler, et al.           Expires May 11, 2019                 [Page 19]
+Sattler, et al.           Expires May 11, 2019                 [Page 20]
 
 Internet-Draft          EPP Registry Maintenance           November 2018
 
@@ -993,7 +1048,7 @@ A.15. Change from EPPMAINT 06 to EPPMAINT 07
    
 A.16. Change from EPPMAINT 07 to EPPMAINT 08
 
-   Changed Acknowledgements.
+   Added IANA consideration section 5.1. and 5.2.
 
 Appendix B.  Acknowledgements
 
@@ -1034,5 +1089,5 @@ Authors' Addresses
    Email: jkolker@godaddy.com
    URI:   http://www.godaddy.com
 
-Sattler, et al.           Expires May 11, 2019                 [Page 20]
+Sattler, et al.           Expires May 11, 2019                 [Page 21]
 
