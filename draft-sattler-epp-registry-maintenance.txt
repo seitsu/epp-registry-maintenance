@@ -1,0 +1,1038 @@
+Internet Engineering Task Force                               T. Sattler
+Internet-Draft
+Intended status: Standard Track                                R. Carney
+Expires: May 11, 2019                                          J. Kolker
+                                                            GoDaddy Inc.
+                                                       November 12, 2018
+
+               Registry Maintenance Notifications for the
+                 Extensible Provisioning Protocol (EPP)
+                draft-sattler-epp-registry-maintenance-08
+
+Abstract
+   This document describes an Extensible Provision Protocol (EPP)
+   mapping for the Registry Maintenance Notifications used when Domain
+   Name Registries will conduct a maintenance, and for retrieving these
+   information.
+
+Status of This Memo
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress".
+
+   This Internet-Draft will expire on May 11, 2019.
+
+Copyright Notice
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Sattler, et al.           Expires May 11, 2019                  [Page 1]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+Table of Contents
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Terminology and Definitions . . . . . . . . . . . . . . .   3
+   2.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  Internationalized Domain Names  . . . . . . . . . . . . .   3
+     2.2.  Dates and Times . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  Maintenance Elements  . . . . . . . . . . . . . . . . . .   4
+   3.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   6
+     3.1.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   6
+       3.1.1.  EPP <check> Command . . . . . . . . . . . . . . . . .   6
+       3.1.2.  EPP <transfer> Command  . . . . . . . . . . . . . . .   6
+       3.1.3.  EPP <info> Command  . . . . . . . . . . . . . . . . .   6
+       3.1.4.  EPP <poll> Command  . . . . . . . . . . . . . . . . .   9
+     3.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  11
+       3.2.1.  EPP <create> Command  . . . . . . . . . . . . . . . .  11
+       3.2.2.  EPP <delete> Command  . . . . . . . . . . . . . . . .  11
+       3.2.3.  EPP <renew> Command . . . . . . . . . . . . . . . . .  11
+       3.2.4.  EPP <transfer> Command  . . . . . . . . . . . . . . .  11
+       3.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  11
+   4.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  12
+     4.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  12
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  17
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  18
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  18
+     A.1.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  18
+     A.2.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  18
+     A.3.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  18
+     A.4.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  18
+     A.5.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  18
+     A.6.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
+     A.7.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  19
+     A.8.  Change from 07 to EPPMAINT 00 . . . . . . . . . . . . . .  19
+     A.9.  Change from EPPMAINT 00 to EPPMAINT 01  . . . . . . . . .  19
+     A.10. Change from EPPMAINT 01 to EPPMAINT 02  . . . . . . . . .  19
+     A.11. Change from EPPMAINT 02 to EPPMAINT 03  . . . . . . . . .  19
+     A.12. Change from EPPMAINT 03 to EPPMAINT 04  . . . . . . . . .  19
+     A.13. Change from EPPMAINT 04 to EPPMAINT 05  . . . . . . . . .  19
+     A.14. Change from EPPMAINT 05 to EPPMAINT 06  . . . . . . . . .  19
+     A.15. Change from EPPMAINT 06 to EPPMAINT 07  . . . . . . . . .  20
+     A.16. Change from EPPMAINT 07 to EPPMAINT 08  . . . . . . . . .  20
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  20
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+
+Sattler, et al.           Expires May 11, 2019                  [Page 2]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+1.  Introduction
+
+   This document describes an Extensible Provision Protocol (EPP)
+   [RFC5730] mapping for the Registry Maintenance Notifications used
+   when Domain Name Registries will conduct a maintenance, and for
+   retrieving these information.
+
+1.1.  Terminology and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119] when
+   specified in their uppercase forms.
+
+   XML is case sensitive. Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented in order to develop a conforming
+   implementation.
+
+   In examples, "C:" represents lines sent by a protocol client and
+   "S:" represents lines returned by a protocol server. Indentation and
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this protocol.
+
+2.  Object Attributes
+
+2.1.  Internationalized Domain Names
+
+   Names of affected hosts MUST be provided in Punycode according to
+   [RFC5891].
+
+2.2.  Dates and Times
+
+   All dates and times attribute values MUST be expressed in Universal
+   Coordinated Time (UTC) using the Gregorian calendar. The extended
+   date-time form using upper case "T" and "Z" characters defined in ISO
+   8601 [RFC3339] MUST be used to represent date-time values.
+
+Sattler, et al.           Expires May 11, 2019                  [Page 3]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+2.3.  Maintenance Elements
+
+   The <maint:maint> element describes a single domain name registry
+   maintenance event during a specific time period. This element will
+   be used at EPP <poll> messages and to extend the EPP <info> command.
+
+   For creating a new maintenance the attribute <maint:status> MUST be
+   'active', the attribute <maint:crDate> MUST be set and the attribute
+   <maint:upDate> SHALL NOT be present.
+
+   For updating a maintenance the attribute <maint:status> MUST be
+   'active', the attributes <maint:crDate> and <maint:upDate> MUST be
+   set.
+
+   For deleting a maintenance the attribute <maint:status> MUST be
+   'inactive', and the attributes <maint:crDate> and <maint:upDate> MUST
+   be set.
+
+   <maint:id>
+     MUST be present and an UUID according [RFC4122] and SHALL NOT be
+     changed if maintenance got updated or deleted. A human-readable
+     description of the maintenance is identified via an OPTIONAL
+     "msg" attribute.
+
+   <maint:systems>
+     MUST be present and contains one or more <maint:system> elements.
+     The server SHOULD NOT list systems which are not affected by the
+     maintenance.
+
+     <maint:system>
+       MUST be present at least once and is an element of <maint:name>,
+       <maint:host> and <maint:impact>
+
+       <maint:name>
+         MUST be present and indicates the name of the affected system,
+         such as 'EPP', 'WHOIS', 'DNS', 'Portal', etc.
+
+       <maint:host>
+         MUST be present and indicates the affected maintained system
+         (host or IP address).
+         Hostname SHALL be Punycode according [RFC5891].
+         IPv4 addresses SHALL be dotted-decimal notation.
+           An example of this textual representation is "192.0.2.0".
+         IPv6 addresses SHALL be according [RFC5952].
+           An example of this textual representation is
+           "2001:db8::1:0:0:1". 
+
+Sattler, et al.           Expires May 11, 2019                  [Page 4]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+       <maint:impact>
+         MUST be present and contains the impact level; values SHOULD
+         either be 'blackout' or 'partial'
+
+     <maint:environment>
+       MUST be present and indicates the type of the affected system;
+       values SHOULD either be 'production', 'ote', 'staging' or 'dev'
+
+     <maint:start>
+       MUST be present and indicates the start of the maintenance
+       according ISO 8601 [RFC3339]
+       Format: YYYY-MM-DDThh:mm:ssTZ
+
+     <maint:end>
+       MUST be present and indicates the end of the maintenance
+       according ISO 8601 [RFC3339], and MUST be equal to or greater
+       than <maint:start>
+       Format: YYYY-MM-DDThh:mm:ssTZ
+
+     <maint:reason>
+       MUST be present and contains the reason behind the maintenance;
+       values SHOULD either be 'planned' or 'emergency'
+
+     <maint:detail>
+       MAY be present and contains URI to detailed maintenance
+       description
+
+     <maint:description>
+       MAY be present and provides a freeform description of the
+       maintenance without having to create and traverse an external
+       resource. The maximum length MUST NOT exceed 1024 bit.
+
+     <maint:tlds>
+       MUST be present and contains <maint:tld> elements
+
+       <maint:tld>
+         MUST be present and contains the affected top-level domain.
+         Punycode encoded according [RFC5891]
+
+     <maint:intervention>
+       MUST be present and contains <maint:connection> and
+       <maint:implementation>
+
+       <maint:connection>
+         MUST be present and indicates if a client needs to do something
+         that is connection related, such as a reconnect. The value
+         SHALL boolean.
+
+       <maint:implementation>
+         MUST be present and indicates if a client needs to do something
+         that is implementation related, such as a code change. The
+         value SHALL be boolean.
+
+Sattler, et al.           Expires May 11, 2019                  [Page 5]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+     <maint:status>
+       MUST be present and indicates the status of the maintenance.
+       The value SHALL be either 'active' or 'inactive'
+
+     <maint:crDate>
+       MUST be present and contains the creation date of the maintenance
+       according ISO 8601 [RFC3339]
+       Format: YYYY-MM-DDThh:mm:ssTZ
+
+     <maint:upDate>
+       MAY be present and contains the updated date of the maintenance
+       according ISO 8601 [RFC3339], and if set MUST be equal to or
+       greater than <main:crDate>
+       Format: YYYY-MM-DDThh:mm:ssTZ
+
+3.  EPP Command Mapping
+
+   A detailed description of the EPP syntax and semantics can be found
+   in the EPP core protocol specification [RFC5730]. The command
+   mappings described here are specifically for the use to notify of
+   Registry Maintenances and Registry Maintenance object mapping.
+
+3.1.  EPP Query Commands
+
+   EPP [RFC5730] provides three commands to retrieve object information:
+   <check> to determine if an object is known to the server, <info> to
+   retrieve detailed information associated with an object, and
+   <transfer> to retrieve object transfer status information.
+
+3.1.1.  EPP <check> Command
+
+   Available check semantics do not apply to maintenance objects, so
+   there is no mapping defined for the EPP <check> command.
+
+3.1.2.  EPP <transfer> Command
+
+   Transfer semantics do not apply to maintenance objects, so there is
+   no mapping defined for the EPP <transfer> command.
+
+3.1.3.  EPP <info> Command
+
+   EPP provides the <info> command that is used to retrieve registry
+   maintenance information. In addition to the standard EPP command
+   elements, the <info> command MUST contain a <maint:info>
+   element that identifies the maintenance namespace. The <maint:info>
+   element MUST contain a child element. It is either <maint:id> to
+   retrieve a specific maintenance notification or <maint:list> to
+   query all maintenance notifications.
+
+Sattler, et al.           Expires May 11, 2019                  [Page 6]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   Example <info> command with <maint:id> to get one specific
+   maintenance:
+
+   C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   C:  <command>
+   C:    <info>
+   C:      <maint:info
+   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
+   C:      </maint:info>
+   C:    </info>
+   C:    <clTRID>ABC-12345</clTRID>
+   C:  </command>
+   C:</epp>
+
+   Example <info> response for one specific maintenance notification:
+
+   S:<?xml version="1.0" encoding="UTF-8"?>
+   S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:      <result code="1000">
+   S:         <msg>Command completed successfully</msg>
+   S:      </result>
+   S:      <resData>
+   S:        <maint:infData
+   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   S:          <maint:maint>
+   S:            <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
+   S:            </maint:id>
+   S:            <maint:systems>
+   S:              <maint:system>
+   S:                <maint:name>EPP</maint:name>
+   S:                <maint:host>epp.registry.example</maint:host>
+   S:                <maint:impact>blackout</maint:impact>
+   S:              </maint:system>
+   S:            </maint:systems>
+   S:            <maint:environment type="production"/>
+   S:            <maint:start>2017-09-30T06:00:00Z</maint:start>
+   S:            <maint:end>2017-09-30T14:25:57Z</maint:end>
+   S:            <maint:reason>planned</maint:reason>
+   S:            <maint:detail>
+   S:              https://www.registry.example/notice?123
+   S:            </maint:detail>
+
+Sattler, et al.           Expires May 11, 2019                  [Page 7]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   S:            <maint:description>free text</maint:description>
+   S:            <maint:tlds>
+   S:              <maint:tld>example</maint:tld>
+   S:              <maint:tld>test</maint:tld>
+   S:            </maint:tlds>
+   S:            <maint:intervention>
+   S:              <maint:connection>false</maint:connection>
+   S:              <maint:implementation>false</maint:implementation>
+   S:            </maint:intervention>
+   S:            <maint:status>active</maint:status>
+   S:            <maint:crDate>2017-03-08T22:10:00Z</maint:crDate>
+   S:          </maint:maint>
+   S:        </maint:infData>      
+   S:      </resData>
+   S:      <trID>
+   S:         <clTRID>ABC-12345</clTRID>
+   S:         <svTRID>54321-XYZ</svTRID>
+   S:      </trID>
+   S:   </response>
+   S:</epp>
+
+   Example <info> command with <maint:list> to query all maintenances:
+
+   C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   C:  <command>
+   C:    <info>
+   C:      <maint:info
+   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   C:        <maint:list/>
+   C:      </maint:info>
+   C:    </info>
+   C:    <clTRID>ABC-12345</clTRID>
+   C:  </command>
+   C:</epp>
+
+   Example <info> response querying all maintenances:
+
+   S:<?xml version="1.0" encoding="UTF-8"?>
+   S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:      <result code="1000">
+   S:         <msg>Command completed successfully</msg>
+   S:      </result>
+   S:      <resData>
+   S:        <maint:infData
+   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+
+Sattler, et al.           Expires May 11, 2019                  [Page 8]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   S:          <maint:list>
+   S:            <maint:maint>
+   S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
+   S:              </maint:id>
+   S:              <maint:start>2017-04-30T06:00:00Z</maint:start>
+   S:              <maint:end>2017-04-30T07:00:00Z</maint:end>
+   S:              <maint:crDate>2017-02-08T22:10:00Z</maint:crDate>
+   S:            </maint:maint>  
+   S:            <maint:maint>
+   S:              <maint:id>91e9dabf-c4e9-4c19-a56c-78e3e89c2e2f
+   S:              </maint:id>
+   S:              <maint:start>2017-06-15T04:30:00Z</maint:start>
+   S:              <maint:end>2017-06-15T05:30:00Z</maint:end>
+   S:              <maint:crDate>2017-02-08T22:10:00Z</maint:crDate>
+   S:              <maint:upDate>2017-03-08T20:11:00Z</maint:upDate>
+   S:            </maint:maint>
+   S:          </maint:list>
+   S:        </maint:infData>      
+   S:      </resData>
+   S:      <trID>
+   S:         <clTRID>ABC-12345</clTRID>
+   S:         <svTRID>54321-XYZ</svTRID>
+   S:      </trID>
+   S:   </response>
+   S:</epp>
+   
+3.1.4.  EPP <poll> Command
+
+   The EPP <poll> command and response is defined in Section 2.9.2.3 of
+   [RFC5730]. The Registry Maintenance Notification is included in the
+   EPP <poll> response of [RFC5730].
+
+   For the Registry Maintenance Notification, there are three types of
+   poll messages. The poll messages apply whenever the domain name
+   registry creates, updates or deletes a maintenance. In the case of
+   a Registry Maintenance specific message, a <maint:infData> element
+   will be included within the <resData> element of the standard <poll>
+   response.
+
+   The <maint:infData> element will include a reference to the
+   Registry Maintenance namespace. EPP data contained within the
+   <maint:infData> element is formatted according to the
+   maintenance-poll schema.
+
+Sattler, et al.           Expires May 11, 2019                  [Page 9]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   Example <poll> command:
+
+   C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   C:  <command>
+   C:  <poll op="req"/>
+   C:    <clTRID>ABC-12345</clTRID>
+   C:  </command>
+   C:</epp>
+
+   Example <poll> response with the Registry Maintenance poll message:
+
+   S:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:  <response>
+   S:    <result code="1301">
+   S:      <msg>Command completed successfully; ack to dequeue</msg>
+   S:    </result>
+   S:  <msgQ count="1" id="12345">
+   S:    <qDate>2017-02-08T22:10:00Z</qDate>
+   S:    <msg>Registry Maintenance Notification</msg>
+   S:  </msgQ>
+   S:  <resData>
+   S:    <maint:infData
+   S:      xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   S:      <maint:maint>
+   S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
+   S:        <maint:systems>
+   S:          <maint:system>
+   S:            <maint:name>EPP</maint:name>
+   S:            <maint:host>epp.registry.example</maint:host>
+   S:            <maint:impact>blackout</maint:impact>
+   S:          </maint:system>
+   S:        </maint:systems>
+   S:        <maint:environment type="production"/>
+   S:        <maint:start>2017-10-30T06:00:00Z</maint:start>
+   S:        <maint:end>2017-10-30T14:25:57Z</maint:end>
+   S:        <maint:reason>planned</maint:reason>
+   S:        <maint:detail>
+   S:          https://www.registry.example/notice?123
+   S:        </maint:detail>
+   S:        <maint:tlds>
+   S:          <maint:tld>example</maint:tld>
+   S:          <maint:tld>test</maint:tld>
+   S:        </maint:tlds>
+   S:        <maint:intervention>
+   S:          <maint:connection>false</maint:connection>
+   S:          <maint:implementation>false</maint:implementation>
+   S:        </maint:intervention>
+
+Sattler, et al.           Expires May 11, 2019                 [Page 10]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   S:        <maint:status>active</maint:status>
+   S:        <maint:crDate>2017-02-08T22:10:00Z</maint:crDate>
+   S:      </maint:maint>
+   S:    </maint:infData>
+   S:  </resData>
+   S:  <trID>
+   S:    <clTRID>ABC-12345</clTRID>
+   S:    <svTRID>54321-XYZ</svTRID>
+   S:  </trID>
+   S:  </response>
+   S:</epp>
+
+3.2.  EPP Transform Commands
+
+   EPP provides five commands to transform objects: <create> to create
+   an instance of an object, <delete> to delete an instance of an
+   object, <renew> to extend the validity period of an object,
+   <transfer> to manage object sponsorship changes, and <update> to
+   change information associated with an object.
+
+3.2.1.  EPP <create> Command
+
+   Create semantics do not apply to maintenance objects, so there is no
+   mapping defined for the EPP <create> command.
+
+3.2.2.  EPP <delete> Command
+
+   Delete semantics do not apply to maintenance objects, so there is no
+   mapping defined for the EPP <delete> command.
+
+3.2.3.  EPP <renew> Command
+
+   Renew semantics do not apply to maintenance objects, so there is no
+   mapping defined for the EPP <renew> command.
+
+3.2.4.  EPP <transfer> Command
+
+   Transfer semantics do not apply to maintenance objects, so there is
+   no mapping defined for the EPP <transfer> command.
+
+3.2.5.  EPP <update> Command
+
+   Update semantics do not apply to maintenance objects, so there is no
+   mapping defined for the EPP <update> command.
+
+Sattler, et al.           Expires May 11, 2019                 [Page 11]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+4.  Formal Syntax
+
+   One schema is presented here that is the EPP Registry Maintenance
+   schema.
+
+   The formal syntax presented here is a complete schema representation
+   of the object mapping suitable for automated validation of EPP XML
+   instances. The BEGIN and END tags are not part of the schema; they
+   are used to note the beginning and ending of the schema for URI
+   registration purposes.
+
+4.1.  Registry Maintenance EPP Mapping Schema
+
+   BEGIN
+   <?xml version="1.0" encoding="UTF-8"?>
+     <schema targetNamespace="urn:ietf:params:xml:ns:maintenance-0.2"
+       xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+       xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+       xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2"
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       elementFormDefault="qualified">
+
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
+     <import namespace="urn:ietf:params:xml:ns:epp-1.0"/>
+
+     <annotation>
+       <documentation>
+         Extensible Provisioning Protocol v1.0
+         Maintenance Mapping Schema.
+       </documentation>
+     </annotation>
+
+     <!--
+     Child elements found in EPP commands.
+     -->
+     <element name="info" type="maint:infoType"/>
+
+     <!--
+      Child elements of the <info> command.
+     -->
+     <complexType name="infoType">
+       <sequence>
+         <choice>
+           <element name="list">
+             <complexType/>
+
+Sattler, et al.           Expires May 11, 2019                 [Page 12]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+           </element>
+           <element name="id" type="maint:idType"/>
+         </choice>
+       </sequence>
+     </complexType>
+
+     <!--
+     Human-readable text may be expresses the maintenance
+     -->
+     <complexType name="idType">
+       <simpleContent>
+         <extension base="normalizedString">
+           <attribute name="msg" type="token"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <!--
+      Info Response element
+     -->
+     <element name="infData" type="maint:infDataType"/>
+
+     <!--
+      <info> response elements.
+     -->
+     <complexType name="infDataType">
+       <choice>
+         <element name="list" type="maint:listDataType"/>
+         <element name="maint" type="maint:maintDataType"/>
+       </choice>
+     </complexType>
+
+     <!--
+      Attributes associated with the list info response
+     -->
+     <complexType name="listDataType">
+       <sequence>
+         <element name="maint" type="maint:maintItemType"
+          minOccurs="0" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      Attributes associated with the list item info response
+     -->
+     <complexType name="maintItemType">
+       <sequence>
+         <element name="id" type="maint:idType"/>
+         <element name="start" type="dateTime" minOccurs="0"/>
+         <element name="end" type="dateTime" minOccurs="0"/>
+         <element name="crDate" type="dateTime"/>
+         <element name="upDate" type="dateTime" minOccurs="0"/>
+       </sequence>
+     </complexType>
+
+Sattler, et al.           Expires May 11, 2019                 [Page 13]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+     <!--
+      Attributes associated with the maintenance info response
+     -->
+     <complexType name="maintDataType">
+       <sequence>
+         <element name="id" type="maint:idType"/>
+         <element name="systems" type="maint:systemsType"/>
+         <element name="environment" type="maint:envType"/>
+         <element name="start" type="dateTime"/>
+         <element name="end" type="dateTime"/>
+         <element name="reason" type="maint:reasonEnum"/>
+         <element name="detail" type="token" minOccurs="0"/>
+         <element name="description" type="maint:descriptionType"
+          minOccurs="0"/>
+         <element name="tlds" type="maint:tldsType"/>
+         <element name="intervention" type="maint:interventionType"/>
+         <element name="status" type="maint:statusEnum"/>
+         <element name="crDate" type="dateTime"/>
+         <element name="upDate" type="dateTime" minOccurs="0"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      systems element
+     -->
+     <complexType name="systemsType">
+       <sequence>
+         <element name="system" type="maint:systemType"
+          maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      Enumerated list of impacts
+     -->
+     <simpleType name="impactEnum">
+       <restriction base="token">
+         <enumeration value="partial"/>
+         <enumeration value="blackout"/>
+       </restriction>
+     </simpleType>
+
+     <!--
+      description element
+     -->
+     <complexType name="descriptionType">
+       <restriction base="string">
+         <maxLength value="1024"/>
+       </restriction>
+     </complexType>
+
+     <!--
+      system element
+     -->
+
+Sattler, et al.           Expires May 11, 2019                 [Page 14]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+     <complexType name="systemType">
+       <sequence>
+         <element name="name" type="token"/>
+         <element name="host" type="token"/>
+         <element name="impact" type="maint:impactEnum"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      Enumerated list of environments
+     -->
+     <simpleType name="envEnum">
+       <restriction base="token">
+         <enumeration value="production"/>
+         <enumeration value="ote"/>
+         <enumeration value="staging"/>
+         <enumeration value="dev"/>
+         <enumeration value="custom"/>
+       </restriction>
+     </simpleType>
+
+     <!--
+      environment element
+     -->
+     <complexType name="envType">
+       <simpleContent>
+         <extension base="token">
+           <attribute name="type" type="maint:envEnum" use="required"/>
+           <attribute name="name" type="token" use="optional"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <!--
+      Enumerated list of reasons
+     -->
+     <simpleType name="reasonEnum">
+       <restriction base="token">
+         <enumeration value="planned"/>
+         <enumeration value="emergency"/>
+       </restriction>
+     </simpleType>
+
+     <!--
+      tlds element
+     -->
+     <complexType name="tldsType">
+       <sequence>
+         <element name="tld" type="eppcom:labelType"
+          maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+Sattler, et al.           Expires May 11, 2019                 [Page 15]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+     <!--
+      intervention element
+     -->
+     <complexType name="interventionType">
+       <sequence>
+         <element name="connection" type="boolean"/>
+         <element name="implementation" type="boolean"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      Enumerated list of statuses
+     -->
+     <simpleType name="statusEnum">
+       <restriction base="token">
+         <enumeration value="active"/>
+         <enumeration value="deleted"/>
+       </restriction>
+     </simpleType>
+
+     <!--
+      End of schema.
+     -->
+     </schema>
+    END
+
+5.  IANA Considerations
+
+   TBD
+
+6.  Security Considerations
+
+   The mapping extensions described in this document do not provide any
+   security services beyond those described by EPP [RFC5730] and
+   protocol layers used by EPP. The security considerations described in
+   these other specifications apply to this specification as well.
+
+Sattler, et al.           Expires May 11, 2019                 [Page 16]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+7.  Implementation Status
+
+   Note to RFC Editor: Please remove this section and the reference to
+   [RFC7942] before publication.
+
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of posting of this
+   Internet-Draft, and is based on a proposal described in [RFC7942].
+   The description of implementations in this section is intended to
+   assist the IETF in its decision processes in progressing drafts to
+   RFCs.  Please note that the listing of any individual implementation
+   here does not imply endorsement by the IETF.  Furthermore, no effort
+   has been spent to verify the information presented here that was
+   supplied by IETF contributors.  This is not intended as, and must not
+   be construed to be, a catalog of available implementations or their
+   features.  Readers are advised to note that other implementations may
+   exist.
+
+   According to [RFC7942], "this will allow reviewers and working groups
+   to assign due consideration to documents that have the benefit of
+   running code, which may serve as evidence of valuable experimentation
+   and feedback that have made the implemented protocols more mature. It
+   is up to the individual working groups to use this information as
+   they see fit".
+
+   Add implementation details once available.
+
+8.  References
+
+8.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, RFC 5730, August 2009,
+              <https://www.rfc-editor.org/info/rfc5730>.
+
+8.2.  Informative References
+
+   [RFC3339]  Klyne, G., Ed. and C. Newman, "Date and Time on the
+              Internet: Timestamps", RFC 3339, July 2002,
+              <https://www.rfc-editor.org/info/rfc3339>.
+
+   [RFC5891]  Klensin, J., "Internationalized Domain Names in
+              Applications (IDNA): Protocol", RFC 5891, August 2010,
+              <https://www.rfc-editor.org/info/rfc5891>.
+
+Sattler, et al.           Expires May 11, 2019                 [Page 17]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+   [RFC4122]  Leach, P., Mealling, M. and Salz, R., "A Universally
+              Unique IDentifier (UUID) URN Namespace", RFC 4122, July
+              2015,
+              <https://www.rfc-editor.org/info/rfc4122>.
+
+   [RFC5952]  Kawamura, S. and Kawashima, M., "A Recommendation for IPv6
+              Address Text Representation", RFC 5952, August 2010,
+              <https://www.rfc-editor.org/info/rfc5952>.
+
+   [RFC7942]  Sheffer, Y. and Farrel, A., "Improving Awareness of
+              Running Code: The Implementation Status Section", RFC
+              7942, July 2016,
+              <https://www.rfc-editor.org/info/rfc7942>.
+
+Appendix A.  Change History
+
+A.1.  Change from 00 to 01
+
+   Removed JSON Schema. Clarified unique id with UUID. Added Common Data
+   Structures for better explanation. Fixed EPP poll response example.
+   Added und fixed References.
+
+A.2.  Change from 01 to 02
+
+   Clarified host field. Added TLDs to Common Data Structure. Added
+   Internationalization Considerations. Changed authors address and
+   contact details.
+
+A.3.  Change from 02 to 03
+
+   Added date-time Values to Internationalization Considerations. Sorted
+   Terminology and Definitions alphabetically. Changed start and end
+   date-time. Changed Reference URI to HTTPS.
+
+A.4.  Change from 03 to 04
+
+   Added Acknowledgements. Clarified UUID field to be not changed at all
+   Clarified environment field with production, ote, staging and dev.
+   Clarified connection and implementation fields. Fixed writing of
+   systems field. Removed author's private address. Moved this draft
+   from Experimental to Standard Track.
+
+A.5.  Change from 04 to 05
+
+   Changed title of this draft to be more specific. Added Change Log.
+   Split References into Normative and Informative References. Clarified
+   Common Data Types. Rephrased Abstract and Introduction. Added
+   Implementation Status Section.
+
+Sattler, et al.           Expires May 11, 2019                 [Page 18]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+A.6.  Change from 05 to 06
+
+   Added IANA Considerations. Changed URIs from http to https. Added
+   new main Section 4. EPP Command Mapping. Added new JSON field purpose
+   for announce, change or cancel of a maintenance notification.
+
+A.7.  Change from 06 to 07
+
+   Fixed typo in Section 3.4. and added missing comma in the example of
+   Section 4.1. Added the field specification to help facilitate the
+   adoption of this document. Changed possible purposes to create,
+   update and delete to be closer to the EPP syntax. Cleaned
+   whitespaces. Updated Acknowledgements.
+
+A.8.  Change from 07 to EPPMAINT 00
+
+    Removed JSON payload in <poll> message and switched to specific
+    EPP <poll> message. Extended EPP <info> command to provide details
+    on specific maintenance or list all maintenances.
+
+A.9. Change from EPPMAINT 00 to EPPMAINT 01
+
+   Fixed typos and added missing change log text for EPPMAINT 00.
+   Added BEGIN and END flag to XML schema. Removed Character Encoding
+   Section. Fixed indentation in Section 2.3.
+
+A.10. Change from EPPMAINT 01 to EPPMAINT 02
+
+   Changed the element <maint:remark> to <maint:detail>. Fixed
+   indentation in Section 4.1. Cleaned up whitespaces.
+
+A.11. Change from EPPMAINT 02 to EPPMAINT 03
+
+   Changed reference from RFC3492 to RFC5891. Fixed minor typos.
+   Added <maint:description> for a freeform maintenance description
+   with a maximum length of 1024. Added optional "msg" attribute to
+   <maint:id> and <maint:maint>.
+
+A.12. Change from EPPMAINT 03 to EPPMAINT 04
+
+   Fixed minor typos and added one acknowledgement.
+
+A.13. Change from EPPMAINT 04 to EPPMAINT 05
+
+   Added missing whitespace. Fixed dates in examples. Added
+   clarification that <maint:end> must be equal to or greater than 
+   <maint:start>, same applies for <maint:upDate> and <maint:crDate> if
+   set.
+
+A.14. Change from EPPMAINT 05 to EPPMAINT 06
+
+   Added Roger Carney and Jody Kolker as Co-Authors to this draft.
+
+Sattler, et al.           Expires May 11, 2019                 [Page 19]
+
+Internet-Draft          EPP Registry Maintenance           November 2018
+
+A.15. Change from EPPMAINT 06 to EPPMAINT 07
+
+   Changed Acknowledgements.
+   
+A.16. Change from EPPMAINT 07 to EPPMAINT 08
+
+   Changed Acknowledgements.
+
+Appendix B.  Acknowledgements
+
+   The authors wish to thank the following persons for their feedback
+   and suggestions (sorted alphabetically by company):
+
+   * Patrick Mevzek
+   * Neal McPherson, 1&1 Internet
+   * Anthony Eden, DNSimple
+   * Christopher Martens, Donuts
+   * Raymond Zylstra, Neustar
+   * Andreas Huber, united-domains
+   * Craig Marchant, VentraIP
+   * James Gould, Verisign
+
+Authors' Addresses
+
+   Tobias Sattler
+
+   Email: tobias.sattler@me.com
+   URI:   https://tobiassattler.com
+
+   Roger Carney
+   GoDaddy Inc.
+   14455 N. Hayden Rd. #219
+   Scottsdale, AZ  85260
+   US
+
+   Email: rcarney@godaddy.com
+   URI:   http://www.godaddy.com
+
+   Jody Kolker
+   GoDaddy Inc.
+   14455 N. Hayden Rd. #219
+   Scottsdale, AZ  85260
+   US
+
+   Email: jkolker@godaddy.com
+   URI:   http://www.godaddy.com
+
+Sattler, et al.           Expires May 11, 2019                 [Page 20]
+
