@@ -1057,7 +1057,7 @@ Appendix B.  Acknowledgements
    and suggestions (sorted alphabetically by company):
 
    * Patrick Mevzek
-   * Neal McPherson, 1&1 Internet
+   * Neal McPherson, 1&1 IONOS
    * Anthony Eden, DNSimple
    * Christopher Martens, Donuts
    * Raymond Zylstra, Neustar
