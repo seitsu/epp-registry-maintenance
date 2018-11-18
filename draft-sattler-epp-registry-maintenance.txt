@@ -1053,7 +1053,8 @@ A.15. Change from EPPMAINT 06 to EPPMAINT 07
 A.16. Change from EPPMAINT 07 to EPPMAINT 08
 
    Added IANA consideration section 5.1. and 5.2. Added editor flag
-   to author. Changed abstract and introduction.
+   to author. Changed abstract and introduction. Minor formatting
+   changes.
 
 Appendix B.  Acknowledgements
 
