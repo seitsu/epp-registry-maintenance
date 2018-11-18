@@ -1060,14 +1060,14 @@ Appendix B.  Acknowledgements
    The authors wish to thank the following persons for their feedback
    and suggestions (sorted alphabetically by company):
 
-   * Patrick Mevzek
-   * Neal McPherson, 1&1 IONOS
-   * Anthony Eden, DNSimple
-   * Christopher Martens, Donuts
-   * Raymond Zylstra, Neustar
-   * Andreas Huber, united-domains
-   * Craig Marchant, VentraIP
-   * James Gould, Verisign
+   o Patrick Mevzek
+   o Neal McPherson, 1&1 IONOS
+   o Anthony Eden, DNSimple
+   o Christopher Martens, Donuts
+   o Raymond Zylstra, Neustar
+   o Andreas Huber, united-domains
+   o Craig Marchant, VentraIP
+   o James Gould, Verisign
 
 Authors' Addresses
 
