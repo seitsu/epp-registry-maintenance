@@ -11,9 +11,7 @@ Expires: May 29, 2019                                          J. Kolker
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
-   mapping for the Registry Maintenance Notifications used when Domain
-   Name Registries will conduct a maintenance, and for retrieving these
-   information.
+   mapping for domain name registry's maintenance notifications.
 
 Status of This Memo
    This Internet-Draft is submitted in full conformance with the
@@ -104,10 +102,16 @@ Internet-Draft          EPP Registry Maintenance           November 2018
 
 1.  Introduction
 
-   This document describes an Extensible Provision Protocol (EPP)
-   [RFC5730] mapping for the Registry Maintenance Notifications used
-   when Domain Name Registries will conduct a maintenance, and for
-   retrieving these information.
+   Domain name registries usually conduct maintenances and inform domain
+   name registrars via different ways. Given the expansion of the DNS
+   namespace, it is now desirable to provide a method for EPP servers to
+   notify EPP clients as well as a method for EPP clients to query EPP
+   servers for upcoming maintenances.
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provision Protocol [RFC5730]. This mapping provides a
+   mechanism by which EPP servers may notify and EPP clients to query  
+   for upcoming maintenances.
 
 1.1.  Terminology and Definitions
 
@@ -1049,7 +1053,7 @@ A.15. Change from EPPMAINT 06 to EPPMAINT 07
 A.16. Change from EPPMAINT 07 to EPPMAINT 08
 
    Added IANA consideration section 5.1. and 5.2. Added editor flag
-   to author.
+   to author. Changed abstract and introduction.
 
 Appendix B.  Acknowledgements
 
