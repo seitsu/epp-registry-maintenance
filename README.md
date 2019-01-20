@@ -1,15 +1,16 @@
-## Registry Maintenance Notifications for the Extensible Provisioning Protocol (EPP)
+Registry Maintenance Notifications for the Extensible Provisioning Protocol (EPP)
+=================
 
-### Goal
+## Goal
 The goal is to draft a new EPP extension for Registry Maintenance Notifications and to submit an IETF Internet-Draft that hopefully result in [RFC].
 
-### The Current Status
+## The Current Status
 This idea was raised in the ICANN Registrar Stakeholder Group ([RrSG]) Technical and Operational ([TechOps]) Subcommittee, and further discussed in the [CPH TechOps] Group.
 
-### Validation of IETF draft
+## Validation of IETF draft
 You may validate the [draft] document with https://tools.ietf.org/tools/idnits/
 
-### License
+## License
 This is free and unencumbered software released into the public domain. For more info, please read the [LICENSE] file distributed.
 
 [RFC]: https://en.wikipedia.org/wiki/Request_for_Comments
