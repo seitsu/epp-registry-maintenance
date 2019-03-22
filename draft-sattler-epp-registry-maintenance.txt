@@ -1,13 +1,13 @@
 Internet Engineering Task Force                       T. Sattler, Editor
 Internet-Draft
 Intended status: Standard Track                                R. Carney
-Expires: June 5, 2019                                          J. Kolker
+Expires: September, 2019                                       J. Kolker
                                                             GoDaddy Inc.
-                                                        December 6, 2018
+                                                          March 24, 2019
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-                draft-sattler-epp-registry-maintenance-08
+                draft-sattler-epp-registry-maintenance-09
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -27,10 +27,10 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress".
 
-   This Internet-Draft will expire on June 5, 2019.
+   This Internet-Draft will expire on September 23, 2019.
 
 Copyright Notice
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2019 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -43,9 +43,9 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-Sattler, et al.           Expires June 5, 2019                  [Page 1]
+Sattler, et al.         Expires September 23, 2019              [Page 1]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
@@ -93,17 +93,18 @@ Table of Contents
      A.14. Change from EPPMAINT 05 to EPPMAINT 06  . . . . . . . . .  20
      A.15. Change from EPPMAINT 06 to EPPMAINT 07  . . . . . . . . .  21
      A.16. Change from EPPMAINT 07 to EPPMAINT 08  . . . . . . . . .  21
+     A.17. Change from EPPMAINT 08 to EPPMAINT 09  . . . . . . . . .  21
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
-Sattler, et al.           Expires June 5, 2019                  [Page 2]
+Sattler, et al.         Expires September 23, 2019              [Page 2]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 1.  Introduction
 
    Domain name registries usually conduct maintenances and inform domain
-   name registrars via different ways. Given the expansion of the DNS
+   name registrars in different ways. Given the expansion of the DNS
    namespace, it is now desirable to provide a method for EPP servers to
    notify EPP clients as well as a method for EPP clients to query EPP
    servers for upcoming maintenances.
@@ -121,9 +122,8 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    specified in their uppercase forms.
 
    XML is case sensitive. Unless stated otherwise, XML specifications
-   and examples provided in this document MUST be interpreted in the
-   character case presented in order to develop a conforming
-   implementation.
+   moreover, examples provided in this document MUST be interpreted in
+   the character case presented to develop a conforming implementation.
 
    In examples, "C:" represents lines sent by a protocol client and
    "S:" represents lines returned by a protocol server. Indentation and
@@ -144,15 +144,15 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    date-time form using upper case "T" and "Z" characters defined in ISO
    8601 [RFC3339] MUST be used to represent date-time values.
 
-Sattler, et al.           Expires June 5, 2019                  [Page 3]
+Sattler, et al.         Expires September 23, 2019              [Page 3]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 2.3.  Maintenance Elements
 
-   The <maint:maint> element describes a single domain name registry
-   maintenance event during a specific time period. This element will
-   be used at EPP <poll> messages and to extend the EPP <info> command.
+   The <maint:maint> element describes a single registry maintenance
+   event during a specific period. This element will be used at EPP
+   <poll> messages and to extend the EPP <info> command.
 
    For creating a new maintenance the attribute <maint:status> MUST be
    'active', the attribute <maint:crDate> MUST be set and the attribute
@@ -167,7 +167,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    be set.
 
    <maint:id>
-     MUST be present and an UUID according [RFC4122] and SHALL NOT be
+     MUST be present and a UUID according [RFC4122] and SHALL NOT be
      changed if maintenance got updated or deleted. A human-readable
      description of the maintenance is identified via an OPTIONAL
      "msg" attribute.
@@ -179,7 +179,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
 
      <maint:system>
        MUST be present at least once and is an element of <maint:name>,
-       <maint:host> and <maint:impact>
+       <maint:host> and <maint:impact>.
 
        <maint:name>
          MUST be present and indicates the name of the affected system,
@@ -195,36 +195,36 @@ Internet-Draft          EPP Registry Maintenance           December 2018
            An example of this textual representation is
            "2001:db8::1:0:0:1". 
 
-Sattler, et al.           Expires June 5, 2019                  [Page 4]
+Sattler, et al.         Expires September 23, 2019              [Page 4]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
        <maint:impact>
          MUST be present and contains the impact level; values SHOULD
-         either be 'blackout' or 'partial'
+         either be 'blackout' or 'partial'.
 
      <maint:environment>
        MUST be present and indicates the type of the affected system;
-       values SHOULD either be 'production', 'ote', 'staging' or 'dev'
+       values SHOULD either be 'production', 'ote', 'staging' or 'dev'.
 
      <maint:start>
        MUST be present and indicates the start of the maintenance
-       according ISO 8601 [RFC3339]
+       according ISO 8601 [RFC3339].
        Format: YYYY-MM-DDThh:mm:ssTZ
 
      <maint:end>
        MUST be present and indicates the end of the maintenance
-       according ISO 8601 [RFC3339], and MUST be equal to or greater
-       than <maint:start>
+       according to ISO 8601 [RFC3339], and MUST be equal to or greater
+       than <maint:start>.
        Format: YYYY-MM-DDThh:mm:ssTZ
 
      <maint:reason>
        MUST be present and contains the reason behind the maintenance;
-       values SHOULD either be 'planned' or 'emergency'
+       values SHOULD either be 'planned' or 'emergency'.
 
      <maint:detail>
        MAY be present and contains URI to detailed maintenance
-       description
+       description.
 
      <maint:description>
        MAY be present and provides a freeform description of the
@@ -232,43 +232,43 @@ Internet-Draft          EPP Registry Maintenance           December 2018
        resource. The maximum length MUST NOT exceed 1024 bit.
 
      <maint:tlds>
-       MUST be present and contains <maint:tld> elements
+       MUST be present and contains <maint:tld> elements.
 
        <maint:tld>
          MUST be present and contains the affected top-level domain.
-         Punycode encoded according [RFC5891]
+         Punycode encoded according to [RFC5891].
 
      <maint:intervention>
        MUST be present and contains <maint:connection> and
-       <maint:implementation>
+       <maint:implementation>.
 
        <maint:connection>
          MUST be present and indicates if a client needs to do something
-         that is connection related, such as a reconnect. The value
-         SHALL boolean.
+         that is connection-related, such as a reconnect. The value
+         SHALL be boolean.
 
        <maint:implementation>
          MUST be present and indicates if a client needs to do something
-         that is implementation related, such as a code change. The
+         that is implementation-related, such as a code change. The
          value SHALL be boolean.
 
-Sattler, et al.           Expires June 5, 2019                  [Page 5]
+Sattler, et al.         Expires September 23, 2019              [Page 5]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
      <maint:status>
        MUST be present and indicates the status of the maintenance.
-       The value SHALL be either 'active' or 'inactive'
+       The value SHALL be either 'active' or 'inactive'.
 
      <maint:crDate>
        MUST be present and contains the creation date of the maintenance
-       according ISO 8601 [RFC3339]
+       according ISO 8601 [RFC3339].
        Format: YYYY-MM-DDThh:mm:ssTZ
 
      <maint:upDate>
        MAY be present and contains the updated date of the maintenance
-       according ISO 8601 [RFC3339], and if set MUST be equal to or
-       greater than <main:crDate>
+       according to ISO 8601 [RFC3339], and if set MUST be equal to or
+       greater than <main:crDate>.
        Format: YYYY-MM-DDThh:mm:ssTZ
 
 3.  EPP Command Mapping
@@ -305,9 +305,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    retrieve a specific maintenance notification or <maint:list> to
    query all maintenance notifications.
 
-Sattler, et al.           Expires June 5, 2019                  [Page 6]
+Sattler, et al.         Expires September 23, 2019              [Page 6]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    Example <info> command with <maint:id> to get one specific
    maintenance:
@@ -354,9 +354,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    S:              https://www.registry.example/notice?123
    S:            </maint:detail>
 
-Sattler, et al.           Expires June 5, 2019                  [Page 7]
+Sattler, et al.         Expires September 23, 2019              [Page 7]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    S:            <maint:description>free text</maint:description>
    S:            <maint:tlds>
@@ -406,9 +406,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    S:        <maint:infData
    S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
 
-Sattler, et al.           Expires June 5, 2019                  [Page 8]
+Sattler, et al.         Expires September 23, 2019              [Page 8]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    S:          <maint:list>
    S:            <maint:maint>
@@ -444,7 +444,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
 
    For the Registry Maintenance Notification, there are three types of
    poll messages. The poll messages apply whenever the domain name
-   registry creates, updates or deletes a maintenance. In the case of
+   registry creates, updates or deletes maintenance. In the case of
    a Registry Maintenance specific message, a <maint:infData> element
    will be included within the <resData> element of the standard <poll>
    response.
@@ -454,9 +454,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    <maint:infData> element is formatted according to the
    maintenance-poll schema.
 
-Sattler, et al.           Expires June 5, 2019                  [Page 9]
+Sattler, et al.         Expires September 23, 2019              [Page 9]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    Example <poll> command:
 
@@ -508,9 +508,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
 
-Sattler, et al.           Expires June 5, 2019                 [Page 10]
+Sattler, et al.         Expires September 23, 2019             [Page 10]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    S:        <maint:status>active</maint:status>
    S:        <maint:crDate>2017-02-08T22:10:00Z</maint:crDate>
@@ -557,9 +557,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    Update semantics do not apply to maintenance objects, so there is no
    mapping defined for the EPP <update> command.
 
-Sattler, et al.           Expires June 5, 2019                 [Page 11]
+Sattler, et al.         Expires September 23, 2019             [Page 11]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 4.  Formal Syntax
 
@@ -569,7 +569,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    The formal syntax presented here is a complete schema representation
    of the object mapping suitable for automated validation of EPP XML
    instances. The BEGIN and END tags are not part of the schema; they
-   are used to note the beginning and ending of the schema for URI
+   are used to note the beginning and end of the schema for URI
    registration purposes.
 
 4.1.  Registry Maintenance EPP Mapping Schema
@@ -610,9 +610,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
            <element name="list">
              <complexType/>
 
-Sattler, et al.           Expires June 5, 2019                 [Page 12]
+Sattler, et al.         Expires September 23, 2019             [Page 12]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
            </element>
            <element name="id" type="maint:idType"/>
@@ -669,9 +669,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
        </sequence>
      </complexType>
 
-Sattler, et al.           Expires June 5, 2019                 [Page 13]
+Sattler, et al.         Expires September 23, 2019             [Page 13]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
      <!--
       Attributes associated with the maintenance info response
@@ -728,9 +728,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
       system element
      -->
 
-Sattler, et al.           Expires June 5, 2019                 [Page 14]
+Sattler, et al.         Expires September 23, 2019             [Page 14]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
      <complexType name="systemType">
        <sequence>
@@ -785,9 +785,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
        </sequence>
      </complexType>
 
-Sattler, et al.           Expires June 5, 2019                 [Page 15]
+Sattler, et al.         Expires September 23, 2019             [Page 15]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
      <!--
       intervention element
@@ -820,7 +820,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
 5.1.  XML Namespace
 
    This document uses URNs to describe XML namespaces and XML schemas
-   conforming to a registry mechanism described in [RFC3688].
+   conforming to a registry mechanism defined in [RFC3688].
    
    Registration request for the maintenance namespace:
 
@@ -838,9 +838,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
       
       XML: See the "Formal Syntax" section of this document.
       
-Sattler, et al.           Expires June 5, 2019                 [Page 16]
+Sattler, et al.         Expires September 23, 2019             [Page 16]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 5.2.  EPP Extension Registry
 
@@ -852,7 +852,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
 
    Document status: Standards Track
 
-   Reference: (insert reference to RFC version of this document)
+   Reference: (insert the reference to RFC version of this document)
 
    Registrant Name and Email Address: IESG, <iesg@ietf.org>
 
@@ -867,7 +867,7 @@ Internet-Draft          EPP Registry Maintenance           December 2018
 6.  Security Considerations
 
    The mapping extensions described in this document do not provide any
-   security services beyond those described by EPP [RFC5730] and
+   security services beyond those specified by EPP [RFC5730] and
    protocol layers used by EPP. The security considerations described in
    these other specifications apply to this specification as well.
 
@@ -889,9 +889,9 @@ Internet-Draft          EPP Registry Maintenance           December 2018
    features.  Readers are advised to note that other implementations may
    exist.
    
-Sattler, et al.           Expires June 5, 2019                 [Page 17]
+Sattler, et al.         Expires September 23, 2019             [Page 17]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
    According to [RFC7942], "this will allow reviewers and working groups
    to assign due consideration to documents that have the benefit of
@@ -946,16 +946,16 @@ Internet-Draft          EPP Registry Maintenance           December 2018
               7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
               
-Sattler, et al.           Expires June 5, 2019                 [Page 18]
+Sattler, et al.         Expires September 23, 2019             [Page 18]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 Appendix A.  Change History
 
 A.1.  Change from 00 to 01
 
    Removed JSON Schema. Clarified unique id with UUID. Added Common Data
-   Structures for better explanation. Fixed EPP poll response example.
+   Structures for a better explanation. Fixed EPP poll response example.
    Added und fixed References.
 
 A.2.  Change from 01 to 02
@@ -980,20 +980,21 @@ A.4.  Change from 03 to 04
 
 A.5.  Change from 04 to 05
 
-   Changed title of this draft to be more specific. Added Change Log.
+   Changed title of this draft to be more specific. Added changelog.
    Split References into Normative and Informative References. Clarified
    Common Data Types. Rephrased Abstract and Introduction. Added
    Implementation Status Section.
 
-Sattler, et al.           Expires June 5, 2019                 [Page 19]
+Sattler, et al.         Expires September 23, 2019             [Page 19]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 A.6.  Change from 05 to 06
 
-   Added IANA Considerations. Changed URIs from http to https. Added
-   new main Section 4. EPP Command Mapping. Added new JSON field purpose
-   for announce, change or cancel of a maintenance notification.
+   Added IANA Considerations. Changed URIs from HTTP to HTTPS. Added
+   new main Section 4. EPP Command Mapping. Added new JSON field
+   'purpose' for announce, change or cancel of a maintenance
+   notification.
 
 A.7.  Change from 06 to 07
 
@@ -1011,9 +1012,9 @@ A.8.  Change from 07 to EPPMAINT 00
 
 A.9. Change from EPPMAINT 00 to EPPMAINT 01
 
-   Fixed typos and added missing change log text for EPPMAINT 00.
-   Added BEGIN and END flag to XML schema. Removed Character Encoding
-   Section. Fixed indentation in Section 2.3.
+   Fixed typos and added missing changelog text for EPPMAINT 00.
+   Added BEGIN and END flag to the XML schema. Removed Character
+   Encoding Section. Fixed indentation in Section 2.3.
 
 A.10. Change from EPPMAINT 01 to EPPMAINT 02
 
@@ -1029,7 +1030,7 @@ A.11. Change from EPPMAINT 02 to EPPMAINT 03
 
 A.12. Change from EPPMAINT 03 to EPPMAINT 04
 
-   Fixed minor typos and added one acknowledgement.
+   Fixed minor typos and added one acknowledgment.
 
 A.13. Change from EPPMAINT 04 to EPPMAINT 05
 
@@ -1042,9 +1043,9 @@ A.14. Change from EPPMAINT 05 to EPPMAINT 06
 
    Added Roger Carney and Jody Kolker as Co-Authors to this draft.
 
-Sattler, et al.           Expires June 5, 2019                 [Page 20]
+Sattler, et al.         Expires September 23, 2019             [Page 20]
 
-Internet-Draft          EPP Registry Maintenance           December 2018
+Internet-Draft           EPP Registry Maintenance             March 2019
 
 A.15. Change from EPPMAINT 06 to EPPMAINT 07
 
@@ -1055,6 +1056,10 @@ A.16. Change from EPPMAINT 07 to EPPMAINT 08
    Added IANA consideration section 5.1. and 5.2. Added editor flag
    to author. Changed abstract and introduction. Minor formatting
    changes.
+   
+A.17. Change from EPPMAINT 08 to EPPMAINT 09
+
+   Editorial changes.
 
 Appendix B.  Acknowledgements
 
@@ -1095,5 +1100,5 @@ Authors' Addresses
    Email: jkolker@godaddy.com
    URI:   http://www.godaddy.com
 
-Sattler, et al.           Expires June 5, 2019                 [Page 21]
+Sattler, et al.         Expires September 23, 2019             [Page 21]
 
