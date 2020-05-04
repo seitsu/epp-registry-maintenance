@@ -18,4 +18,4 @@ This is free and unencumbered software released into the public domain. For more
 [TechOps]: http://icannregistrars.org/techops-sub-committee/
 [CPH TechOps]: https://bestpractice.domains
 [LICENSE]: /LICENSE
-[draft]: /draft-sattler-epp-registry-maintenance.txt
+[draft]: /draft-ietf-regext-epp-registry-maintenance.txt
