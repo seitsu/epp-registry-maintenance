@@ -958,6 +958,7 @@ A.3.  Change from 00 to 01
 
    Clarified maint:description and maint:environment. Changed
    maint:description from complexType to simpleType. Fixed typo.
+   Added acknowledgment.
 
 Sattler, et al.          Expires November 4, 2020              [Page 19]
 
@@ -972,6 +973,7 @@ Acknowledgments
    o Neal McPherson, 1&1 IONOS
    o Anthony Eden, DNSimple
    o Christopher Martens, Donuts
+   o Quoc-Anh Pham, Neustar
    o Raymond Zylstra, Neustar
    o Andreas Huber, united-domains
    o Craig Marchant, VentraIP
