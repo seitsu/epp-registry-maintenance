@@ -162,7 +162,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    be set.
 
    <maint:id>
-     MUST be present and a UUID according [RFC4122] and SHALL NOT be
+     MUST be present and a server unique id and SHALL NOT be
      changed if maintenance is updated or deleted. A human-readable
      description of the maintenance is identified via an OPTIONAL
      "msg" attribute.
@@ -951,11 +951,6 @@ Internet-Draft           EPP Registry Maintenance               May 2020
               Applications (IDNA): Protocol", RFC 5891, August 2010,
               <https://www.rfc-editor.org/info/rfc5891>.
 
-   [RFC4122]  Leach, P., Mealling, M. and Salz, R., "A Universally
-              Unique IDentifier (UUID) URN Namespace", RFC 4122, July
-              2015,
-              <https://www.rfc-editor.org/info/rfc4122>.
-
    [RFC5952]  Kawamura, S. and Kawashima, M., "A Recommendation for IPv6
               Address Text Representation", RFC 5952, August 2010,
               <https://www.rfc-editor.org/info/rfc5952>.
@@ -990,6 +985,14 @@ A.3.  Change from 00 to 01
    Clarified maint:description and maint:environment. Changed
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
+   
+A.4.  Change from 01 to 02
+
+   Update language from Domain Name Registry to Registry. Clarified
+   XML namespace urn:ietf:params:xml:ns:maintenance-1.0. Changed host
+   to contain hostName and hostAddr. Changed maint:tlds from MUST to
+   SHOULD. Fixed maint:status in Schema. Changed UUID to a server
+   unique id.
 
 Sattler, et al.          Expires November 17, 2020             [Page 19]
 
