@@ -1,17 +1,17 @@
 Internet Engineering Task Force (IETF)                        T. Sattler
 Internet-Draft
 Intended status: Standards Track                               R. Carney
-Expires: November 7, 2020                                      J. Kolker
+Expires: November 17, 2020                                     J. Kolker
                                                             GoDaddy Inc.
-                                                             May 8, 2020
+                                                            May 18, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-01
+              draft-ietf-regext-epp-registry-maintenance-02
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
-   mapping for domain name registry's maintenance notifications.
+   mapping for registry's maintenance notifications.
 
 Status of This Memo
    This Internet-Draft is submitted in full conformance with the
@@ -27,7 +27,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress".
 
-   This Internet-Draft will expire on November 7, 2020.
+   This Internet-Draft will expire on November 17, 2020.
 
 Copyright Notice
    Copyright (c) 2020 IETF Trust and the persons identified as the
@@ -43,7 +43,7 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-Sattler, et al.          Expires November 7, 2020               [Page 1]
+Sattler, et al.          Expires November 17, 2020              [Page 1]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -82,20 +82,21 @@ Table of Contents
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  19
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  20
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
-Sattler, et al.          Expires November 7, 2020               [Page 2]
+Sattler, et al.          Expires November 17, 2020              [Page 2]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
 1.  Introduction
 
-   Domain name registries usually conduct maintenances and inform domain
-   name registrars in different ways. Given the expansion of the DNS
-   namespace, it is now desirable to provide a method for EPP servers to
-   notify EPP clients as well as a method for EPP clients to query EPP
-   servers for upcoming maintenances.
+   Registries usually conduct maintenances and inform registrars in
+   different ways. Given the expansion of the DNS namespace, it is now
+   desirable to provide a method for EPP servers to notify EPP clients
+   as well as a method for EPP clients to query EPP servers for upcoming
+   maintenances.
 
    This document describes an extension mapping for version 1.0 of the
    Extensible Provision Protocol [RFC5730]. This mapping provides a
@@ -112,6 +113,12 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    XML is case sensitive. Unless stated otherwise, XML specifications
    moreover, examples provided in this document MUST be interpreted in
    the character case presented to develop a conforming implementation.
+   
+   "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:
+   maintenance-1.0". The XML namespace prefix "maint" is used, but
+   implementations MUST NOT depend on it and instead employ a proper
+   namespace-aware XML parser and serializer to interpret and output
+   the XML documents.
 
    In examples, "C:" represents lines sent by a protocol client and
    "S:" represents lines returned by a protocol server. Indentation and
@@ -132,7 +139,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    date-time form using upper case "T" and "Z" characters defined in ISO
    8601 [RFC3339] MUST be used to represent date-time values.
 
-Sattler, et al.          Expires November 7, 2020               [Page 3]
+Sattler, et al.          Expires November 17, 2020              [Page 3]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -175,15 +182,21 @@ Internet-Draft           EPP Registry Maintenance               May 2020
 
        <maint:host>
          MUST be present and indicates the affected maintained system
-         (host or IP address).
+         contains <maint:hostName> or <maint:hostAddr>.
+
+         <maint:hostName>
          Hostname SHALL be Punycode according [RFC5891].
+         
+         <maint:hostAddr ip="v4">
          IPv4 addresses SHALL be dotted-decimal notation.
            An example of this textual representation is "192.0.2.0".
+           
+         <maint:hostAddr ip="v6">
          IPv6 addresses SHALL be according [RFC5952].
            An example of this textual representation is
            "2001:db8::1:0:0:1". 
 
-Sattler, et al.          Expires November 7, 2020               [Page 4]
+Sattler, et al.          Expires November 17, 2020              [Page 4]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -200,12 +213,12 @@ Internet-Draft           EPP Registry Maintenance               May 2020
        <maint:environment type="custom" name="marketing"/>
 
      <maint:start>
-       MUST be present and indicates the start of the maintenance
+       SHOULD be present and indicates the start of the maintenance
        according ISO 8601 [RFC3339].
        Format: YYYY-MM-DDThh:mm:ssTZ
 
      <maint:end>
-       MUST be present and indicates the end of the maintenance
+       SHOULD be present and indicates the end of the maintenance
        according to ISO 8601 [RFC3339], and MUST be equal to or greater
        than <maint:start>.
        Format: YYYY-MM-DDThh:mm:ssTZ
@@ -224,14 +237,14 @@ Internet-Draft           EPP Registry Maintenance               May 2020
        resource. The maximum length MUST NOT exceed 1024 characters.
 
      <maint:tlds>
-       MUST be present and contains <maint:tld> elements.
+       SHOULD be present and contains <maint:tld> elements.
 
        <maint:tld>
          MUST be present and contains the affected top-level domain.
          Punycode encoded according to [RFC5891].
 
      <maint:intervention>
-       MUST be present and contains <maint:connection> and
+       SHOULD be present and contains <maint:connection> and
        <maint:implementation>.
 
        <maint:connection>
@@ -239,7 +252,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
          that is connection-related, such as a reconnect. The value
          SHALL be boolean.
          
-Sattler, et al.          Expires November 7, 2020               [Page 5]
+Sattler, et al.          Expires November 17, 2020              [Page 5]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -297,7 +310,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    retrieve a specific maintenance notification or <maint:list> to
    query all maintenance notifications.
 
-Sattler, et al.          Expires November 7, 2020               [Page 6]
+Sattler, et al.          Expires November 17, 2020              [Page 6]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -309,7 +322,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
    C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    C:      </maint:info>
    C:    </info>
@@ -327,14 +340,17 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
    S:          <maint:maint>
    S:            <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:            </maint:id>
    S:            <maint:systems>
    S:              <maint:system>
    S:                <maint:name>EPP</maint:name>
-   S:                <maint:host>epp.registry.example</maint:host>
+   S:                <maint:host>
+   S:                  <maint:hostName>epp.registry.example
+   S:                  </maint:hostName>
+   S:                </maint:host>
    S:                <maint:impact>blackout</maint:impact>
    S:              </maint:system>
    S:            </maint:systems>
@@ -346,7 +362,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:              https://www.registry.example/notice?123
    S:            </maint:detail>
 
-Sattler, et al.          Expires November 7, 2020               [Page 7]
+Sattler, et al.          Expires November 17, 2020              [Page 7]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -371,14 +387,15 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:   </response>
    S:</epp>
 
-   Example <info> command with <maint:list> to query all maintenances:
+   Example <info> command with <maint:list> to query all maintenances
+   subject to server policy:
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
    C:        <maint:list/>
    C:      </maint:info>
    C:    </info>
@@ -386,7 +403,8 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    C:  </command>
    C:</epp>
 
-   Example <info> response querying all maintenances:
+   Example <info> response querying all maintenances subject to server
+   policy:
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -396,9 +414,9 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
 
-Sattler, et al.          Expires November 7, 2020               [Page 8]
+Sattler, et al.          Expires November 17, 2020              [Page 8]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -446,7 +464,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    <maint:infData> element is formatted according to the
    maintenance-poll schema.
 
-Sattler, et al.          Expires November 7, 2020               [Page 9]
+Sattler, et al.          Expires November 17, 2020              [Page 9]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -474,13 +492,16 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
-   S:      xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2">
+   S:      xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
    S:      <maint:maint>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    S:        <maint:systems>
    S:          <maint:system>
    S:            <maint:name>EPP</maint:name>
-   S:            <maint:host>epp.registry.example</maint:host>
+   S:            <maint:host>
+   S:              <maint:hostName>epp.registry.example
+   S:              </maint:hostName>
+   S:            </maint:host>
    S:            <maint:impact>blackout</maint:impact>
    S:          </maint:system>
    S:        </maint:systems>
@@ -500,7 +521,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
 
-Sattler, et al.          Expires November 7, 2020              [Page 10]
+Sattler, et al.          Expires November 17, 2020             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -549,7 +570,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    Update semantics do not apply to maintenance objects, so there is no
    mapping defined for the EPP <update> command.
 
-Sattler, et al.          Expires November 7, 2020              [Page 11]
+Sattler, et al.          Expires November 17, 2020             [Page 11]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -568,10 +589,10 @@ Internet-Draft           EPP Registry Maintenance               May 2020
 
    BEGIN
    <?xml version="1.0" encoding="UTF-8"?>
-     <schema targetNamespace="urn:ietf:params:xml:ns:maintenance-0.2"
+     <schema targetNamespace="urn:ietf:params:xml:ns:maintenance-1.0"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
-       xmlns:maint="urn:ietf:params:xml:ns:maintenance-0.2"
+       xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
 
@@ -602,7 +623,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
            <element name="list">
              <complexType/>
 
-Sattler, et al.          Expires November 7, 2020              [Page 12]
+Sattler, et al.          Expires November 17, 2020             [Page 12]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -661,7 +682,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
        </sequence>
      </complexType>
 
-Sattler, et al.          Expires November 7, 2020              [Page 13]
+Sattler, et al.          Expires November 17, 2020             [Page 13]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -720,15 +741,25 @@ Internet-Draft           EPP Registry Maintenance               May 2020
       system element
      -->
 
-Sattler, et al.          Expires November 7, 2020              [Page 14]
+Sattler, et al.          Expires November 17, 2020             [Page 14]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
      <complexType name="systemType">
        <sequence>
          <element name="name" type="token"/>
-         <element name="host" type="token"/>
+         <element name="host" type="maint:hostAttrType"/>
          <element name="impact" type="maint:impactEnum"/>
+       </sequence>
+     </complexType>
+
+     <!--
+      host element
+     -->
+     <complexType name="hostAttrType">
+       <sequence>
+         <element name="hostName" type="eppcom:labelType"/>
+         <element name="hostAddr" type="host:addrType" minOccurs="0"/>
        </sequence>
      </complexType>
 
@@ -766,6 +797,10 @@ Internet-Draft           EPP Registry Maintenance               May 2020
          <enumeration value="emergency"/>
        </restriction>
      </simpleType>
+     
+Sattler, et al.          Expires November 17, 2020             [Page 15]
+
+Internet-Draft           EPP Registry Maintenance               May 2020
 
      <!--
       tlds element
@@ -776,10 +811,6 @@ Internet-Draft           EPP Registry Maintenance               May 2020
           maxOccurs="unbounded"/>
        </sequence>
      </complexType>
-
-Sattler, et al.          Expires November 7, 2020              [Page 15]
-
-Internet-Draft           EPP Registry Maintenance               May 2020
 
      <!--
       intervention element
@@ -797,7 +828,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
      <simpleType name="statusEnum">
        <restriction base="token">
          <enumeration value="active"/>
-         <enumeration value="deleted"/>
+         <enumeration value="inactive"/>
        </restriction>
      </simpleType>
 
@@ -821,6 +852,10 @@ Internet-Draft           EPP Registry Maintenance               May 2020
       Registrant Contact: IESG
       
       XML: None.  Namespace URIs do not represent an XML specification.
+      
+Sattler, et al.          Expires November 17, 2020             [Page 16]
+
+Internet-Draft           EPP Registry Maintenance               May 2020
 
    Registration request for the maintenance schema:
 
@@ -829,10 +864,6 @@ Internet-Draft           EPP Registry Maintenance               May 2020
       Registrant Contact: IESG
       
       XML: See the "Formal Syntax" section of this document.
-      
-Sattler, et al.          Expires November 7, 2020              [Page 16]
-
-Internet-Draft           EPP Registry Maintenance               May 2020
 
 5.2.  EPP Extension Registry
 
@@ -881,7 +912,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
    features.  Readers are advised to note that other implementations may
    exist.
    
-Sattler, et al.          Expires November 7, 2020              [Page 17]
+Sattler, et al.          Expires November 17, 2020             [Page 17]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -938,7 +969,7 @@ Internet-Draft           EPP Registry Maintenance               May 2020
               7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
               
-Sattler, et al.           Expires August 14, 2020              [Page 18]
+Sattler, et al.          Expires November 17, 2020             [Page 18]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -960,7 +991,7 @@ A.3.  Change from 00 to 01
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
 
-Sattler, et al.          Expires November 7, 2020              [Page 19]
+Sattler, et al.          Expires November 17, 2020             [Page 19]
 
 Internet-Draft           EPP Registry Maintenance               May 2020
 
@@ -1004,5 +1035,5 @@ Authors' Addresses
    Email: jkolker@godaddy.com
    URI:   http://www.godaddy.com
 
-Sattler, et al.          Expires November 7, 2020              [Page 20]
+Sattler, et al.          Expires November 17, 2020             [Page 20]
 
