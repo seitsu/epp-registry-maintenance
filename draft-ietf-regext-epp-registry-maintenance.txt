@@ -68,14 +68,14 @@ Table of Contents
        3.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  11
    4.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  12
      4.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  12
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  16
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
+     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  17
      5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  17
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  18
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  18
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
    Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  19
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  19
@@ -84,7 +84,7 @@ Table of Contents
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
-     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  19
+     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  20
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
@@ -175,7 +175,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      maintenance.
 
      <maint:system>
-       MUST be present at least once and is an element of <maint:name>,
+       MUST be present at least once and has an element of <maint:name>,
        <maint:host> and <maint:impact>.
 
        <maint:name>
@@ -307,16 +307,17 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    EPP provides the <info> command that is used to retrieve registry
    maintenance information. In addition to the standard EPP command
    elements, the <info> command MUST contain a <maint:info>
-   element that identifies the maintenance namespace. The <maint:info>
-   element MUST contain a child element. It is either <maint:id> to
-   retrieve a specific maintenance notification or <maint:list> to
-   query all maintenance notifications.
-   
-   Please see the defintion of <maint> elements in Section 2.3. 
+   element that identifies the maintenance namespace.
 
 Sattler, et al.           Expires April 19, 2021                [Page 6]
 
 Internet-Draft           EPP Registry Maintenance           October 2020
+
+   The <maint:info> element MUST contain a child element. It is either
+   <maint:id> to retrieve a specific maintenance notification or
+   <maint:list> to query all maintenance notifications.
+   
+   Please see the defintion of <maint> elements in Section 2.3. 
 
    Example <info> command with explicit <maint:id> to get one specific
    maintenance:
@@ -336,7 +337,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
 
    Example <info> response for one specific maintenance notification,
    which was requested with a explicit <maint:id>. In this case, it
-   provides the all required elements and additional elements
+   provides the all "required" elements and additional elements
    <maint:start>, <maint:end>, <maint:detail>, <maint:description>,
    <maint:tlds>, <maint:intervention>.
 
@@ -365,16 +366,17 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    S:            <maint:environment type="production"/>
    S:            <maint:start>2017-09-30T06:00:00Z</maint:start>
    S:            <maint:end>2017-09-30T14:25:57Z</maint:end>
+   
+Sattler, et al.           Expires April 19, 2021                [Page 7]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
+   
    S:            <maint:reason>planned</maint:reason>
    S:            <maint:detail>
    S:              https://www.registry.example/notice?123
    S:            </maint:detail>
-
-Sattler, et al.           Expires April 19, 2021                [Page 7]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
-
-   S:            <maint:description>free text</maint:description>
+   S:            <maint:description lang="en">free text
+   S:            </maint:description>
    S:            <maint:tlds>
    S:              <maint:tld>example</maint:tld>
    S:              <maint:tld>test</maint:tld>
@@ -412,7 +414,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    C:</epp>
 
    Example <info> response querying all maintenances subject to server
-   policy. In this case, all the required elements will be returned
+   policy. In this case, all the "required" elements will be returned
    and additional <maint:upDate>.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
@@ -422,13 +424,13 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    S:         <msg>Command completed successfully</msg>
    S:      </result>
    S:      <resData>
-   S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
 
 Sattler, et al.           Expires April 19, 2021                [Page 8]
 
 Internet-Draft           EPP Registry Maintenance           October 2020
 
+   S:        <maint:infData
+   S:          xmlns:maint="urn:ietf:params:xml:ns:maintenance-1.0">
    S:          <maint:list>
    S:            <maint:maint>
    S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
@@ -472,6 +474,8 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    Registry Maintenance namespace. EPP data contained within the
    <maint:infData> element is formatted according to the
    maintenance-poll schema.
+   
+   Please see the defintion of <maint> elements in Section 2.3. 
 
 Sattler, et al.           Expires April 19, 2021                [Page 9]
 
@@ -497,7 +501,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    S:    </result>
    S:  <msgQ count="1" id="12345">
    S:    <qDate>2017-02-08T22:10:00Z</qDate>
-   S:    <msg>Registry Maintenance Notification</msg>
+   S:    <msg lang="en">Registry Maintenance Notification</msg>
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
@@ -629,17 +633,15 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      <complexType name="infoType">
        <sequence>
          <choice>
-           <element name="list">
-
-Sattler, et al.           Expires April 19, 2021               [Page 12]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
-
-           </element>
+           <element name="list"/>
            <element name="id" type="maint:idType"/>
          </choice>
        </sequence>
      </complexType>
+
+Sattler, et al.           Expires April 19, 2021               [Page 12]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
 
      <!--
      Human-readable text may describe the maintenance
@@ -703,8 +705,8 @@ Internet-Draft           EPP Registry Maintenance           October 2020
          <element name="id" type="maint:idType"/>
          <element name="systems" type="maint:systemsType"/>
          <element name="environment" type="maint:envType"/>
-         <element name="start" type="dateTime"/>
-         <element name="end" type="dateTime"/>
+         <element name="start" type="dateTime" minOcccurs="0"/>
+         <element name="end" type="dateTime" minOccurs="0"/>
          <element name="reason" type="maint:reasonEnum"/>
          <element name="detail" type="anyURI" minOccurs="0"/>
          <element name="description" type="maint:descriptionType"
@@ -734,7 +736,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      <simpleType name="impactEnum">
        <restriction base="token">
          <enumeration value="partial"/>
-         <enumeration value="blackout"/>
+         <enumeration value="full"/>
        </restriction>
      </simpleType>
 
@@ -748,18 +750,17 @@ Internet-Draft           EPP Registry Maintenance           October 2020
        </restriction>
      </simpleType>
 
-     <!--
-      system element
-     -->
-
 Sattler, et al.           Expires April 19, 2021               [Page 14]
 
 Internet-Draft           EPP Registry Maintenance           October 2020
 
+     <!--
+      system element
+     -->
      <complexType name="systemType">
        <sequence>
          <element name="name" type="token"/>
-         <element name="host" type="maint:addrtype"/>
+         <element name="host" type="maint:addrType"/>
          <element name="impact" type="maint:impactEnum"/>
        </sequence>
      </complexType>
@@ -770,8 +771,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      <complexType name="addrType">
        <simpleContent>
          <extension base="maint:addrStringType">
-           <attribute name="ip" type="maint:ipType"
-           default="v4"/>
+           <attribute name="ip" type="maint:ipType" default="v4"/>
          </extension>
        </simpleContent>
      </complexType>
@@ -802,6 +802,10 @@ Internet-Draft           EPP Registry Maintenance           October 2020
          <enumeration value="custom"/>
        </restriction>
      </simpleType>
+     
+Sattler, et al.           Expires April 19, 2021               [Page 15]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
 
      <!--
       environment element
@@ -824,10 +828,6 @@ Internet-Draft           EPP Registry Maintenance           October 2020
          <enumeration value="emergency"/>
        </restriction>
      </simpleType>
-     
-Sattler, et al.           Expires April 19, 2021               [Page 15]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
 
      <!--
       tlds element
@@ -858,6 +858,10 @@ Internet-Draft           EPP Registry Maintenance           October 2020
          <enumeration value="inactive"/>
        </restriction>
      </simpleType>
+     
+Sattler, et al.           Expires April 19, 2021               [Page 16]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
 
      <!--
       End of schema.
@@ -879,10 +883,6 @@ Internet-Draft           EPP Registry Maintenance           October 2020
       Registrant Contact: IESG
       
       XML: None.  Namespace URIs do not represent an XML specification.
-      
-Sattler, et al.           Expires April 19, 2021               [Page 16]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
 
    Registration request for the maintenance schema:
 
@@ -913,6 +913,10 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    Status: Active
 
    Notes: None
+   
+Sattler, et al.           Expires April 19, 2021               [Page 17]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
 
 6.  Security Considerations
 
@@ -938,10 +942,6 @@ Internet-Draft           EPP Registry Maintenance           October 2020
    be construed to be, a catalog of available implementations or their
    features.  Readers are advised to note that other implementations may
    exist.
-   
-Sattler, et al.           Expires April 19, 2021               [Page 17]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
 
    According to [RFC7942], "this will allow reviewers and working groups
    to assign due consideration to documents that have the benefit of
@@ -968,6 +968,10 @@ Internet-Draft           EPP Registry Maintenance           October 2020
               STD 69, RFC 5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
 
+Sattler, et al.           Expires April 19, 2021               [Page 18]
+
+Internet-Draft           EPP Registry Maintenance           October 2020
+
 8.2.  Informative References
 
    [RFC3339]  Klyne, G., Ed. and C. Newman, "Date and Time on the
@@ -990,10 +994,6 @@ Internet-Draft           EPP Registry Maintenance           October 2020
               Running Code: The Implementation Status Section", RFC
               7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
-              
-Sattler, et al.           Expires April 19, 2021               [Page 18]
-
-Internet-Draft           EPP Registry Maintenance           October 2020
 
 Appendix A.  Change History
     
@@ -1028,6 +1028,10 @@ A.5.  Change from 02 to 03
 Sattler, et al.           Expires April 19, 2021               [Page 19]
 
 Internet-Draft           EPP Registry Maintenance           October 2020
+
+A.6.  Change from 03 to 04
+
+   A lot of clarifications and editoral changes.
 
 Acknowledgments
 
