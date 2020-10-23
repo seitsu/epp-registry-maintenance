@@ -230,7 +230,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      <maint:description>
        MAY be present and provides a freeform description of the
        maintenance without having to create and traverse an external
-       resource. The maximum length MUST NOT exceed 1024 characters.
+       resource.
 
      <maint:tlds>
        SHOULD be present and contains <maint:tld> elements.
@@ -698,7 +698,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
          <element name="id" type="maint:idType"/>
          <element name="systems" type="maint:systemsType"/>
          <element name="environment" type="maint:envType"/>
-         <element name="start" type="dateTime" minOcccurs="0"/>
+         <element name="start" type="dateTime" minOccurs="0"/>
          <element name="end" type="dateTime" minOccurs="0"/>
          <element name="reason" type="maint:reasonEnum"/>
          <element name="detail" type="anyURI" minOccurs="0"/>
@@ -736,12 +736,13 @@ Internet-Draft           EPP Registry Maintenance           October 2020
      <!--
       description element
      -->
-     <simpleType name="descriptionType">
-       <attribute name="lang" type="language" default="en"/>
-       <restriction base="string">
-         <maxLength value="1024"/>
-       </restriction>
-     </simpleType>
+     <complexType name="descriptionType">
+       <simpleContent>
+         <extension base="string">
+           <attribute name="lang" type="language" default="en"/>
+         </extension>
+       </simpleContent>
+     </complexType>
 
 Sattler, et al.           Expires April 22, 2021               [Page 14]
 
