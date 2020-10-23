@@ -184,7 +184,7 @@ Internet-Draft           EPP Registry Maintenance           October 2020
 
        <maint:host>
          MUST be present and indicates the affected maintained system
-         contains the hostname and OPTIONAL IP address.
+         contains the hostname and OPTIONAL an IP address.
          Hostname SHALL be Punycode according [RFC5891].
          IPv4 addresses SHALL be dotted-decimal notation.
            An example of this textual representation is "192.0.2.0".
