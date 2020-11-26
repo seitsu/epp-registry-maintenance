@@ -59,8 +59,8 @@ Table of Contents
        3.1.1.  EPP <check> Command . . . . . . . . . . . . . . . . .   6
        3.1.2.  EPP <transfer> Command  . . . . . . . . . . . . . . .   6
        3.1.3.  EPP <info> Command  . . . . . . . . . . . . . . . . .   6
-       3.1.3.1.  Query Maintenance Item  . . . . . . . . . . . . . .   6
-       3.1.3.2.  Query Maintenance List  . . . . . . . . . . . . . .   6
+       3.1.3.1.  Query Maintenance Item  . . . . . . . . . . . . . .   7
+       3.1.3.2.  Query Maintenance List  . . . . . . . . . . . . . .   8
        3.1.4.  EPP <poll> Command  . . . . . . . . . . . . . . . . .   9
      3.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  11
        3.2.1.  EPP <create> Command  . . . . . . . . . . . . . . . .  11
@@ -295,14 +295,14 @@ Internet-Draft           EPP Registry Maintenance          November 2020
    maintenance information. In addition to the standard EPP command
    elements, the <info> command MUST contain a <maint:info>
    element that identifies the maintenance namespace.
+   
+   The <maint:info> element MUST contain a child element. It is either
+   <maint:id> to retrieve a specific maintenance notification or
+   <maint:list> to query all maintenance notifications.
 
 Sattler, et al.           Expires May 25, 2021                  [Page 6]
 
 Internet-Draft           EPP Registry Maintenance          November 2020
-
-   The <maint:info> element MUST contain a child element. It is either
-   <maint:id> to retrieve a specific maintenance notification or
-   <maint:list> to query all maintenance notifications.
    
 3.1.3.1.  Query one maintenance item
    
