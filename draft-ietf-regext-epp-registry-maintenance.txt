@@ -89,7 +89,7 @@ Table of Contents
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  20
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  20
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  21
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 Sattler, et al.           Expires June 30, 2021                 [Page 2]
@@ -1041,6 +1041,10 @@ A.8.  Change from 05 to 06
    Maintenance Item and List to Info Maintenance Item and List. Removed
    blackout in favor of full.
 
+Sattler, et al.           Expires June 30, 2021                [Page 20]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
 Acknowledgments
 
    The authors wish to thank the following individuals for their
@@ -1055,10 +1059,6 @@ Acknowledgments
    o Andreas Huber, united-domains
    o Craig Marchant, VentraIP
    o James Gould, Verisign
-   
-Sattler, et al.           Expires June 30, 2021                [Page 20]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 Authors' Addresses
 
