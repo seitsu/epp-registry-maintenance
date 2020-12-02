@@ -298,8 +298,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    element that identifies the maintenance namespace.
    
    The <maint:info> element MUST contain a child element. It is either
-   <maint:id> to retrieve a specific maintenance notification or
-   <maint:list> to query all maintenance notifications.
+   <maint:id> to retrieve a specific maintenance item or
+   <maint:list> to query all maintenance items.
 
 Sattler, et al.           Expires June 30, 2021                 [Page 6]
 
@@ -307,13 +307,14 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    
 3.1.3.1.  Info Maintenance Item
    
+   The information on a specific Maintenance Item can be retrieved by
+   using <info> command the element <maint:info> and the child element
+   <maint:id>.
+   
    If a <maint:info> is send with a <maint:id> that does not exist on
    the server side, then the result code 2303 MUST be responded.
    
-   Please see the defintion of <maint> elements in Section 2.3. 
-
-   Example <info> command with explicit <maint:id> to get one specific
-   maintenance:
+   Example to retrieve a specific maintenance item in an <info> command.
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -327,12 +328,11 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:    <clTRID>ABC-12345</clTRID>
    C:  </command>
    C:</epp>
-
-   Example <info> response for one specific maintenance notification,
-   which was requested with a explicit <maint:id>. In this case, it
-   provides the all "required" elements and additional elements
-   <maint:start>, <maint:end>, <maint:detail>, <maint:description>,
-   <maint:tlds>, <maint:intervention>.
+   
+   Example of returning a specific maintenance item in an <info>
+   response. In this case, it provides all "required" elements and
+   additional elements <maint:start>, <maint:end>, <maint:detail>,
+   <maint:description>, <maint:tlds>, and <maint:intervention>.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -388,9 +388,12 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:</epp>
    
 3.1.3.2. Info Maintenance List
-
-   Example <info> command with <maint:list> to query all maintenances
-   subject to server policy:
+   
+   The Info Maintenance List can be retrieved by using <info> command
+   and the element <maint:info> with the child element <maint:list/>.
+   It is subject to server policy, if and how far back the list goes.
+   
+   Example to retrieve the maintenance list in an <info> command.
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -405,9 +408,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  </command>
    C:</epp>
 
-   Example <info> response querying all maintenances subject to server
-   policy. In this case, all the "required" elements will be returned
-   and additional <maint:upDate>.
+   Example of returning the maintenance list in an <info> response. In
+   this case, all the "required" elements will be returned and
+   additional elements <maint:start>, <maint:end>, and <maint:upDate>.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
