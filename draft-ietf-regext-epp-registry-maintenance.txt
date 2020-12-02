@@ -329,10 +329,13 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  </command>
    C:</epp>
    
+   When an <info> command has been processed successfully, the EPP
+   <resData> element MUST contain a child <maint:infData> element that
+   identifies the maintenance namespace. The <maint:infData> element 
+   contains the <maint:item> element defined in Section 2.3.
+   
    Example of returning a specific maintenance item in an <info>
-   response. In this case, it provides all "required" elements and
-   additional elements <maint:start>, <maint:end>, <maint:detail>,
-   <maint:description>, <maint:tlds>, and <maint:intervention>.
+   response.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -408,9 +411,19 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  </command>
    C:</epp>
 
-   Example of returning the maintenance list in an <info> response. In
-   this case, all the "required" elements will be returned and
-   additional elements <maint:start>, <maint:end>, and <maint:upDate>.
+   When an <info> command has been processed successfully, the EPP
+   <resData> element MUST contain a child <maint:infData> element
+   that identifies the maintenance namespace. The <maint:infData>
+   element contains the <maint:list> element a list of <maint:listItem>
+   elements. The <maint:listItem> element contains the following child
+   elements:
+     <maint:id>: <maint:id> defined in Section 2.3.
+     <maint:start>: <maint:start> defined in Section 2.3.
+     <maint:end>: <maint:end> defined in Section 2.3.
+     <maint:crDate>: <maint:crDate> defined in Section 2.3.
+     <maint:upDate>: OPTIONAL <maint:upDate> defined in Section 2.3.
+
+   Example of returning the maintenance list in an <info> response.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
