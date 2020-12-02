@@ -152,8 +152,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 2.3.  Maintenance Elements
 
    The <maint:item> element describes a single registry maintenance
-   event during a specific period. This element will be used at EPP
-   <poll> messages and to extend the EPP <info> command.
+   event during a specific period. This element is used in a maintenance
+   item EPP <info> response and <poll> message.
 
    For creating a new maintenance the attribute <maint:crDate> MUST be
    set and the attribute <maint:upDate> SHALL NOT be present.
