@@ -75,8 +75,9 @@ Table of Contents
      5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
    7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  18
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
+     7.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  18
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
    Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  19
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
@@ -84,8 +85,8 @@ Table of Contents
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  19
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
-     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
-     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  20
+     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  20
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  20
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
@@ -946,7 +947,28 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    is up to the individual working groups to use this information as
    they see fit".
 
-   Add implementation details once available.
+7.1.  GoDaddy Registry
+
+   Organization: GoDaddy Registry
+
+   Name: GoDaddy Registry
+
+   Description: GoDaddy Registry provides maintenance notifications to
+   their registrars.
+
+   Level of maturity: Production
+
+   Coverage: All aspects of the protocol are implemented.
+
+   Licensing: Proprietary
+
+   Contact: quoc@registry.godaddy
+
+   URL: https://registry.godaddy
+
+Sattler, et al.           Expires June 30, 2021                [Page 18]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 8.  References
 
@@ -963,10 +985,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
-
-Sattler, et al.           Expires June 30, 2021                [Page 18]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 8.2.  Informative References
 
@@ -1003,6 +1021,10 @@ A.2.  Change from draft-sattler-epp-registry-maintenance to
 
    Adopted by the REGEXT working group.
 
+Sattler, et al.           Expires June 30, 2021                [Page 19]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
 A.3.  Change from 00 to 01
 
    Clarified maint:description and maint:environment. Changed
@@ -1021,10 +1043,6 @@ A.5.  Change from 02 to 03
 
    Changed maint:connection from MUST to SHOULD.
 
-Sattler, et al.           Expires June 30, 2021                [Page 19]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
 A.6.  Change from 03 to 04
 
    A lot of clarifications and editoral changes.
@@ -1039,7 +1057,7 @@ A.8.  Change from 05 to 06
 
    Changed dates in examples to more recent dates. Renamed Query
    Maintenance Item and List to Info Maintenance Item and List. Removed
-   blackout in favor of full.
+   blackout in favor of full. Added GoDaddy Registry implementation.
 
 Sattler, et al.           Expires June 30, 2021                [Page 20]
 
@@ -1051,11 +1069,11 @@ Acknowledgments
    feedback and suggestions (sorted alphabetically by company):
 
    o Patrick Mevzek
-   o Neal McPherson, 1&1 IONOS
    o Anthony Eden, DNSimple
    o Christopher Martens, Donuts
-   o Quoc-Anh Pham, Neustar
-   o Raymond Zylstra, Neustar
+   o Quoc-Anh Pham, GoDaddy Registry
+   o Raymond Zylstra, GoDaddy Registry
+   o Neal McPherson, IONOS
    o Andreas Huber, united-domains
    o Craig Marchant, VentraIP
    o James Gould, Verisign
