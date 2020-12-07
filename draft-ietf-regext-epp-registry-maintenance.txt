@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                        December 4, 2020
+                                                        December 8, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -958,7 +958,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    Level of maturity: Production
 
-   Coverage: All aspects of the protocol are implemented.
+   Coverage: All aspects of the protocol according to the draft version
+   2 are implemented with further updates to come.
 
    Licensing: Proprietary
 
