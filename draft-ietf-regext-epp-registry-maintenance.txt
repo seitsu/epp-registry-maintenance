@@ -3,11 +3,11 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                        December 8, 2020
+                                                        December 9, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-06
+              draft-ietf-regext-epp-registry-maintenance-07
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -84,12 +84,13 @@ Table of Contents
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  19
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  19
-     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
+     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  20
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  20
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  20
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  20
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
+     A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  20
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  21
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
@@ -183,13 +184,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
        <maint:host>
          MUST be present and indicates the affected maintained system
-         contains the hostname and OPTIONAL an IP address.
-         Hostname SHALL be A-label according [RFC5891].
-         IPv4 addresses SHALL be dotted-decimal notation.
-           An example of this textual representation is "192.0.2.0".
-         IPv6 addresses SHALL be according [RFC5952].
-           An example of this textual representation is
-           "2001:db8::1:0:0:1".
+         contains the hostname, which SHALL be A-label according
+         [RFC5891].
 
        <maint:impact>
          MUST be present and contains the impact level; values MUST
@@ -777,9 +773,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      -->
      <complexType name="addrType">
        <simpleContent>
-         <extension base="maint:addrStringType">
-           <attribute name="ip" type="maint:ipType" default="v4"/>
-         </extension>
+         <extension base="maint:addrStringType"/>
        </simpleContent>
      </complexType>
 
@@ -997,10 +991,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
               Applications (IDNA): Protocol", RFC 5891, August 2010,
               <https://www.rfc-editor.org/info/rfc5891>.
 
-   [RFC5952]  Kawamura, S. and Kawashima, M., "A Recommendation for IPv6
-              Address Text Representation", RFC 5952, August 2010,
-              <https://www.rfc-editor.org/info/rfc5952>.
-
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
               February 2015, <https://www.rfc-editor.org/info/rfc7451>.
@@ -1059,6 +1049,10 @@ A.8.  Change from 05 to 06
    Changed dates in examples to more recent dates. Renamed Query
    Maintenance Item and List to Info Maintenance Item and List. Removed
    blackout in favor of full. Added GoDaddy Registry implementation.
+
+A.9.  Change from 06 to 07
+
+   Removed IP addresses for <maint:host>
 
 Sattler, et al.           Expires June 30, 2021                [Page 20]
 
