@@ -101,9 +101,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 1.  Introduction
 
    Registries usually conduct maintenances and inform registrars in
-   different ways. Given the DNS namespace expansion, it is now desirable
-   to provide methods for EPP servers to notify EPP clients and EPP
-   clients to query EPP servers for upcoming maintenances.
+   different ways. Given the DNS namespace expansion, it is now
+   desirable to provide methods for EPP servers to notify EPP clients
+   and EPP clients to query EPP servers for upcoming maintenances.
 
    This document describes an extension mapping for version 1.0 of the
    Extensible Provision Protocol [RFC5730]. This mapping provides a
@@ -159,11 +159,11 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    <maint:id>
      Server unique identifier for the maintenance with an OPTIONAL "msg"
      attribute includes a human-readable description of the maintenance.
-     The server unique identifier SHALL NOT be changed if the maintenance
-     is updated or deleted. When the "msg" attribute is set, an OPTIONAL
-     "lang" attribute MAY be present to identify the language if the
-     negotiated value is something other than the default value of "en"
-     (English).
+     The server unique identifier SHALL NOT be changed if the
+     maintenance is updated or deleted. When the "msg" attribute is set,
+     an OPTIONAL "lang" attribute MAY be present to identify the
+     language if the negotiated value is something other than the
+     default value of "en" (English).
 
    <maint:systems>
      Contains one or more <maint:system> elements that are affected by
