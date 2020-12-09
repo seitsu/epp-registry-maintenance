@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                        December 9, 2020
+                                                       December 10, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -344,8 +344,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:              </maint:system>
    S:            </maint:systems>
    S:            <maint:environment type="production"/>
-   S:            <maint:start>2020-09-30T06:00:00Z</maint:start>
-   S:            <maint:end>2020-09-30T14:25:57Z</maint:end>
+   S:            <maint:start>2020-12-30T06:00:00Z</maint:start>
+   S:            <maint:end>2020-12-30T14:25:57Z</maint:end>
 
 Sattler, et al.           Expires June 30, 2021                 [Page 7]
 
@@ -365,7 +365,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:              <maint:connection>false</maint:connection>
    S:              <maint:implementation>false</maint:implementation>
    S:            </maint:intervention>
-   S:            <maint:crDate>2020-03-08T22:10:00Z</maint:crDate>
+   S:            <maint:crDate>2020-09-08T22:10:00Z</maint:crDate>
    S:          </maint:item>
    S:        </maint:infData>      
    S:      </resData>
@@ -429,17 +429,17 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:            <maint:listItem>
    S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:              </maint:id>
-   S:              <maint:start>2020-04-30T06:00:00Z</maint:start>
-   S:              <maint:end>2020-04-30T07:00:00Z</maint:end>
-   S:              <maint:crDate>2020-02-08T22:10:00Z</maint:crDate>
+   S:              <maint:start>2020-12-30T06:00:00Z</maint:start>
+   S:              <maint:end>2020-12-30T07:00:00Z</maint:end>
+   S:              <maint:crDate>2020-09-08T22:10:00Z</maint:crDate>
    S:            </maint:listItem>  
    S:            <maint:listItem>
    S:              <maint:id>91e9dabf-c4e9-4c19-a56c-78e3e89c2e2f
    S:              </maint:id>
-   S:              <maint:start>2020-06-15T04:30:00Z</maint:start>
-   S:              <maint:end>2020-06-15T05:30:00Z</maint:end>
-   S:              <maint:crDate>2020-02-08T22:10:00Z</maint:crDate>
-   S:              <maint:upDate>2020-03-08T20:11:00Z</maint:upDate>
+   S:              <maint:start>2021-02-15T04:30:00Z</maint:start>
+   S:              <maint:end>2021-02-15T05:30:00Z</maint:end>
+   S:              <maint:crDate>2020-09-08T22:11:00Z</maint:crDate>
+   S:              <maint:upDate>2020-10-17T15:00:00Z</maint:upDate>
    S:            </maint:listItem>
    S:          </maint:list>
    S:        </maint:infData>      
@@ -506,8 +506,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:          </maint:system>
    S:        </maint:systems>
    S:        <maint:environment type="production"/>
-   S:        <maint:start>2020-10-30T06:00:00Z</maint:start>
-   S:        <maint:end>2020-10-30T14:25:57Z</maint:end>
+   S:        <maint:start>2020-12-30T06:00:00Z</maint:start>
+   S:        <maint:end>2020-12-30T14:25:57Z</maint:end>
    S:        <maint:reason>planned</maint:reason>
 
 Sattler, et al.           Expires June 30, 2021                [Page 10]
@@ -525,7 +525,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:          <maint:connection>false</maint:connection>
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
-   S:        <maint:crDate>2020-02-08T22:10:00Z</maint:crDate>
+   S:        <maint:crDate>2020-10-08T22:10:00Z</maint:crDate>
    S:      </maint:item>
    S:    </maint:infData>
    S:  </resData>
