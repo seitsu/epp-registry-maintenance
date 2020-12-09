@@ -157,46 +157,41 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    event during a specific period. This element is used in a maintenance
    item EPP <info> response and <poll> message.
 
-   For creating a new maintenance the attribute <maint:crDate> MUST be
-   set and the attribute <maint:upDate> SHALL NOT be present.
-
-   For updating a maintenance the attributes <maint:crDate> and
-   <maint:upDate> MUST be set.
-
    <maint:id>
-     MUST be present and a server unique id and SHALL NOT be
-     changed if maintenance is updated or deleted. A human-readable
-     description of the maintenance is identified via an OPTIONAL
-     "msg" attribute.
+     Server unique identifier for the maintenance with an OPTIONAL "msg"
+     attribute that includes a human-readable description of the
+     maintenance. The server unique identifier SHALL NOT be changed if
+     the maintenance is updated or deleted. When the "msg" attribute is
+     set, an OPTIONAL "lang" attribute MAY be present to identify the
+     language if the negotiated value is something other than the
+     default value of "en" (English).
 
    <maint:systems>
-     MUST be present and contains one or more <maint:system> elements.
-     The server SHOULD NOT list systems which are not affected by the
-     maintenance.
+     Contains one or more <maint:system> elements that are affected by
+     the maintenance.
 
      <maint:system>
-       MUST be present at least once and has an element of <maint:name>,
-       <maint:host> and <maint:impact>.
-
+        The <maint:system> element contains the following child
+        elements:
+        
        <maint:name>
-         MUST be present and indicates the name of the affected system,
-         such as "EPP", "WHOIS", "DNS", "Portal", etc.
+         Contains the name of the affected system, such as "EPP",
+         "WHOIS", "DNS", "Portal", etc.
 
        <maint:host>
-         MUST be present and indicates the affected maintained system
-         contains the hostname, which SHALL be A-label according
-         [RFC5891].
+         Contains the affected maintained system contains the hostname,
+         which SHALL be A-label according [RFC5891].
 
        <maint:impact>
-         MUST be present and contains the impact level; values MUST
-         either be "full" or "partial".
+         Contains the impact level; values MUST either be "full" or
+         "partial".
 
      <maint:environment>
-       MUST be present and indicates the type of the affected system;
-       the attribute type is REQUIRED and SHOULD either be "production",
-       "ote", "staging", "dev" or "custom". And alternatively the
-       attribute name could be used to define a server specific affected
-       system for example. In that case name MUST be set:
+       Indicates the type of the affected system; the attribute type is
+       REQUIRED and SHOULD either be "production", "ote", "staging",
+       "dev" or "custom". And alternatively the attribute name could be
+       used to define a server specific affected system for example. In
+       that case name MUST be set:
        <maint:environment type="custom" name="marketing"/>
 
 Sattler, et al.           Expires June 30, 2021                 [Page 4]
@@ -204,64 +199,58 @@ Sattler, et al.           Expires June 30, 2021                 [Page 4]
 Internet-Draft           EPP Registry Maintenance          December 2020
 
      <maint:start>
-       SHOULD be present and indicates the start of the maintenance
-       according ISO 8601 [RFC3339].
-       Format: YYYY-MM-DDThh:mm:ssTZ
+       Contains the date and time of the start of the maintenance.
 
      <maint:end>
-       SHOULD be present and indicates the end of the maintenance
-       according to ISO 8601 [RFC3339], and MUST be equal to or greater
-       than <maint:start>.
-       Format: YYYY-MM-DDThh:mm:ssTZ
+       Contains the date and time of the end of the maintenance. The
+       <maint:end> element MUST be equal or greater than the
+       <maint:start> element.
 
      <maint:reason>
-       MUST be present and contains the reason behind the maintenance;
-       values SHOULD either be "planned" or "emergency".
+       Contains the reason behind the maintenance; values SHOULD either
+       be "planned" or "emergency".
 
      <maint:detail>
-       MAY be present and contains URI to detailed maintenance
-       description.
+       Contains URI to detailed maintenance description.
 
      <maint:description>
-       MAY be present and provides a freeform description of the
-       maintenance without having to create and traverse an external
-       resource.
+       A freeform description of the maintenance without having to
+       create and traverse an external resource defined by the
+       <maint:detail> element. An OPTIONAL "lang" attribute MAY be
+       present to identify the language if the negotiated value is
+       something other than the default value of "en" (English).
 
      <maint:tlds>
-       SHOULD be present and contains <maint:tld> elements.
+       The <maint:tlds> element contains the following child element:
 
        <maint:tld>
-         MUST be present and contains the affected top-level domain.
-         A-label format according to [RFC5891].
+         Contains the affected top-level domain, which SHALL be A-label
+         according [RFC5891].
 
      <maint:intervention>
-       SHOULD be present and contains <maint:connection> and
-       <maint:implementation>.
+       The <maint:intervention> element contains the following child
+       elements:
 
        <maint:connection>
-         MUST be present and indicates if a client needs to do
-         something that is connection-related, such as a reconnect. The
-         value SHALL be boolean.
+         The value SHALL be boolean and indicates if a client needs to
+         do something that is connection-related, such as a reconnect.
          
        <maint:implementation>
-         MUST be present and indicates if a client needs to do something
-         that is implementation-related, such as a code change. The
-         value SHALL be boolean.
+         The value SHALL be boolean and indicates if a client needs to
+         do something that is implementation-related, such as a code
+         change.
 
      <maint:crDate>
-       MUST be present and contains the creation date of the maintenance
-       according ISO 8601 [RFC3339].
-       Format: YYYY-MM-DDThh:mm:ssTZ
+       Contains the date and time of the maintenance object creation.
 
 Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
 
      <maint:upDate>
-       MAY be present and contains the updated date of the maintenance
-       according to ISO 8601 [RFC3339], and if set it MUST be greater
-       than <main:crDate>.
-       Format: YYYY-MM-DDThh:mm:ssTZ
+       Contains the date and time of the most recent maintenance object
+       modification. This element MUST NOT be present if the maintenance
+       object has never been modified.
 
 3.  EPP Command Mapping
 
