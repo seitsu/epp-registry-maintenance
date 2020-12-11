@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                       December 10, 2020
+                                                       December 11, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -158,15 +158,15 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    <maint:id>
      Server unique identifier for the maintenance with an OPTIONAL "msg"
-     attribute includes a human-readable description of the maintenance.
-     The server unique identifier SHALL NOT be changed if the
-     maintenance is updated or deleted. When the "msg" attribute is set,
-     an OPTIONAL "lang" attribute MAY be present to identify the
+     attribute that includes a human-readable description of the
+     maintenance. The server unique identifier SHALL NOT be changed if
+     the maintenance is updated or deleted. When the "msg" attribute is
+     set, an OPTIONAL "lang" attribute MAY be present to identify the
      language if the negotiated value is something other than the
      default value of "en" (English).
 
    <maint:systems>
-     Contains one or more <maint:system> elements that are affected by
+     Indicates one or more <maint:system> elements that are affected by
      the maintenance.
 
      <maint:system>
@@ -174,15 +174,15 @@ Internet-Draft           EPP Registry Maintenance          December 2020
         elements:
         
        <maint:name>
-         Contains the name of the affected system, such as "EPP",
+         Indicates the name of the affected system, such as "EPP",
          "WHOIS", "DNS", "Portal", etc.
 
        <maint:host>
-         Contains the affected maintained system contains the hostname,
+         Indicates the affected maintained system contains the hostname,
          which SHALL be A-label according [RFC5891].
 
        <maint:impact>
-         Contains the impact level; values MUST either be "full" or
+         Indicates the impact level; values MUST either be "full" or
          "partial".
 
      <maint:environment>
@@ -194,15 +194,15 @@ Internet-Draft           EPP Registry Maintenance          December 2020
        <maint:environment type="custom" name="marketing"/>
 
      <maint:start>
-       Contains the date and time of the start of the maintenance.
+       Indicates the date and time of the start of the maintenance.
 
      <maint:end>
-       Contains the date and time of the end of the maintenance. The
+       Indicates the date and time of the end of the maintenance. The
        <maint:end> element MUST be equal or greater than the
        <maint:start> element.
 
      <maint:reason>
-       Contains the reason behind the maintenance; values SHOULD either
+       Indicates the reason behind the maintenance; values SHOULD either
        be "planned" or "emergency".
        
 Sattler, et al.           Expires June 30, 2021                 [Page 4]
@@ -240,10 +240,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          change.
 
      <maint:crDate>
-       Contains the date and time of the maintenance object creation.
+       Indicates the date and time of the maintenance object creation.
 
      <maint:upDate>
-       Contains the date and time of the most recent maintenance object
+       Indicates the date and time of the most recent maintenance object
        modification. This element MUST NOT be present if the maintenance
        object has never been modified.
 
@@ -290,8 +290,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 3.1.3.1.  Info Maintenance Item
 
    The information on a specific maintenance item can be retrieved by
-   using <info> command with the element <maint:info> and the child
-   element <maint:id>, defined in Section 2.3. If the maintenance
+   using the <info> command with the element <maint:info> and the
+   <maint:id> child element, defined in Section 2.3. If the maintenance
    identifier does not exist, the server MUST return an EPP error result
    code of 2303 [RFC5730].
 
@@ -378,7 +378,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    The information for a list of maintenance items can be retrieved by
    using the <info> command with the <maint:info> element and the empty
-   <maint:list/> child element. Server policy determines if previous
+   <maint:list> child element. Server policy determines if previous
    maintenances will be included in the list of maintenance items.
 
    Example to retrieve the maintenance list in an <info> command.
@@ -460,9 +460,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    poll messages. A poll message applies when a maintenance is created,
    updated, or deleted. In the case of a Registry Maintenance specific
    message, a <maint:infData> element will be included within the
-   <resData> element of the standard <poll> response.
-
-   The <maint:infData> element contains the <maint:item> element defined
+   <resData> element of the standard <poll> response. The
+   <maint:infData> element contains the <maint:item> element defined
    in Section 2.3.
 
    Example <poll> command:
