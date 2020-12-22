@@ -481,7 +481,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  </command>
    C:</epp>
 
-   Example <poll> response with the Registry Maintenance poll message:
+   Example <poll> response for a created and updated maintenance:
 
    S:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -537,6 +537,38 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:  </response>
    S:</epp>
    
+   Example <poll> response for a deleted maintenance:
+   
+   S:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:  <response>
+   S:    <result code="1301">
+   S:      <msg>Command completed successfully; ack to dequeue</msg>
+   S:    </result>
+
+Sattler, et al.           Expires June 30, 2021                [Page 10]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
+   S:  <msgQ count="1" id="12345">
+   S:    <qDate>2020-10-08T22:10:00Z</qDate>
+   S:    <msg lang="en">Registry Maintenance Notification</msg>
+   S:  </msgQ>
+   S:  <resData>
+   S:    <maint:infData
+   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   S:      <maint:item>
+   S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
+   S:      </maint:item>
+   S:    </maint:infData>
+   S:  </resData>
+   S:  <trID>
+   S:    <clTRID>ABC-12345</clTRID>
+   S:    <svTRID>54321-XYZ</svTRID>
+   S:  </trID>
+   S:  </response>
+   S:</epp>
+   
 3.2.  EPP Transform Commands
 
    EPP provides five commands to transform objects: <create> to create
@@ -549,10 +581,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    Create semantics do not apply to maintenance objects, so there is no
    mapping defined for the EPP <create> command.
-
-Sattler, et al.           Expires June 30, 2021                [Page 10]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 3.2.2.  EPP <delete> Command
 
@@ -573,6 +601,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    Update semantics do not apply to maintenance objects, so there is no
    mapping defined for the EPP <update> command.
+   
+Sattler, et al.           Expires June 30, 2021                [Page 11]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 4.  Formal Syntax
 
@@ -606,11 +638,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          Registry Maintenance Mapping Schema.
        </documentation>
      </annotation>
-
-Sattler, et al.           Expires June 30, 2021                [Page 11]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
      <!--
      Child elements found in EPP commands.
      -->
@@ -626,6 +653,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          </choice>
        </sequence>
      </complexType>
+Sattler, et al.           Expires June 30, 2021                [Page 11]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
      Human-readable text may describe the maintenance
      -->
@@ -659,11 +689,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
           minOccurs="0" maxOccurs="unbounded"/>
        </sequence>
      </complexType>
-     
-Sattler, et al.           Expires June 30, 2021                [Page 12]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
      <!--
       Attributes associated with the list item info response
      -->
@@ -676,6 +701,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <element name="upDate" type="dateTime" minOccurs="0"/>
        </sequence>
      </complexType>
+Sattler, et al.           Expires June 30, 2021                [Page 12]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
       Attributes associated with the maintenance info response
      -->
@@ -715,11 +743,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <enumeration value="full"/>
        </restriction>
      </simpleType>
-
-Sattler, et al.           Expires June 30, 2021                [Page 13]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
      <!--
       description element
      -->
@@ -730,6 +753,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          </extension>
        </simpleContent>
      </complexType>
+Sattler, et al.           Expires June 30, 2021                [Page 13]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
       system element
      -->
@@ -772,9 +798,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <enumeration value="emergency"/>
        </restriction>
      </simpleType>
-Sattler, et al.           Expires June 30, 2021                [Page 14]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
       tlds element
      -->
@@ -784,6 +807,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
           maxOccurs="unbounded"/>
        </sequence>
      </complexType>
+Sattler, et al.           Expires June 30, 2021                [Page 14]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
       intervention element
      -->
