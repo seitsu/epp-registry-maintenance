@@ -70,11 +70,11 @@ Table of Contents
        3.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  11
    4.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  11
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  16
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  15
      5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  16
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  17
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  16
      7.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  17
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
@@ -85,8 +85,8 @@ Table of Contents
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  18
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  18
-     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
-     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  18
+     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  18
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  19
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  19
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
@@ -159,11 +159,11 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    item EPP <info> response and <poll> message.
 
    <maint:id>
-     Server unique identifier for the maintenance with an OPTIONAL "msg"
-     attribute that includes a human-readable description of the
+     The server unique identifier for the maintenance with the OPTIONAL
+     "msg" attribute that includes a human-readable description of the
      maintenance. The server unique identifier SHALL NOT be changed if
      the maintenance is updated or deleted. When the "msg" attribute is
-     set, an OPTIONAL "lang" attribute MAY be present to identify the
+     set, the OPTIONAL "lang" attribute MAY be present to identify the
      language if the negotiated value is something other than the
      default value of "en" (English).
 
@@ -190,8 +190,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
        The type of the affected system; the attribute "type" is REQUIRED
        and MUST either be "production", "ote", "staging", "dev" or
        "custom". For extensibility, the <maint:environment> element
-       includes an OPTIONAL "name" attribute that can define the name
-       the custom environment when the <maint:environment> element
+       includes the OPTIONAL "name" attribute that can define the name
+       of the custom environment when the <maint:environment> element
        "type" attribute has the "custom" value. For example, for the
        custom "marketing" environment, the <maint:environment> element
        should be:
@@ -214,18 +214,18 @@ Internet-Draft           EPP Registry Maintenance          December 2020
        "planned" or "emergency".
 
      <maint:detail>
-       OPTIONAL URI to detailed maintenance description.
+       The OPTIONAL URI to detailed maintenance description.
 
      <maint:description>
-       OPTIONAL freeform description of the maintenance without having
-       to create and traverse an external resource defined by the
-       <maint:detail> element. An OPTIONAL "lang" attribute MAY be
+       The OPTIONAL free-form description of the maintenance without
+       having to create and traverse an external resource defined by the
+       <maint:detail> element. The OPTIONAL "lang" attribute MAY be
        present to identify the language if the negotiated value is
        something other than the default value of "en" (English).
 
      <maint:tlds>
-       The <maint:tlds> element contains one or more <maint:tld> child
-       elements.
+       The OPTIONAL <maint:tlds> element contains one or more
+       <maint:tld> child elements.
 
        <maint:tld>
          The affected top-level domain or registry zone, which SHALL be
@@ -248,7 +248,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
        The date and time of the maintenance object creation.
 
      <maint:upDate>
-       The date and time of the most recent maintenance object
+       The OPTIONAL date and time of the most recent maintenance object
        modification. This element MUST NOT be present if the maintenance
        object has never been modified.
 
@@ -408,11 +408,11 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    element contains the <maint:list> element with zero or more
    <maint:listItem> child elements. The <maint:listItem> element
    contains the following child elements:
-     <maint:id>: <maint:id> defined in Section 2.3.
-     <maint:start>: <maint:start> defined in Section 2.3.
-     <maint:end>: <maint:end> defined in Section 2.3.
-     <maint:crDate>: <maint:crDate> defined in Section 2.3.
-     <maint:upDate>: OPTIONAL <maint:upDate> defined in Section 2.3.
+     <maint:id>: The <maint:id> defined in Section 2.3.
+     <maint:start>: The <maint:start> defined in Section 2.3.
+     <maint:end>: The <maint:end> defined in Section 2.3.
+     <maint:crDate>: The <maint:crDate> defined in Section 2.3.
+     <maint:upDate>: The OPTIONAL <maint:upDate> defined in Section 2.3.
 
    Example of returning the maintenance list in an <info> response.
 
@@ -601,7 +601,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      <import namespace="urn:ietf:params:xml:ns:epp-1.0"/>
      <annotation>
        <documentation>
-         Extensible Provisioning Protocol v0.2
+         Extensible Provisioning Protocol v1.0
          Registry Maintenance Mapping Schema.
        </documentation>
      </annotation>
@@ -735,24 +735,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      <complexType name="systemType">
        <sequence>
          <element name="name" type="token"/>
-         <element name="host" type="maint:addrType"/>
+         <element name="host" type="eppcom:labelType"/>
          <element name="impact" type="maint:impactEnum"/>
        </sequence>
      </complexType>
-     <!--
-      host element
-     -->
-     <complexType name="addrType">
-       <simpleContent>
-         <extension base="maint:addrStringType"/>
-       </simpleContent>
-     </complexType>
-     <simpleType name="addrStringType">
-       <restriction base="token">
-         <minLength value="3"/>
-         <maxLength value="45"/>
-       </restriction>
-     </simpleType>
      <!--
       Enumerated list of environments
      -->
@@ -765,11 +751,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <enumeration value="custom"/>
        </restriction>
      </simpleType>
-
-Sattler, et al.           Expires June 30, 2021                [Page 14]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
      <!--
       environment element
      -->
@@ -790,6 +771,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <enumeration value="emergency"/>
        </restriction>
      </simpleType>
+Sattler, et al.           Expires June 30, 2021                [Page 14]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
      <!--
       tlds element
      -->
@@ -814,10 +798,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      </schema>
     <CODE ENDS>
 
-Sattler, et al.           Expires June 30, 2021                [Page 15]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
 5.  IANA Considerations
 
 5.1.  XML Namespace
@@ -840,6 +820,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
       Registrant Contact: IESG
 
       XML: See the "Formal Syntax" section of this document.
+
+Sattler, et al.           Expires June 30, 2021                [Page 15]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 5.2.  EPP Extension Registry
 
@@ -870,10 +854,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    protocol layers used by EPP. The security considerations described in
    these other specifications apply to this specification as well.
 
-Sattler, et al.           Expires June 30, 2021                [Page 16]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
 7.  Implementation Status
 
    Note to RFC Editor: Please remove this section and the reference to
@@ -891,6 +871,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    be construed to be, a catalog of available implementations or their
    features.  Readers are advised to note that other implementations may
    exist.
+
+Sattler, et al.           Expires June 30, 2021                [Page 16]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
    According to [RFC7942], "this will allow reviewers and working groups
    to assign due consideration to documents that have the benefit of
@@ -927,10 +911,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
               Requirement Levels", BCP 14, RFC 2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-Sattler, et al.           Expires June 30, 2021                [Page 17]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
               <https://www.rfc-editor.org/info/rfc3688>.
@@ -942,6 +922,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+Sattler, et al.           Expires June 30, 2021                [Page 17]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 8.2.  Informative References
 
@@ -980,10 +964,6 @@ A.3.  Change from 00 to 01
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
 
-Sattler, et al.           Expires June 30, 2021                [Page 18]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-
 A.4.  Change from 01 to 02
 
    Update language from Domain Name Registry to Registry. Clarified
@@ -995,6 +975,10 @@ A.4.  Change from 01 to 02
 A.5.  Change from 02 to 03
 
    Changed maint:connection from MUST to SHOULD.
+
+Sattler, et al.           Expires June 30, 2021                [Page 18]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 A.6.  Change from 03 to 04
 
