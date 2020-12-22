@@ -708,8 +708,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      <complexType name="maintItemType">
        <sequence>
          <element name="id" type="maint:idType"/>
-         <element name="start" type="dateTime">
-         <element name="end" type="dateTime">
+         <element name="start" type="dateTime"/>
+         <element name="end" type="dateTime"/>
          <element name="crDate" type="dateTime"/>
          <element name="upDate" type="dateTime" minOccurs="0"/>
        </sequence>
@@ -725,8 +725,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <element name="id" type="maint:idType"/>
          <element name="systems" type="maint:systemsType"/>
          <element name="environment" type="maint:envType"/>
-         <element name="start" type="dateTime">
-         <element name="end" type="dateTime">
+         <element name="start" type="dateTime"/>
+         <element name="end" type="dateTime"/>
          <element name="reason" type="maint:reasonEnum"/>
          <element name="detail" type="anyURI" minOccurs="0"/>
          <element name="description" type="maint:descriptionType"
