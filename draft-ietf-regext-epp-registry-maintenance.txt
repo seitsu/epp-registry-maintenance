@@ -551,7 +551,7 @@ Sattler, et al.           Expires June 30, 2021                [Page 10]
 Internet-Draft           EPP Registry Maintenance          December 2020
 
    S:  <msgQ count="1" id="12345">
-   S:    <qDate>2020-10-08T22:10:00Z</qDate>
+   S:    <qDate>2020-10-09T12:05:00Z</qDate>
    S:    <msg lang="en">Registry Maintenance Notification</msg>
    S:  </msgQ>
    S:  <resData>
@@ -559,6 +559,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    S:      <maint:item>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
+   S:        <maint:start>2020-12-30T06:00:00Z</maint:start>
+   S:        <maint:end>2020-12-30T14:25:57Z</maint:end>
+   S:        <maint:crDate>2020-10-08T22:10:00Z</maint:crDate>
+   S:        <maint:upDate>2020-10-09T12:05:00Z</maint:upDate>
    S:      </maint:item>
    S:    </maint:infData>
    S:  </resData>
