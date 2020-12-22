@@ -184,7 +184,8 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          SHALL be an A-label according to [RFC5891].
 
        <maint:impact>
-         The impact level; values MUST either be "full" or "partial".
+         The impact level; the values MUST either be "full" or
+         "partial".
 
      <maint:environment>
        The type of the affected system; the attribute "type" is REQUIRED
@@ -210,7 +211,7 @@ Sattler, et al.           Expires June 30, 2021                 [Page 4]
 Internet-Draft           EPP Registry Maintenance          December 2020
 
      <maint:reason>
-       The reason behind the maintenance; values MUST either be
+       The reason behind the maintenance; the values MUST either be
        "planned" or "emergency".
 
      <maint:detail>
