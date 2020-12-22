@@ -70,30 +70,30 @@ Table of Contents
        3.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  11
    4.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  12
      4.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  12
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  15
-     5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  16
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  16
-     7.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  17
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  18
-   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  18
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+     5.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  16
+     5.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  17
+     7.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  18
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  19
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
-           draft-sattler-epp-registry-maintenance .  . . . . . . . .  18
+           draft-sattler-epp-registry-maintenance .  . . . . . . . .  19
      A.2.  Change from draft-sattler-epp-registry-maintenance to
-           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  18
-     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  18
-     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  18
-     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  18
-     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  19
-     A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  19
-     A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
-     A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  19
-     A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  19
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  19
+     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
+     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
+     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
+     A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  20
+     A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
+     A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  20
+     A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  20
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  20
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 Sattler, et al.           Expires June 30, 2021                 [Page 2]
 
