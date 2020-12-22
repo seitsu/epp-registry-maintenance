@@ -3,11 +3,11 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                       December 11, 2020
+                                                       December 22, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-07
+              draft-ietf-regext-epp-registry-maintenance-08
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -55,7 +55,7 @@ Table of Contents
      2.2.  Dates and Times . . . . . . . . . . . . . . . . . . . . .   3
      2.3.  Maintenance Elements  . . . . . . . . . . . . . . . . . .   4
    3.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   5
-     3.1.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   5
+     3.1.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   6
        3.1.1.  EPP <check> Command . . . . . . . . . . . . . . . . .   6
        3.1.2.  EPP <transfer> Command  . . . . . . . . . . . . . . .   6
        3.1.3.  EPP <info> Command  . . . . . . . . . . . . . . . . .   6
@@ -85,12 +85,13 @@ Table of Contents
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  18
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  18
-     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  18
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  19
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  19
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
      A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  19
+     A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  19
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  19
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
@@ -113,9 +114,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 1.1.  Terminology and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119] when
-   specified in their uppercase forms.
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, hey appear in all
+   capitals shown here.
 
    XML is case sensitive. Unless stated otherwise, XML specifications
    moreover, examples provided in this document MUST be interpreted in
@@ -127,16 +129,16 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
 
-   In examples, "C:" represents lines sent by a protocol client, and
+   In examples, "C:" represents lines sent by a protocol client and
    "S:" represents lines returned by a protocol server. Indentation and
-   white space in examples only illustrate element relationships and are
-   not a REQUIRED feature of this protocol.
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this protocol.
 
 2.  Object Attributes
 
 2.1.  Internationalized Domain Names
 
-   Names of affected hosts MUST be provided as A-label according to
+   Names of affected hosts MUST be provided as an A-label according to
    [RFC5891].
 
 2.2.  Dates and Times
@@ -166,69 +168,72 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      default value of "en" (English).
 
    <maint:systems>
-     Indicates one or more <maint:system> elements that are affected by
-     the maintenance.
+     One or more <maint:system> elements that are affected by the
+     maintenance.
 
      <maint:system>
         The <maint:system> element contains the following child
         elements:
         
        <maint:name>
-         Indicates the name of the affected system, such as "EPP",
-         "WHOIS", "DNS", "Portal", etc.
+         The name of the affected system, such as "EPP", "WHOIS", "DNS",
+         "Portal", etc.
 
        <maint:host>
-         Indicates the affected maintained system contains the hostname,
-         which SHALL be A-label according [RFC5891].
+         The affected maintained system contains the hostname, which
+         SHALL be an A-label according to [RFC5891].
 
        <maint:impact>
-         Indicates the impact level; values MUST either be "full" or
-         "partial".
+         The impact level; values MUST either be "full" or "partial".
 
      <maint:environment>
-       Indicates the type of the affected system; the attribute type is
-       REQUIRED and SHOULD either be "production", "ote", "staging",
-       "dev" or "custom". And alternatively, the attribute name could be
-       used to define a server specific affected system, for example. In
-       that case, name MUST be set:
+       The type of the affected system; the attribute "type" is REQUIRED
+       and MUST either be "production", "ote", "staging", "dev" or
+       "custom". For extensibility, the <maint:environment> element
+       includes an OPTIONAL "name" attribute that can define the name
+       the custom environment when the <maint:environment> element
+       "type" attribute has the "custom" value. For example, for the
+       custom "marketing" environment, the <maint:environment> element
+       should be:
        <maint:environment type="custom" name="marketing"/>
 
      <maint:start>
-       Indicates the date and time of the start of the maintenance.
+       The date and time of the start of the maintenance.
 
      <maint:end>
-       Indicates the date and time of the end of the maintenance. The
-       <maint:end> element MUST be equal or greater than the
-       <maint:start> element.
+       The date and time of the end of the maintenance. The <maint:end>
+       element MUST be equal to or greater than the <maint:start>
+       element.
 
-     <maint:reason>
-       Indicates the reason behind the maintenance; values SHOULD either
-       be "planned" or "emergency".
-       
 Sattler, et al.           Expires June 30, 2021                 [Page 4]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
 
+     <maint:reason>
+       The reason behind the maintenance; values MUST either be
+       "planned" or "emergency".
+
      <maint:detail>
-       Contains URI to detailed maintenance description.
+       OPTIONAL URI to detailed maintenance description.
 
      <maint:description>
-       A freeform description of the maintenance without having to
-       create and traverse an external resource defined by the
+       OPTIONAL freeform description of the maintenance without having
+       to create and traverse an external resource defined by the
        <maint:detail> element. An OPTIONAL "lang" attribute MAY be
        present to identify the language if the negotiated value is
        something other than the default value of "en" (English).
 
      <maint:tlds>
-       The <maint:tlds> element contains the following child element:
+       The <maint:tlds> element contains one or more <maint:tld> child
+       elements.
 
        <maint:tld>
-         Contains the affected top-level domain, which SHALL be A-label
-         according [RFC5891].
+         The affected top-level domain or registry zone, which SHALL be
+         an A-label according to [RFC5891].
 
      <maint:intervention>
-       The <maint:intervention> element contains the following child
-       elements:
+       The OPTIONAL <maint:intervention> element contains the following
+       child elements:
 
        <maint:connection>
          The value SHALL be boolean and indicates if a client needs to
@@ -240,10 +245,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          change.
 
      <maint:crDate>
-       Indicates the date and time of the maintenance object creation.
+       The date and time of the maintenance object creation.
 
      <maint:upDate>
-       Indicates the date and time of the most recent maintenance object
+       The date and time of the most recent maintenance object
        modification. This element MUST NOT be present if the maintenance
        object has never been modified.
 
@@ -254,16 +259,16 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    mappings described here are specifically for the use to notify of
    Registry Maintenances and Registry Maintenance object mapping.
 
+Sattler, et al.           Expires June 30, 2021                 [Page 5]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
 3.1.  EPP Query Commands
 
    EPP [RFC5730] provides three commands to retrieve object information:
    <check> to determine if an object is known to the server, <info> to
    retrieve detailed information associated with an object, and
    <transfer> to retrieve object transfer status information.
-
-Sattler, et al.           Expires June 30, 2021                 [Page 5]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 3.1.1.  EPP <check> Command
 
@@ -302,7 +307,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    C:      </maint:info>
    C:    </info>
@@ -311,16 +316,17 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:</epp>
 
    When an <info> command has been processed successfully, the EPP
+
+Sattler, et al.           Expires June 30, 2021                 [Page 6]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
    <resData> element MUST contain a child <maint:infData> element that
    identifies the maintenance namespace. The <maint:infData> element 
    contains the <maint:item> element defined in Section 2.3.
 
    Example of returning a specific maintenance item in an <info>
    response.
-
-Sattler, et al.           Expires June 30, 2021                 [Page 6]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -330,7 +336,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    S:          <maint:item>
    S:            <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:            </maint:id>
@@ -361,7 +367,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:            </maint:intervention>
    S:            <maint:crDate>2020-09-08T22:10:00Z</maint:crDate>
    S:          </maint:item>
-   S:        </maint:infData>      
+   S:        </maint:infData>
    S:      </resData>
    S:      <trID>
    S:         <clTRID>ABC-12345</clTRID>
@@ -388,7 +394,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    C:        <maint:list/>
    C:      </maint:info>
    C:    </info>
@@ -418,7 +424,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    S:          <maint:list>
    S:            <maint:listItem>
    S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
@@ -493,7 +499,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
-   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1">
+   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    S:      <maint:item>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    S:        <maint:systems>
@@ -585,7 +591,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
        maintenance-0.1"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
-       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.1"
+       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
      <!--
@@ -595,7 +601,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
      <import namespace="urn:ietf:params:xml:ns:epp-1.0"/>
      <annotation>
        <documentation>
-         Extensible Provisioning Protocol v1.0
+         Extensible Provisioning Protocol v0.2
          Registry Maintenance Mapping Schema.
        </documentation>
      </annotation>
@@ -747,12 +753,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <maxLength value="45"/>
        </restriction>
      </simpleType>
-     <simpleType name="ipType">
-       <restriction base="token">
-         <enumeration value="v4"/>
-         <enumeration value="v6"/>
-       </restriction>
-     </simpleType>
      <!--
       Enumerated list of environments
      -->
@@ -827,7 +827,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    Registration request for the maintenance namespace:
 
-      URI: urn:ietf:params:xml:ns:epp:maintenance-0.1
+      URI: urn:ietf:params:xml:ns:epp:maintenance-0.2
 
       Registrant Contact: IESG
 
@@ -835,7 +835,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
    Registration request for the maintenance schema:
 
-      URI: urn:ietf:params:xml:schema:maintenance-1.0
+      URI: urn:ietf:params:xml:schema:maintenance-0.2
 
       Registrant Contact: IESG
 
@@ -939,6 +939,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
               STD 69, RFC 5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
 
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
 8.2.  Informative References
 
    [RFC3339]  Klyne, G., Ed. and C. Newman, "Date and Time on the
@@ -976,6 +980,10 @@ A.3.  Change from 00 to 01
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
 
+Sattler, et al.           Expires June 30, 2021                [Page 18]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
 A.4.  Change from 01 to 02
 
    Update language from Domain Name Registry to Registry. Clarified
@@ -983,10 +991,6 @@ A.4.  Change from 01 to 02
    to contain hostName and hostAddr. Changed maint:tlds from MUST to
    SHOULD. Fixed maint:status in Schema. Changed UUID to a server
    unique id.
-
-Sattler, et al.           Expires June 30, 2021                [Page 18]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 A.5.  Change from 02 to 03
 
@@ -1011,6 +1015,10 @@ A.8.  Change from 05 to 06
 A.9.  Change from 06 to 07
 
    Removed IP addresses for <maint:host>. Editoral changes.
+
+A.10.  Change from 07 to 08
+
+   Editoral changes. Changed XML namespace from 0.1 to 0.2.
 
 Acknowledgments
 
