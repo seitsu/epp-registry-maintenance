@@ -124,7 +124,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    the character case presented to develop a conforming implementation.
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
-   maintenance-0.1". The XML namespace prefix "maint" is used, but
+   maintenance-0.2". The XML namespace prefix "maint" is used, but
    implementations MUST NOT depend on it and instead employ a proper
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
@@ -588,7 +588,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
      <schema targetNamespace="urn:ietf:params:xml:ns:epp:
-       maintenance-0.1"
+       maintenance-0.2"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2"
@@ -1018,7 +1018,7 @@ A.9.  Change from 06 to 07
 
 A.10.  Change from 07 to 08
 
-   Editoral changes. Changed XML namespace from 0.1 to 0.2.
+   Editoral changes. Changed XML namespace and schema from 0.1 to 0.2.
 
 Acknowledgments
 
