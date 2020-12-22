@@ -481,7 +481,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:  </command>
    C:</epp>
 
-   Example <poll> response for a created and updated maintenance:
+   Example <poll> response for a created maintenance:
 
    S:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
