@@ -480,12 +480,12 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    EPP <poll> response of [RFC5730].
    
    For the Registry Maintenance Notification, there are three types of
-   poll messages. A poll message applies when a maintenance is created,
-   updated, or deleted. In the case of a Registry Maintenance specific
-   message, a <maint:infData> element will be included within the
-   <resData> element of the standard <poll> response. The
-   <maint:infData> element contains the <maint:item> element defined
-   in Section 2.3.
+   poll messages, defined by the <maint:pollType> element in Section
+   2.3. A poll message applies when a maintenance is created, updated,
+   or deleted. In the case of a Registry Maintenance specific message,
+   a <maint:infData> element will be included within the <resData>
+   element of the standard <poll> response. The <maint:infData> element
+   contains the <maint:item> element defined in Section 2.3.
 
 Sattler, et al.           Expires June 30, 2021                 [Page 9]
 
