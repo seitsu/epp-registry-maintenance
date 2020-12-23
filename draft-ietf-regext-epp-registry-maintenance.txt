@@ -172,7 +172,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
       Notification poll message; values MUST either be "create",
       "update", or "delete". For the "create" and "update" types, the
       server includes the state of the maintenance after the create or
-      update, and for the "delete" type, the server includes the state
+      update. For the "delete" type, the server includes the state
       of the maintenance prior to the delete. This element MUST be
       present only for poll messages.
 
