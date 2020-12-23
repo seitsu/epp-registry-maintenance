@@ -7,7 +7,7 @@ Expires: June 30, 2021                                         J. Kolker
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-08
+              draft-ietf-regext-epp-registry-maintenance-09
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -92,8 +92,9 @@ Table of Contents
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  19
      A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  19
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  19
+     A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  19
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  29
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
 Sattler, et al.           Expires June 30, 2021                 [Page 2]
 
@@ -1026,6 +1027,10 @@ A.10.  Change from 07 to 08
    Editoral changes. Changed XML namespace and schema from 0.1 to 0.2.
    Added pollType to reflect create, update, or delete maintenance poll
    messages.
+
+A.11.  Change from 08 to 09
+
+   Editoral changes.
 
 Acknowledgments
 
