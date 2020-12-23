@@ -487,7 +487,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
    C:  <command>
-   C:  <poll op="req"/>
+   C:    <poll op="req"/>
    C:    <clTRID>ABC-12345</clTRID>
    C:  </command>
    C:</epp>
