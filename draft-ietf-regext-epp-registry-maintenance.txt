@@ -551,6 +551,9 @@ Sattler, et al.           Expires June 30, 2021                [Page 10]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
    
+   For a deleted maintenance, the <poll> response only includes the
+   <maint:id>.
+   
    Example <poll> response for a deleted maintenance:
    
    S:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -561,17 +564,14 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:    </result>
    S:  <msgQ count="1" id="12345">
    S:    <qDate>2020-10-09T12:05:00Z</qDate>
-   S:    <msg lang="en">Registry Maintenance Notification</msg>
+   S:    <msg lang="en">Registry Maintenance Notification - Deleted
+   S:     Maintenance</msg>
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
    S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
    S:      <maint:item>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
-   S:        <maint:start>2020-12-30T06:00:00Z</maint:start>
-   S:        <maint:end>2020-12-30T14:25:57Z</maint:end>
-   S:        <maint:crDate>2020-10-08T22:10:00Z</maint:crDate>
-   S:        <maint:upDate>2020-10-09T12:05:00Z</maint:upDate>
    S:      </maint:item>
    S:    </maint:infData>
    S:  </resData>
