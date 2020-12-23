@@ -84,7 +84,7 @@ Table of Contents
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  18
      A.2.  Change from draft-sattler-epp-registry-maintenance to
-           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  18
+           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  19
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  19
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  19
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  19
@@ -140,25 +140,28 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    Servers that implement this extension SHOULD provide a way for
    clients to progressively update their implementations when a new
    version of the extension is deployed.
-
+ 
    Servers SHOULD (for a temporary migration period up to server policy)
    provide support for older versions of the extension in parallel to
-   the newest version and allow clients to select their preferred
-   version via the <svcExtension> element of the <login> command.
-
-   If a client requests multiple versions of the extension at login,
-   then, when preparing responses to commands that do not include
-   extension elements, the server SHOULD only include extension elements
-   in the namespace of the newest version of the extension requested by
-   the client.
-
-   When preparing responses to commands that do include extension
-   elements, the server SHOULD only include extension elements for the
-   extension versions present in the command.
+   the newest version and allow clients to execute their preferred
+   version of the <info> command based on the maintenance <objURI>
+   elements of the server <greeting>. The version of the maintenance
+   <info> response MUST match the version of the maintenance <info>
+   command executed by the server.
+   
+   Servers MUST return a Registry Maintenance Notification poll message
+   matching the newest version of the maintenance extension, based on an
+   intersection of the maintenance <objURI> elements in the server
+   <greeting> and the client <login> command. If the intersection of
+   the maintenance <objURI> elements of the server <greeting> and the
+   client <login> command results in an empty set, the server MUST
+   return the newest version of the Registry Maintenance Notification
 Sattler, et al.           Expires June 30, 2021                 [Page 3]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
-
+   poll message supported by the server based on section 6 "Usage with
+   Poll Message EPP Response" of
+   [draft-ietf-regext-unhandled-namespaces].
 3.  Object Attributes
 
 3.1.  Internationalized Domain Names
@@ -212,11 +215,9 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <maint:host>
             The affected maintained system contains the hostname, which
             SHALL be an A-label according to [RFC5891].
-
 Sattler, et al.           Expires June 30, 2021                 [Page 4]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
-
          <maint:impact>
             The impact level; the values MUST either be "full" or
             "partial".
@@ -969,6 +970,12 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 
 9.2.  Informative References
 
+   [I.D.draft-ietf-regext-unhandled-namespaces]
+              Gould, J. and Casanova, M., "Extensible Provisioning
+              Protocol (EPP) Unhandled Namespaces",
+              <https://datatracker.ietf.org/doc/draft-ietf-regext-
+              unhandled-namespaces/> (work in progress), December 2020.
+
    [RFC3339]  Klyne, G., Ed. and C. Newman, "Date and Time on the
               Internet: Timestamps", RFC 3339, July 2002,
               <https://www.rfc-editor.org/info/rfc3339>.
@@ -992,15 +999,15 @@ A.1.  Change from draft-sattler-epp-poll-maintenance-response to
    draft-sattler-epp-registry-maintenance
 
    Updated to be EPP based instead of JSON document.
+   
+Sattler, et al.           Expires June 30, 2021                [Page 18]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
 A.2.  Change from draft-sattler-epp-registry-maintenance to
    draft-ietf-regext-epp-registry-maintenance
 
    Adopted by the REGEXT working group.
-
-Sattler, et al.           Expires June 30, 2021                [Page 18]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 A.3.  Change from 00 to 01
 
@@ -1050,16 +1057,16 @@ A.11.  Change from 08 to 09
 
    Editoral changes.
 
+Sattler, et al.           Expires June 30, 2021                [Page 19]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
 Acknowledgments
 
    The authors wish to thank the following persons for their feedback
    and suggestions: James Gould, Patrick Mevzek, Quoc-Anh Pham, Raymond
    Zylstra, Christopher Martens, Anthony Eden, Neal McPherson, Craig
    Marchant, and Andreas Huber.
-
-Sattler, et al.           Expires June 30, 2021                [Page 19]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
 
 Authors' Addresses
 
