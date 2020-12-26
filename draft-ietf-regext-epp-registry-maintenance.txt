@@ -566,10 +566,10 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    S:          <maint:tld>example</maint:tld>
    S:          <maint:tld>test</maint:tld>
    S:        </maint:tlds>
-   S:        <maint:intervention>
 Sattler, et al.           Expires June 30, 2021                [Page 10]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
+   S:        <maint:intervention>
    S:          <maint:connection>false</maint:connection>
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
@@ -625,7 +625,6 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    instances. The  <CODE BEGINS> and <CODE ENDS> tags are not part of
    the schema; they are used to note the beginning and end of the
    schema for URI registration purposes.
-
 Sattler, et al.           Expires June 30, 2021                [Page 11]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
