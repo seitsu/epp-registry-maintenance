@@ -100,6 +100,7 @@ Table of Contents
 Sattler, et al.           Expires June 30, 2021                 [Page 2]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
+
 1.  Introduction
 
    Registries usually conduct maintenances and inform registrars in
@@ -154,14 +155,17 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    intersection of the maintenance <objURI> elements in the server
    <greeting> and the client <login> command. If the intersection of
    the maintenance <objURI> elements of the server <greeting> and the
-   client <login> command results in an empty set, the server MUST
-   return the newest version of the Registry Maintenance Notification
+
 Sattler, et al.           Expires June 30, 2021                 [Page 3]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
+
+   client <login> command results in an empty set, the server MUST
+   return the newest version of the Registry Maintenance Notification
    poll message supported by the server based on section 6 "Usage with
    Poll Message EPP Response" of
    [draft-ietf-regext-unhandled-namespaces].
+
 3.  Object Attributes
 
 3.1.  Internationalized Domain Names
@@ -211,13 +215,14 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          <maint:name>
             The name of the affected system, such as "EPP", "WHOIS",
             "DNS", "Portal", etc.
+Sattler, et al.           Expires June 30, 2021                 [Page 4]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
 
          <maint:host>
             The affected maintained system contains the hostname, which
             SHALL be an A-label according to [RFC5891].
-Sattler, et al.           Expires June 30, 2021                 [Page 4]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
+
          <maint:impact>
             The impact level; the values MUST either be "full" or
             "partial".
@@ -267,15 +272,15 @@ Internet-Draft           EPP Registry Maintenance          December 2020
          The OPTIONAL <maint:intervention> element contains the
          following child elements:
 
+Sattler, et al.           Expires June 30, 2021                 [Page 5]
+
+Internet-Draft           EPP Registry Maintenance          December 2020
+
          <maint:connection>
             The value SHALL be boolean and indicates if a client needs
             to do something that is connection-related, such as a
             reconnect.
 
-Sattler, et al.           Expires June 30, 2021                 [Page 5]
-
-Internet-Draft           EPP Registry Maintenance          December 2020
-         
          <maint:implementation>
             The value SHALL be boolean and indicates if a client needs
             to do something that is implementation-related, such as a
@@ -446,6 +451,7 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 Sattler, et al.           Expires June 30, 2021                 [Page 8]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
+
       <maint:start>
          The <maint:start> element defined in Section 3.3.
 
@@ -500,9 +506,11 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    The EPP <poll> command and response is defined in Section 2.9.2.3 of
    [RFC5730]. The Registry Maintenance Notification is included in the
    EPP <poll> response of [RFC5730].
+   
 Sattler, et al.           Expires June 30, 2021                 [Page 9]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
+
    For the Registry Maintenance Notification, there are three types of
    poll messages, defined by the <maint:pollType> element in Section
    3.3. A poll message applies when a maintenance is created, updated,
@@ -612,12 +620,12 @@ Internet-Draft           EPP Registry Maintenance          December 2020
 5.  Formal Syntax
 
    The EPP Registry Maintenance schema is presented here.
-
    The formal syntax presented here is a complete schema representation
    of the object mapping suitable for automated validation of EPP XML
    instances. The  <CODE BEGINS> and <CODE ENDS> tags are not part of
    the schema; they are used to note the beginning and end of the
    schema for URI registration purposes.
+
 Sattler, et al.           Expires June 30, 2021                [Page 11]
 
 Internet-Draft           EPP Registry Maintenance          December 2020
@@ -871,14 +879,14 @@ Internet-Draft           EPP Registry Maintenance          December 2020
    The following registration of the EPP Extension Registry, described
    in [RFC7451], is requested:
 
-   Name of Extension: "Registry Maintenance Notifications for the
-   Extensible Provisioning Protocol (EPP)"
+   Name of Extension: Registry Maintenance Notifications for the
+   Extensible Provisioning Protocol (EPP)
 
    Document status: Standards Track
 
    Reference: (insert the reference to RFC version of this document)
 
-   Registrant Name and Email Address: IESG, <iesg@ietf.org>
+   Registrant Name and Email Address: IESG <iesg@ietf.org>
 
    TLDs: Any
 
