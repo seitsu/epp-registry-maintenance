@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                       December 23, 2020
+                                                       December 28, 2020
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -1055,7 +1055,8 @@ A.10.  Change from 07 to 08
 
 A.11.  Change from 08 to 09
 
-   Editoral changes.
+   Editoral changes. Added new section "Migrating to Newer Versions of
+   This Extension".
 
 Sattler, et al.           Expires June 30, 2021                [Page 19]
 
