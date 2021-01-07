@@ -965,6 +965,12 @@ Internet-Draft           EPP Registry Maintenance           January 2021
 
 9.1.  Normative References
 
+   [I.D.draft-ietf-regext-unhandled-namespaces]
+              Gould, J. and Casanova, M., "Extensible Provisioning
+              Protocol (EPP) Unhandled Namespaces",
+              <https://datatracker.ietf.org/doc/draft-ietf-regext-
+              unhandled-namespaces/> (work in progress), December 2020.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -997,12 +1003,6 @@ Internet-Draft           EPP Registry Maintenance           January 2021
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 9.2.  Informative References
-
-   [I.D.draft-ietf-regext-unhandled-namespaces]
-              Gould, J. and Casanova, M., "Extensible Provisioning
-              Protocol (EPP) Unhandled Namespaces",
-              <https://datatracker.ietf.org/doc/draft-ietf-regext-
-              unhandled-namespaces/> (work in progress), December 2020.
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
