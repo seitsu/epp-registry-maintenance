@@ -213,13 +213,13 @@ Internet-Draft           EPP Registry Maintenance           January 2021
       the maintenance. This element MUST be present only for poll
       messages.
 
-   <maint:systems>
-      One or more <maint:system> elements that are affected by the
-      maintenance.
-
 Sattler, et al.           Expires June 30, 2021                 [Page 4]
 
 Internet-Draft           EPP Registry Maintenance           January 2021
+
+   <maint:systems>
+      One or more <maint:system> elements that are affected by the
+      maintenance.
 
       <maint:system>
          The <maint:system> element contains the following child
@@ -270,13 +270,13 @@ Internet-Draft           EPP Registry Maintenance           January 2021
          be present to identify the language if the negotiated value is
          something other than the default value of "en" (English).
 
-      <maint:tlds>
-         The OPTIONAL <maint:tlds> element contains one or more
-         <maint:tld> child elements.
-
 Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
 Internet-Draft           EPP Registry Maintenance           January 2021
+
+      <maint:tlds>
+         The OPTIONAL <maint:tlds> element contains one or more
+         <maint:tld> child elements.
 
          <maint:tld>
             The affected top-level domain or registry zone, which SHALL
