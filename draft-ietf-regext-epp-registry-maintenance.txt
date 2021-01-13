@@ -189,12 +189,12 @@ Internet-Draft           EPP Registry Maintenance           January 2021
 
    <maint:id>
       The server unique identifier for the maintenance with the OPTIONAL
-      "name" attribute that includes a human-readable description of the
-      maintenance. The server unique identifier SHALL NOT be changed if
-      the maintenance is updated or deleted. When the "name" attribute
-      is set, the OPTIONAL "lang" attribute MAY be present to identify
-      the language if the negotiated value is something other than the
-      default value of "en" (English).
+      human-readable "name" attribute of the maintenance. The server
+      unique identifier SHALL NOT be changed if the maintenance is
+      updated or deleted. When the "name" attribute is set, the OPTIONAL
+      "lang" attribute MAY be present to identify the language if the
+      negotiated value is something other than the default value of "en"
+      (English).
 
    <maint:type>
       The OPTIONAL type of the maintenance that has the possible set of
