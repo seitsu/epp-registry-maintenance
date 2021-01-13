@@ -189,12 +189,12 @@ Internet-Draft           EPP Registry Maintenance           January 2021
 
    <maint:id>
       The server unique identifier for the maintenance with the OPTIONAL
-      human-readable "name" attribute of the maintenance. The server
-      unique identifier SHALL NOT be changed if the maintenance is
-      updated or deleted. When the "name" attribute is set, the OPTIONAL
-      "lang" attribute MAY be present to identify the language if the
-      negotiated value is something other than the default value of "en"
-      (English).
+      "name" attribute that includes a human-readable name of the
+      maintenance. The server unique identifier SHALL NOT be changed if
+      the maintenance is updated or deleted. When the "name" attribute
+      is set, the OPTIONAL "lang" attribute MAY be present to identify
+      the language if the negotiated value is something other than the
+      default value of "en" (English).
 
    <maint:type>
       The OPTIONAL type of the maintenance that has the possible set of
@@ -206,9 +206,12 @@ Internet-Draft           EPP Registry Maintenance           January 2021
       "update", "delete", "courtesy", or "end". For the "create" and
       "update" types, the server includes the state of the maintenance
       after the create or update. For the "delete" type, the server
-      includes the state of the maintenance prior to the delete. For
-      "courtesy" and "end" the server includes the latest state of the
-      maintenance. This element MUST be present only for poll messages.
+      includes the state of the maintenance prior to the delete. The
+      "courtesy" provides a reminder of a maintenance and the "end"
+      provides a notification of the end of the maintenance without
+      updating the maintenance object and includes the latest state of
+      the maintenance. This element MUST be present only for poll
+      messages.
 
    <maint:systems>
       One or more <maint:system> elements that are affected by the
@@ -356,7 +359,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
    C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    C:      </maint:info>
    C:    </info>
@@ -381,7 +384,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
    S:          <maint:item>
 
 Sattler, et al.           Expires June 30, 2021                 [Page 7]
@@ -440,7 +443,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
    C:        <maint:list/>
 
 Sattler, et al.           Expires June 30, 2021                 [Page 8]
@@ -485,7 +488,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
    S:          <maint:list>
    S:            <maint:listItem>
    S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
@@ -555,7 +558,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
-   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2">
+   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
    S:      <maint:item>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    S:        <maint:pollType>create</maint:pollType>
@@ -652,7 +655,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
        maintenance-0.2"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
-       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.2"
+       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
      <!--
@@ -742,7 +745,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
      <complexType name="maintDataType">
        <sequence>
          <element name="id" type="maint:idType"/>
-         <element name="type" type="maint:typeType"/>
+         <element name="type" type="maint:typeType" minOccurs="0"/>
          <element name="pollType" type="maint:pollType" minOccurs="0"/>
          <element name="systems" type="maint:systemsType"/>
          <element name="environment" type="maint:envType"/>
@@ -899,7 +902,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
 
    Registration request for the maintenance namespace:
 
-      URI: urn:ietf:params:xml:ns:epp:maintenance-0.2
+      URI: urn:ietf:params:xml:ns:epp:maintenance-0.3
 
       Registrant Contact: IESG
 
@@ -907,7 +910,7 @@ Internet-Draft           EPP Registry Maintenance           January 2021
 
    Registration request for the maintenance schema:
 
-      URI: urn:ietf:params:xml:schema:maintenance-0.2
+      URI: urn:ietf:params:xml:schema:maintenance-0.3
 
       Registrant Contact: IESG
 
