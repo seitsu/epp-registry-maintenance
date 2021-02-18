@@ -278,7 +278,8 @@ Internet-Draft           EPP Registry Maintenance          February 2021
 
       <maint:tlds>
          The OPTIONAL <maint:tlds> element contains one or more
-         <maint:tld> child elements.
+         <maint:tld> child elements. If <maint:tlds> is not present, all
+         TLDs in the system are affected.
 
          <maint:tld>
             The affected top-level domain or registry zone, which SHALL
