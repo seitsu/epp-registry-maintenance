@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                       February 18, 2021
+                                                       February 19, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -236,8 +236,9 @@ Internet-Draft           EPP Registry Maintenance          February 2021
 
          <maint:impact>
             The impact level; the values MUST either be "full" or
-            "partial". If access is intermittent, it is "partial".  If
-            it is definietely not available it is "full".
+            "partial". If access is intermittently unavailable, it is
+            "partial". If access is completely unavailable it, is
+            "full".
 
       <maint:environment>
          The type of the affected system; the attribute "type" is
@@ -268,7 +269,6 @@ Internet-Draft           EPP Registry Maintenance          February 2021
 Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
 Internet-Draft           EPP Registry Maintenance          February 2021
-
       <maint:description>
          The OPTIONAL free-form description of the maintenance without
          having to create and traverse an external resource defined by
@@ -276,13 +276,14 @@ Internet-Draft           EPP Registry Maintenance          February 2021
          be present to identify the language if the negotiated value is
          something other then the default value of "en" (English). The
          OPTIONAL "type" attribute MAY be present to identify the
-         description mime type. It MUST either be "plain" or "HTML",
-         while "plain" is the default value.
+         format of the description. It MUST either be "plain" for plain
+         text or "html" HTML text that is defined in [W3C-HTML5] and
+         XML-escaped, with a default value of "plain".
 
       <maint:tlds>
          The OPTIONAL <maint:tlds> element contains one or more
-         <maint:tld> child elements. If <maint:tlds> is not present, all
-         TLDs in the system are affected.
+         <maint:tld> child elements. If the <maint:tlds> is not present,
+         the entire system is affected.
 
          <maint:tld>
             The affected top-level domain or registry zone, which SHALL
@@ -808,7 +809,8 @@ Internet-Draft           EPP Registry Maintenance          February 2021
        <simpleContent>
          <extension base="string">
            <attribute name="lang" type="language" default="en"/>
-           <attribute name="type" type="maint:descEnum"/>
+           <attribute name="type" type="maint:descEnum" default="plain"
+           />
          </extension>
        </simpleContent>
      </complexType>
@@ -818,7 +820,7 @@ Internet-Draft           EPP Registry Maintenance          February 2021
      <simpleType name="descEnum">
        <restriction base="token">
          <enumeration value="plain"/>
-         <enumeration value="HTML"/>
+         <enumeration value="html"/>
        </restriction>
      </simpleType>
      <!--
@@ -1027,6 +1029,13 @@ Internet-Draft           EPP Registry Maintenance          February 2021
               <https://datatracker.ietf.org/doc/draft-ietf-regext-
               unhandled-namespaces/> (work in progress), December 2020.
 
+   [W3C-HTML5]  Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
+              Doyle Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5",
+              W3C Recommendation REC-html5-20141028, October 2014,
+              <http://www.w3.org/TR/2014/REC-html5-20141028/>.
+              
+              Latest version available at <http://www.w3.org/TR/html5/>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -1049,14 +1058,14 @@ Internet-Draft           EPP Registry Maintenance          February 2021
               DOI 10.17487/RFC5891, August 2010,
               <https://www.rfc-editor.org/info/rfc5891>.
 
+Sattler, et al.           Expires June 30, 2021                [Page 19]
+
+Internet-Draft           EPP Registry Maintenance          February 2021
+
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
-
-Sattler, et al.           Expires June 30, 2021                [Page 19]
-
-Internet-Draft           EPP Registry Maintenance          February 2021
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
