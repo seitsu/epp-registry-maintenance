@@ -7,7 +7,7 @@ Expires: June 30, 2021                                         J. Kolker
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-11
+              draft-ietf-regext-epp-registry-maintenance-12
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -96,6 +96,7 @@ Table of Contents
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  21
      A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  21
+     A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  21
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
@@ -128,7 +129,7 @@ Internet-Draft           EPP Registry Maintenance          February 2021
    the character case presented to develop a conforming implementation.
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
-   maintenance-0.2". The XML namespace prefix "maint" is used, but
+   maintenance-0.3". The XML namespace prefix "maint" is used, but
    implementations MUST NOT depend on it and instead employ a proper
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
@@ -657,7 +658,7 @@ Internet-Draft           EPP Registry Maintenance          February 2021
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
      <schema targetNamespace="urn:ietf:params:xml:ns:epp:
-       maintenance-0.2"
+       maintenance-0.3"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3"
@@ -1150,6 +1151,10 @@ A.12.  Change from 09 to 10
 A.13.  Change from 10 to 11
 
    Editoral changes. Added mime type to description.
+
+A.14.  Change from 11 to 12
+
+   Editoral changes.
 
 Sattler, et al.           Expires June 30, 2021                [Page 21]
 
