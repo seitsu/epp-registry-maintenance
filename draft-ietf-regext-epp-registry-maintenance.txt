@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                       February 19, 2021
+                                                       February 28, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -1028,7 +1028,7 @@ Internet-Draft           EPP Registry Maintenance          February 2021
               Gould, J. and Casanova, M., "Extensible Provisioning
               Protocol (EPP) Unhandled Namespaces",
               <https://datatracker.ietf.org/doc/draft-ietf-regext-
-              unhandled-namespaces/> (work in progress), December 2020.
+              unhandled-namespaces/> (work in progress), February 2021.
 
    [W3C-HTML5]  Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
               Doyle Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5",
@@ -1154,7 +1154,7 @@ A.13.  Change from 10 to 11
 
 A.14.  Change from 11 to 12
 
-   Editoral changes.
+   Editoral changes. Changed XML namespace from 0.2 to 0.3.
 
 Sattler, et al.           Expires June 30, 2021                [Page 21]
 
