@@ -63,7 +63,7 @@ Table of Contents
        4.1.3.1.  Info Maintenance Item . . . . . . . . . . . . . . .   7
        4.1.3.2.  Info Maintenance List . . . . . . . . . . . . . . .   8
        4.1.4.  EPP <poll> Command  . . . . . . . . . . . . . . . . .  10
-     4.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  11
+     4.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  12
        4.2.1.  EPP <create> Command  . . . . . . . . . . . . . . . .  12
        4.2.2.  EPP <delete> Command  . . . . . . . . . . . . . . . .  12
        4.2.3.  EPP <renew> Command . . . . . . . . . . . . . . . . .  12
@@ -553,6 +553,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:    <clTRID>ABC-12345</clTRID>
    C:  </command>
    C:</epp>
+   
+Sattler, et al.           Expires June 30, 2021                [Page 10]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
 
    Example <poll> response:
 
@@ -562,11 +566,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:    <result code="1301">
    S:      <msg>Command completed successfully; ack to dequeue</msg>
    S:    </result>
-
-Sattler, et al.           Expires June 30, 2021                [Page 10]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
    S:  <msgQ count="1" id="12345">
    S:    <qDate>2020-10-08T22:10:00Z</qDate>
    S:    <msg lang="en">Registry Maintenance Notification</msg>
@@ -610,6 +609,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:  </trID>
    S:  </response>
    S:</epp>
+
+Sattler, et al.           Expires June 30, 2021                [Page 11]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
    
 4.2.  EPP Transform Commands
 
@@ -618,10 +621,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    object, <renew> to extend the validity period of an object,
    <transfer> to manage object sponsorship changes, and <update> to
    change information associated with an object.
-
-Sattler, et al.           Expires June 30, 2021                [Page 11]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 4.2.1.  EPP <create> Command
 
@@ -668,16 +667,16 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
-     <!--
-     Import common element types
-     -->
-     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
-     <import namespace="urn:ietf:params:xml:ns:epp-1.0"/>
 
 Sattler, et al.           Expires June 30, 2021                [Page 12]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
+     <import namespace="urn:ietf:params:xml:ns:epp-1.0"/>
      <annotation>
        <documentation>
          Extensible Provisioning Protocol v1.0
@@ -723,6 +722,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          <element name="item" type="maint:maintDataType"/>
        </choice>
      </complexType>
+
+Sattler, et al.           Expires June 30, 2021                [Page 13]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
+
      <!--
       Attributes associated with the list info response
      -->
@@ -732,11 +736,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
           minOccurs="0" maxOccurs="unbounded"/>
        </sequence>
      </complexType>
-
-Sattler, et al.           Expires June 30, 2021                [Page 13]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
      <!--
       Attributes associated with the list item info response
      -->
