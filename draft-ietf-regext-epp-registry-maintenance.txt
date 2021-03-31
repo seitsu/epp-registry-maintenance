@@ -535,8 +535,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    For the Registry Maintenance Notification, there are five types of
    poll messages, defined by the <maint:pollType> element in Section
-   3.3. A poll message applies when a maintenance is created, updated,
-   deleted, courtesy, or end. In the case of a Registry Maintenance
+   3.3. A poll message applies when a maintenance is created, updated or
+   deleted. A courtesy poll message can also be sent as a reminder of
+   an impending maintenance. An end poll message is sent when the
+   maintenance is completed. In the case of a Registry Maintenance
    specific message, a <maint:infData> element will be included within
    the <resData> element of the standard <poll> response. The
    <maint:infData> element contains the <maint:item> element defined in
