@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                           April 1, 2021
+                                                           April 6, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -272,15 +272,15 @@ Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
       <maint:description>
-         The OPTIONAL free-form description of the maintenance without
-         having to create and traverse an external resource defined by
-         the <maint:detail> element. The OPTIONAL "lang" attribute MAY
-         be present to identify the language if the negotiated value is
-         something other then the default value of "en" (English). The
-         OPTIONAL "type" attribute MAY be present to identify the
-         format of the description. It MUST either be "plain" for plain
-         text or "html" HTML text that is defined in [W3C-HTML5] and
-         XML-escaped, with a default value of "plain".
+         Zero or more OPTIONAL free-form description of the maintenance
+         without having to create and traverse an external resource
+         defined by the <maint:detail> element. The OPTIONAL "lang"
+         attribute MAY be present to identify the language if the
+         negotiated value is something other then the default value of
+         "en" (English). The OPTIONAL "type" attribute MAY be present to
+         identify the format of the description. It MUST either be
+         "plain" for plain text or "html" HTML text that is defined in
+         [W3C-HTML5] and XML-escaped, with a default value of "plain".
 
       <maint:tlds>
          The OPTIONAL <maint:tlds> element contains one or more
