@@ -763,7 +763,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          <element name="reason" type="maint:reasonEnum"/>
          <element name="detail" type="anyURI" minOccurs="0"/>
          <element name="description" type="maint:descriptionType"
-          minOccurs="0"/>
+          minOccurs="0" maxOccurs="unbounded"/>
          <element name="tlds" type="maint:tldsType" minOccurs="0"/>
          <element name="intervention" type="maint:interventionType"
           minOccurs="0"/>
