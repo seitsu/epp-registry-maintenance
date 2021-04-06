@@ -272,7 +272,7 @@ Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
       <maint:description>
-         Zero or more OPTIONAL free-form description of the maintenance
+         Zero or more OPTIONAL free-form descriptions of the maintenance
          without having to create and traverse an external resource
          defined by the <maint:detail> element. The OPTIONAL "lang"
          attribute MAY be present to identify the language if the
