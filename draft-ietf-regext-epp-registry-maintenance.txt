@@ -377,7 +377,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:</epp>
 
    When an <info> command has been processed successfully, the EPP
-
    <resData> element MUST contain a child <maint:infData> element that
    identifies the maintenance namespace. The <maint:infData> element 
    contains the <maint:item> element defined in Section 3.3.
@@ -410,8 +409,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:              </maint:system>
    S:            </maint:systems>
    S:            <maint:environment type="production"/>
-   S:            <maint:start>2020-12-30T06:00:00Z</maint:start>
-   S:            <maint:end>2020-12-30T14:25:57Z</maint:end>
+   S:            <maint:start>2021-12-30T06:00:00Z</maint:start>
+   S:            <maint:end>2021-12-30T14:25:57Z</maint:end>
    S:            <maint:reason>planned</maint:reason>
    S:            <maint:detail>
    S:              https://www.registry.example/notice?123
@@ -426,7 +425,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:              <maint:connection>false</maint:connection>
    S:              <maint:implementation>false</maint:implementation>
    S:            </maint:intervention>
-   S:            <maint:crDate>2020-09-08T22:10:00Z</maint:crDate>
+   S:            <maint:crDate>2021-09-08T22:10:00Z</maint:crDate>
    S:          </maint:item>
    S:        </maint:infData>
    S:      </resData>
@@ -505,17 +504,17 @@ Sattler, et al.           Expires June 30, 2021                 [Page 9]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
-   S:              <maint:start>2020-12-30T06:00:00Z</maint:start>
-   S:              <maint:end>2020-12-30T07:00:00Z</maint:end>
-   S:              <maint:crDate>2020-09-08T22:10:00Z</maint:crDate>
+   S:              <maint:start>2021-12-30T06:00:00Z</maint:start>
+   S:              <maint:end>2021-12-30T07:00:00Z</maint:end>
+   S:              <maint:crDate>2021-09-08T22:10:00Z</maint:crDate>
    S:            </maint:listItem>
    S:            <maint:listItem>
    S:              <maint:id>91e9dabf-c4e9-4c19-a56c-78e3e89c2e2f
    S:              </maint:id>
-   S:              <maint:start>2021-02-15T04:30:00Z</maint:start>
-   S:              <maint:end>2021-02-15T05:30:00Z</maint:end>
-   S:              <maint:crDate>2020-09-08T22:11:00Z</maint:crDate>
-   S:              <maint:upDate>2020-10-17T15:00:00Z</maint:upDate>
+   S:              <maint:start>2021-12-15T04:30:00Z</maint:start>
+   S:              <maint:end>2021-12-15T05:30:00Z</maint:end>
+   S:              <maint:crDate>2021-09-08T22:11:00Z</maint:crDate>
+   S:              <maint:upDate>2021-10-17T15:00:00Z</maint:upDate>
    S:            </maint:listItem>
    S:          </maint:list>
    S:        </maint:infData>      
@@ -567,7 +566,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:      <msg>Command completed successfully; ack to dequeue</msg>
    S:    </result>
    S:  <msgQ count="1" id="12345">
-   S:    <qDate>2020-10-08T22:10:00Z</qDate>
+   S:    <qDate>2021-10-08T22:10:00Z</qDate>
    S:    <msg lang="en">Registry Maintenance Notification</msg>
    S:  </msgQ>
    S:  <resData>
@@ -585,8 +584,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:          </maint:system>
    S:        </maint:systems>
    S:        <maint:environment type="production"/>
-   S:        <maint:start>2020-12-30T06:00:00Z</maint:start>
-   S:        <maint:end>2020-12-30T14:25:57Z</maint:end>
+   S:        <maint:start>2021-12-30T06:00:00Z</maint:start>
+   S:        <maint:end>2021-12-30T14:25:57Z</maint:end>
    S:        <maint:reason>planned</maint:reason>
    S:        <maint:detail>
    S:          https://www.registry.example/notice?123
@@ -599,7 +598,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:          <maint:connection>false</maint:connection>
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
-   S:        <maint:crDate>2020-10-08T22:10:00Z</maint:crDate>
+   S:        <maint:crDate>2021-10-08T22:10:00Z</maint:crDate>
    S:      </maint:item>
    S:    </maint:infData>
    S:  </resData>
