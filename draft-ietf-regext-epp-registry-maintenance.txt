@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                           April 6, 2021
+                                                           April 7, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -77,6 +77,7 @@ Table of Contents
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
    8.  Implementation Status . . . . . . . . . . . . . . . . . . . .  18
      8.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  18
+     8.2.  TANGO Registry Services . . . . . . . . . . . . . . . . .  18
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  20
@@ -86,18 +87,18 @@ Table of Contents
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  20
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  20
-     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  20
-     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  20
-     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  20
-     A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  20
-     A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  20
+     A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  21
+     A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  21
+     A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  21
+     A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  21
+     A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  21
      A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  21
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  21
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  21
      A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  21
-     A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  21
-     A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  21
+     A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
+     A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
@@ -1022,6 +1023,24 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    URL: https://registry.godaddy
 
+8.2.  TANGO Registry Services
+
+   Name: TANGO Registry Services
+
+   Description: TANGO Registry Services provides maintenance
+   notifications to their registrars.
+
+   Level of maturity: Beta
+
+   Coverage: All aspects of the protocol according to the draft version
+   12 are implemented with further updates to come.
+
+   Licensing: Proprietary
+
+   Contact: Michael.Bauland@knipp.de
+
+   URL: https://tango-rs.com
+
 9.  References
 
 9.1.  Normative References
@@ -1038,6 +1057,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               <http://www.w3.org/TR/2014/REC-html5-20141028/>.
               
               Latest version available at <http://www.w3.org/TR/html5/>.
+
+Sattler, et al.           Expires June 30, 2021                [Page 19]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1060,10 +1083,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               Applications (IDNA): Protocol", RFC 5891,
               DOI 10.17487/RFC5891, August 2010,
               <https://www.rfc-editor.org/info/rfc5891>.
-
-Sattler, et al.           Expires June 30, 2021                [Page 19]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
@@ -1098,6 +1117,10 @@ A.3.  Change from 00 to 01
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
 
+Sattler, et al.           Expires June 30, 2021                [Page 20]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
+
 A.4.  Change from 01 to 02
 
    Update language from Domain Name Registry to Registry. Clarified
@@ -1119,10 +1142,6 @@ A.7.  Change from 04 to 05
    Changed XML namespace from urn:ietf:params:xml:ns:maintenance-1.0 to
    urn:ietf:params:xml:ns:epp:maintenance-0.1. Removed <maint:status>.
    Clarified <maint:info> for retrieving maintenance items and the list.
-
-Sattler, et al.           Expires June 30, 2021                [Page 20]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 A.8.  Change from 05 to 06
 
@@ -1154,24 +1173,25 @@ A.13.  Change from 10 to 11
 
    Editoral changes. Added mime type to description.
 
+Sattler, et al.           Expires June 30, 2021                [Page 21]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
+
 A.14.  Change from 11 to 12
 
    Editoral changes. Changed XML namespace from 0.2 to 0.3.
 
 A.15.  Change from 12 to 13
 
-   Editoral changes.
-
-Sattler, et al.           Expires June 30, 2021                [Page 21]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
+   Editoral changes. Added TANGO Registry Services to Section 8. Added
+   Michael Bauland to acknowledgments.
 
 Acknowledgments
 
    The authors wish to thank the following persons for their feedback
-   and suggestions: James Gould, Patrick Mevzek, Quoc-Anh Pham, Raymond
-   Zylstra, Christopher Martens, Anthony Eden, Neal McPherson, Craig
-   Marchant, and Andreas Huber.
+   and suggestions: James Gould, Michael Bauland, Patrick Mevzek,
+   Quoc-Anh Pham, Raymond Zylstra, Christopher Martens, Anthony Eden,
+   Neal McPherson, Craig Marchant, and Andreas Huber.
 
 Authors' Addresses
 
