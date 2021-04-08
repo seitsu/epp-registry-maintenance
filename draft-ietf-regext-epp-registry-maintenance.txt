@@ -403,7 +403,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:          <maint:item>
    S:            <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:            </maint:id>
-   S:            <maint:type>Routine Maintenance</maint:type>
+   S:            <maint:type lang="en">Routine Maintenance</maint:type>
    S:            <maint:systems>
    S:              <maint:system>
    S:                <maint:name>EPP</maint:name>
