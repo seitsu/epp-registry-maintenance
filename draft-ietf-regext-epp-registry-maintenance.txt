@@ -242,7 +242,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
             The impact level; the values MUST either be "full",
             "partial", or "none". If access is intermittently
             unavailable, it is "partial". If access is completely
-            unavailable, it is "full". If access is not effect, it is
+            unavailable, it is "full". If access is not affected, it is
             "none".
 
       <maint:environment>
