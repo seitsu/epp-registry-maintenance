@@ -760,7 +760,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
      <complexType name="maintDataType">
        <sequence>
          <element name="id" type="maint:idType"/>
-         <element name="type" type="maint:typeType" minOccurs="0"/>
+         <element name="type" type="maint:typeType" minOccurs="0"
+          maxOccurs="unbounded"/>
          <element name="pollType" type="maint:pollType" minOccurs="0"/>
          <element name="systems" type="maint:systemsType"/>
          <element name="environment" type="maint:envType"/>
