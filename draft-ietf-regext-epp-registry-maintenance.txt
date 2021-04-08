@@ -235,8 +235,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
             "DNS", "Portal", etc.
 
          <maint:host>
-            The affected maintained system's hostname, which SHALL be an
-            A-label according to [RFC5891].
+            The OPTIONAL affected maintained system's hostname, which
+            SHALL be an A-label according to [RFC5891].
 
          <maint:impact>
             The impact level; the values MUST either be "full",
@@ -855,7 +855,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
      <complexType name="systemType">
        <sequence>
          <element name="name" type="token"/>
-         <element name="host" type="eppcom:labelType"/>
+         <element name="host" type="eppcom:labelType" minOccurs="0"/>
          <element name="impact" type="maint:impactEnum"/>
        </sequence>
      </complexType>
