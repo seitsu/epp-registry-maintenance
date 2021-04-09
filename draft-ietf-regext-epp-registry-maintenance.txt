@@ -201,9 +201,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
       default value of "en" (English).
 
    <maint:type>
-      The OPTIONAL type of the maintenance that has the possible set of
-      values defined by server policy, such as "Routine Maintenance",
-      "Software Update", "Software Upgrade", or "Extended Outage".
+      Zero or more OPTIONAL types of the maintenance that has the
+      possible set of values defined by server policy, such as
+      "Routine Maintenance", "Software Update", "Software Upgrade", or
+      "Extended Outage".
 
    <maint:pollType>
       The OPTIONAL <maint:pollType> element for a Registry Maintenance
