@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                           April 8, 2021
+                                                           April 9, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -542,8 +542,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    For the Registry Maintenance Notification, there are five types of
    poll messages, defined by the <maint:pollType> element in Section
    3.3. A poll message applies when a maintenance is created, updated or
-   deleted. A courtesy poll message can also be sent as a reminder of
-   an impending maintenance. An end poll message is sent when the
+   deleted. A courtesy poll message can be sent as a reminder of
+   an impending maintenance. An end poll message can be sent when the
    maintenance is completed. In the case of a Registry Maintenance
    specific message, a <maint:infData> element will be included within
    the <resData> element of the standard <poll> response. The
