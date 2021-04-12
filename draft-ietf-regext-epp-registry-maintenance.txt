@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: June 30, 2021                                         J. Kolker
                                                             GoDaddy Inc.
-                                                           April 9, 2021
+                                                          April 12, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -86,7 +86,7 @@ Table of Contents
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  20
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  20
-     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  20
+     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  21
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  21
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  21
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  21
@@ -96,7 +96,7 @@ Table of Contents
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  21
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  21
-     A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  21
+     A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  22
      A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
      A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
@@ -270,7 +270,8 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          "planned" or "emergency".
 
       <maint:detail>
-         The OPTIONAL URI to detailed maintenance description.
+         The OPTIONAL URI to detailed maintenance description according
+         [RFC8820].
 
 Sattler, et al.           Expires June 30, 2021                 [Page 5]
 
@@ -1102,6 +1103,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
+   [RFC8820]  Nottingham, M., "URI Design and Ownership", BCP 190, RFC
+              8820, DOI 10.17487/RFC8820, June 2020,
+              <https://www.rfc-editor.org/info/rfc8820>.
+
 9.2.  Informative References
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
@@ -1120,15 +1125,15 @@ A.2.  Change from draft-sattler-epp-registry-maintenance to
 
    Adopted by the REGEXT working group.
 
+Sattler, et al.           Expires June 30, 2021                [Page 20]
+
+Internet-Draft           EPP Registry Maintenance             April 2021
+
 A.3.  Change from 00 to 01
 
    Clarified maint:description and maint:environment. Changed
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
-
-Sattler, et al.           Expires June 30, 2021                [Page 20]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 A.4.  Change from 01 to 02
 
@@ -1178,13 +1183,13 @@ A.12.  Change from 09 to 10
    Editoral changes. Renamed "msg" to "name". Added "courtesy" and "end"
    to pollType.
 
-A.13.  Change from 10 to 11
-
-   Editoral changes. Added mime type to description.
-
 Sattler, et al.           Expires June 30, 2021                [Page 21]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
+
+A.13.  Change from 10 to 11
+
+   Editoral changes. Added mime type to description.
 
 A.14.  Change from 11 to 12
 
