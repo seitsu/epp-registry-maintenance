@@ -1,9 +1,9 @@
 Internet Engineering Task Force (IETF)                        T. Sattler
 Internet-Draft
 Intended status: Standards Track                               R. Carney
-Expires: October 11, 2021                                      J. Kolker
+Expires: October 14, 2021                                      J. Kolker
                                                             GoDaddy Inc.
-                                                          April 12, 2021
+                                                          April 15, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -27,7 +27,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress".
 
-   This Internet-Draft will expire on October 11, 2021.
+   This Internet-Draft will expire on October 14, 2021.
 
 Copyright Notice
    Copyright (c) 2021 IETF Trust and the persons identified as the
@@ -43,7 +43,7 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-Sattler, et al.          Expires October 11, 2021               [Page 1]
+Sattler, et al.          Expires October 14, 2021               [Page 1]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -102,7 +102,7 @@ Table of Contents
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
-Sattler, et al.          Expires October 11, 2021               [Page 2]
+Sattler, et al.          Expires October 14, 2021               [Page 2]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -161,7 +161,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    <greeting> and the client <login> command. If the intersection of
    the maintenance <objURI> elements of the server <greeting> and the
 
-Sattler, et al.          Expires October 11, 2021               [Page 3]
+Sattler, et al.          Expires October 14, 2021               [Page 3]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -219,7 +219,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
       the maintenance. This element MUST be present only for poll
       messages.
 
-Sattler, et al.          Expires October 11, 2021               [Page 4]
+Sattler, et al.          Expires October 14, 2021               [Page 4]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -273,7 +273,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          The OPTIONAL URI to detailed maintenance description, formatted
          according to [RFC8820].
 
-Sattler, et al.          Expires October 11, 2021               [Page 5]
+Sattler, et al.          Expires October 14, 2021               [Page 5]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
       <maint:description>
@@ -332,7 +332,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    retrieve detailed information associated with an object, and
    <transfer> to retrieve object transfer status information.
 
-Sattler, et al.          Expires October 11, 2021               [Page 6]
+Sattler, et al.          Expires October 14, 2021               [Page 6]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -389,7 +389,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    Example of returning a specific maintenance item in an <info>
    response.
 
-Sattler, et al.          Expires October 11, 2021               [Page 7]
+Sattler, et al.          Expires October 14, 2021               [Page 7]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -448,7 +448,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    The information for a list of maintenance items can be retrieved by
 
-Sattler, et al.          Expires October 11, 2021               [Page 8]
+Sattler, et al.          Expires October 14, 2021               [Page 8]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -507,7 +507,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:          <maint:list>
    S:            <maint:listItem>
 
-Sattler, et al.          Expires October 11, 2021               [Page 9]
+Sattler, et al.          Expires October 14, 2021               [Page 9]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -562,7 +562,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:  </command>
    C:</epp>
    
-Sattler, et al.          Expires October 11, 2021              [Page 10]
+Sattler, et al.          Expires October 14, 2021              [Page 10]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -618,7 +618,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:  </response>
    S:</epp>
 
-Sattler, et al.          Expires October 11, 2021              [Page 11]
+Sattler, et al.          Expires October 14, 2021              [Page 11]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
    
@@ -676,7 +676,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
 
-Sattler, et al.          Expires October 11, 2021              [Page 12]
+Sattler, et al.          Expires October 14, 2021              [Page 12]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -731,7 +731,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        </choice>
      </complexType>
 
-Sattler, et al.          Expires October 11, 2021              [Page 13]
+Sattler, et al.          Expires October 14, 2021              [Page 13]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -790,7 +790,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        </sequence>
      </complexType>
 
-Sattler, et al.          Expires October 11, 2021              [Page 14]
+Sattler, et al.          Expires October 14, 2021              [Page 14]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -848,7 +848,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        </simpleContent>
      </complexType>
 
-Sattler, et al.          Expires October 11, 2021              [Page 15]
+Sattler, et al.          Expires October 14, 2021              [Page 15]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -904,7 +904,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        </sequence>
      </complexType>
 
-Sattler, et al.          Expires October 11, 2021              [Page 16]
+Sattler, et al.          Expires October 14, 2021              [Page 16]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -954,7 +954,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    Name of Extension: Registry Maintenance Notifications for the
    Extensible Provisioning Protocol (EPP)
 
-Sattler, et al.          Expires October 11, 2021              [Page 17]
+Sattler, et al.          Expires October 14, 2021              [Page 17]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -1013,7 +1013,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    Organization: GoDaddy Registry
 
-Sattler, et al.          Expires October 11, 2021              [Page 18]
+Sattler, et al.          Expires October 14, 2021              [Page 18]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -1068,7 +1068,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               
               Latest version available at <http://www.w3.org/TR/html5/>.
 
-Sattler, et al.          Expires October 11, 2021              [Page 19]
+Sattler, et al.          Expires October 14, 2021              [Page 19]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -1125,7 +1125,7 @@ A.2.  Change from draft-sattler-epp-registry-maintenance to
 
    Adopted by the REGEXT working group.
 
-Sattler, et al.          Expires October 11, 2021              [Page 20]
+Sattler, et al.          Expires October 14, 2021              [Page 20]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -1183,7 +1183,7 @@ A.12.  Change from 09 to 10
    Editoral changes. Renamed "msg" to "name". Added "courtesy" and "end"
    to pollType.
 
-Sattler, et al.          Expires October 11, 2021              [Page 21]
+Sattler, et al.          Expires October 14, 2021              [Page 21]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
 
@@ -1232,5 +1232,5 @@ Authors' Addresses
    Email: jkolker@godaddy.com
    URI:   http://www.godaddy.com
 
-Sattler, et al.          Expires October 11, 2021              [Page 22]
+Sattler, et al.          Expires October 14, 2021              [Page 22]
 
