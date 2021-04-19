@@ -102,7 +102,6 @@ Table of Contents
      A.16. Change from 13 to 14  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
-
 Sattler, et al.          Expires October 14, 2021               [Page 2]
 
 Internet-Draft           EPP Registry Maintenance             April 2021
