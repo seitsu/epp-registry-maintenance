@@ -3,11 +3,11 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: October 14, 2021                                      J. Kolker
                                                             GoDaddy Inc.
-                                                          April 15, 2021
+                                                          April 19, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-13
+              draft-ietf-regext-epp-registry-maintenance-14
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -99,6 +99,7 @@ Table of Contents
      A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  22
      A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
      A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  22
+     A.16. Change from 13 to 14  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
@@ -131,7 +132,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    the character case presented to develop a conforming implementation.
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
-   maintenance-0.3". The XML namespace prefix "maint" is used, but
+   maintenance-1.0". The XML namespace prefix "maint" is used, but
    implementations MUST NOT depend on it and instead employ a proper
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
@@ -373,7 +374,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    C:      </maint:info>
    C:    </info>
@@ -401,7 +402,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    S:          <maint:item>
    S:            <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:            </maint:id>
@@ -463,7 +464,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:  <command>
    C:    <info>
    C:      <maint:info
-   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
+   C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    C:        <maint:list/>
    C:      </maint:info>
    C:    </info>
@@ -503,7 +504,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:      </result>
    S:      <resData>
    S:        <maint:infData
-   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
+   S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    S:          <maint:list>
    S:            <maint:listItem>
 
@@ -580,7 +581,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:  </msgQ>
    S:  <resData>
    S:    <maint:infData
-   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3">
+   S:      xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    S:      <maint:item>
    S:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    S:        <maint:pollType>create</maint:pollType>
@@ -669,10 +670,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
      <schema targetNamespace="urn:ietf:params:xml:ns:epp:
-       maintenance-0.3"
+       maintenance-1.0"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
-       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-0.3"
+       xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
 
@@ -932,7 +933,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    Registration request for the maintenance namespace:
 
-      URI: urn:ietf:params:xml:ns:epp:maintenance-0.3
+      URI: urn:ietf:params:xml:ns:epp:maintenance-1.0
 
       Registrant Contact: IESG
 
@@ -940,7 +941,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    Registration request for the maintenance schema:
 
-      URI: urn:ietf:params:xml:schema:maintenance-0.3
+      URI: urn:ietf:params:xml:schema:maintenance-1.0
 
       Registrant Contact: IESG
 
@@ -1199,6 +1200,10 @@ A.15.  Change from 12 to 13
 
    Editoral changes. Added TANGO Registry Services to Section 8. Added
    Michael Bauland to acknowledgments. Added "none" to <maint:impact>.
+
+A.16.  Change from 13 to 14
+
+   Accepted in WGLC. Changed XML namespace from 0.3 to 1.0.
 
 Acknowledgments
 
