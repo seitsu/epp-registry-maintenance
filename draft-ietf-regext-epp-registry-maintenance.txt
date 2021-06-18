@@ -81,9 +81,9 @@ Table of Contents
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  20
-   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  20
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  21
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
-           draft-sattler-epp-registry-maintenance .  . . . . . . . .  20
+           draft-sattler-epp-registry-maintenance .  . . . . . . . .  21
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  21
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  21
@@ -93,8 +93,8 @@ Table of Contents
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  21
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  21
      A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  21
-     A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  21
-     A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
+     A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  22
+     A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  22
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  22
      A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  22
      A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
@@ -129,9 +129,10 @@ Internet-Draft           EPP Registry Maintenance              June 2021
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   XML is case sensitive. Unless stated otherwise, XML specification
-   and examples provided in this document MUST be interpreted in the
-   character case presented to develop a conforming implementation.
+   XML [W3C.REC-xml11-20060816] is case sensitive. Unless stated
+   otherwise, XML specification and examples provided in this document
+   MUST be interpreted in the character case presented in order to
+   develop a conforming implementation.
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
    maintenance-1.0". The XML namespace prefix "maint" is used, but
@@ -1113,11 +1114,22 @@ Internet-Draft           EPP Registry Maintenance              June 2021
               DOI 10.17487/RFC9038, May 2021,
               <https://www.rfc-editor.org/info/rfc9038>.
 
+   [W3C.REC-xml11-20060816]
+              Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E.,
+              Yergeau, F., and J. Cowan, "Extensible Markup Language
+              (XML) 1.1 (Second Edition)", World Wide Web Consortium
+              Recommendation REC-xml11-20060816, 16 August 2006,
+              <https://www.w3.org/TR/2006/REC-xml11-20060816>.
+
 9.2.  Informative References
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
               February 2015, <https://www.rfc-editor.org/info/rfc7451>.
+
+Sattler, et al.          Expires December 17, 2021             [Page 20]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
 
 Appendix A.  Change History
 
@@ -1125,10 +1137,6 @@ A.1.  Change from draft-sattler-epp-poll-maintenance-response to
    draft-sattler-epp-registry-maintenance
 
    Updated to be EPP based instead of JSON document.
-
-Sattler, et al.          Expires December 17, 2021             [Page 20]
-
-Internet-Draft           EPP Registry Maintenance              June 2021
 
 A.2.  Change from draft-sattler-epp-registry-maintenance to
    draft-ietf-regext-epp-registry-maintenance
@@ -1173,6 +1181,10 @@ A.9.  Change from 06 to 07
 
    Removed IP addresses for <maint:host>. Editoral changes.
 
+Sattler, et al.          Expires December 17, 2021             [Page 21]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
 A.10.  Change from 07 to 08
 
    Editoral changes. Changed XML namespace and schema from 0.1 to 0.2.
@@ -1183,10 +1195,6 @@ A.11.  Change from 08 to 09
 
    Editoral changes. Added new section "Migrating to Newer Versions of
    This Extension".
-
-Sattler, et al.          Expires December 17, 2021             [Page 21]
-
-Internet-Draft           EPP Registry Maintenance              June 2021
 
 A.12.  Change from 09 to 10
 
