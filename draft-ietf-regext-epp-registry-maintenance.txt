@@ -1220,7 +1220,7 @@ A.16.  Change from 13 to 14
    
 A.17. Change from 14 to 15
 
-   Editoral changes.
+   Editoral changes, added feedback from the document shepherd.
 
 Acknowledgments
 
