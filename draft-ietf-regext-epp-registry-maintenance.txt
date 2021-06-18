@@ -1074,6 +1074,13 @@ Sattler, et al.          Expires December 17, 2021             [Page 19]
 
 Internet-Draft           EPP Registry Maintenance              June 2021
 
+   [W3C.REC-xml11-20060816]
+              Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E.,
+              Yergeau, F., and J. Cowan, "Extensible Markup Language
+              (XML) 1.1 (Second Edition)", World Wide Web Consortium
+              Recommendation REC-xml11-20060816, 16 August 2006,
+              <https://www.w3.org/TR/2006/REC-xml11-20060816>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -1113,13 +1120,6 @@ Internet-Draft           EPP Registry Maintenance              June 2021
               Protocol (EPP) Unhandled Namespaces", RFC 9038,
               DOI 10.17487/RFC9038, May 2021,
               <https://www.rfc-editor.org/info/rfc9038>.
-
-   [W3C.REC-xml11-20060816]
-              Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E.,
-              Yergeau, F., and J. Cowan, "Extensible Markup Language
-              (XML) 1.1 (Second Edition)", World Wide Web Consortium
-              Recommendation REC-xml11-20060816, 16 August 2006,
-              <https://www.w3.org/TR/2006/REC-xml11-20060816>.
 
 9.2.  Informative References
 
