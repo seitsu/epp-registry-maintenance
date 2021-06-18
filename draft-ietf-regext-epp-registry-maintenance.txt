@@ -290,7 +290,8 @@ Internet-Draft           EPP Registry Maintenance              June 2021
          "en" (English). The OPTIONAL "type" attribute MAY be present to
          identify the format of the description. It MUST either be
          "plain" for plain text or "html" HTML text that is defined in
-         [W3C-HTML5] and XML-escaped, with a default value of "plain".
+         [W3C.REC-html5-20141028] and XML-escaped, with a default value
+         of "plain".
 
       <maint:tlds>
          The OPTIONAL <maint:tlds> element contains one or more
@@ -1063,7 +1064,8 @@ Internet-Draft           EPP Registry Maintenance              June 2021
 
 9.1.  Normative References
 
-   [W3C-HTML5]  Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
+   [W3C.REC-html5-20141028]
+              Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
               Doyle Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5",
               W3C Recommendation REC-html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028/>.
