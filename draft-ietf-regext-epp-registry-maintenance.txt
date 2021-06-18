@@ -1,13 +1,13 @@
 Internet Engineering Task Force (IETF)                        T. Sattler
 Internet-Draft
 Intended status: Standards Track                               R. Carney
-Expires: October 14, 2021                                      J. Kolker
+Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                          April 19, 2021
+                                                           June 18, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-14
+              draft-ietf-regext-epp-registry-maintenance-15
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -27,7 +27,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress".
 
-   This Internet-Draft will expire on October 14, 2021.
+   This Internet-Draft will expire on December 17, 2021.
 
 Copyright Notice
    Copyright (c) 2021 IETF Trust and the persons identified as the
@@ -43,9 +43,9 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-Sattler, et al.          Expires October 14, 2021               [Page 1]
+Sattler, et al.          Expires December 17, 2021              [Page 1]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
 
 Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
@@ -55,13 +55,13 @@ Table of Contents
      3.1.  Internationalized Domain Names  . . . . . . . . . . . . .   4
      3.2.  Dates and Times . . . . . . . . . . . . . . . . . . . . .   4
      3.3.  Maintenance Elements  . . . . . . . . . . . . . . . . . .   4
-   4.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   6
-     4.1.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   6
+   4.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   7
+     4.1.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   7
        4.1.1.  EPP <check> Command . . . . . . . . . . . . . . . . .   7
        4.1.2.  EPP <transfer> Command  . . . . . . . . . . . . . . .   7
        4.1.3.  EPP <info> Command  . . . . . . . . . . . . . . . . .   7
        4.1.3.1.  Info Maintenance Item . . . . . . . . . . . . . . .   7
-       4.1.3.2.  Info Maintenance List . . . . . . . . . . . . . . .   8
+       4.1.3.2.  Info Maintenance List . . . . . . . . . . . . . . .   9
        4.1.4.  EPP <poll> Command  . . . . . . . . . . . . . . . . .  10
      4.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  12
        4.2.1.  EPP <create> Command  . . . . . . . . . . . . . . . .  12
@@ -85,7 +85,7 @@ Table of Contents
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  20
      A.2.  Change from draft-sattler-epp-registry-maintenance to
-           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  20
+           draft-ietf-regext-epp-registry-maintenance  . . . . . . .  21
      A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  21
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  21
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  21
@@ -95,16 +95,19 @@ Table of Contents
      A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  21
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  21
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
-     A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  21
+     A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  22
      A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  22
      A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
      A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  22
      A.16. Change from 13 to 14  . . . . . . . . . . . . . . . . . .  22
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
-Sattler, et al.          Expires October 14, 2021               [Page 2]
+     
+Sattler, et al.          Expires December 17, 2021              [Page 2]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
+     
+     A.17. Change from 14 to 15  . . . . . . . . . . . . . . . . . .  22
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
 
@@ -126,9 +129,9 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   XML is case sensitive. Unless stated otherwise, XML specifications
-   moreover, examples provided in this document MUST be interpreted in
-   the character case presented to develop a conforming implementation.
+   XML is case sensitive. Unless stated otherwise, XML specification
+   and examples provided in this document MUST be interpreted in the
+   character case presented to develop a conforming implementation.
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
    maintenance-1.0". The XML namespace prefix "maint" is used, but
@@ -139,7 +142,7 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    In examples, "C:" represents lines sent by a protocol client and
    "S:" represents lines returned by a protocol server. Indentation and
    white space in examples are provided only to illustrate element
-   relationships and are not a REQUIRED feature of this protocol.
+   relationships and are not a required feature of this protocol.
    
 2.  Migrating to Newer Versions of This Extension
 
@@ -154,6 +157,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    elements of the server <greeting>. The version of the maintenance
    <info> response MUST match the version of the maintenance <info>
    command executed by the server.
+
+Sattler, et al.          Expires December 17, 2021              [Page 3]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
    
    Servers MUST return a Registry Maintenance Notification poll message
    matching the newest version of the maintenance extension, based on an
@@ -161,15 +168,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    <greeting> and the client <login> command. If the intersection of
    the maintenance <objURI> elements of the server <greeting> and the
 
-Sattler, et al.          Expires October 14, 2021               [Page 3]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
    client <login> command results in an empty set, the server MUST
    return the newest version of the Registry Maintenance Notification
    poll message supported by the server based on section 6 "Usage with
-   Poll Message EPP Response" of
-   [draft-ietf-regext-unhandled-namespaces].
+   Poll Message EPP Response" of [RFC9038].
 
 3.  Object Attributes
 
@@ -212,16 +214,17 @@ Internet-Draft           EPP Registry Maintenance             April 2021
       "update", "delete", "courtesy", or "end". For the "create" and
       "update" types, the server includes the state of the maintenance
       after the create or update. For the "delete" type, the server
+      
+Sattler, et al.          Expires December 17, 2021              [Page 4]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+      
       includes the state of the maintenance prior to the delete. The
       "courtesy" provides a reminder of a maintenance and the "end"
       provides a notification of the end of the maintenance without
       updating the maintenance object and includes the latest state of
       the maintenance. This element MUST be present only for poll
       messages.
-
-Sattler, et al.          Expires October 14, 2021               [Page 4]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
    <maint:systems>
       One or more <maint:system> elements that are affected by the
@@ -265,6 +268,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          <maint:end> element MUST be equal to or greater than the
          <maint:start> element.
 
+Sattler, et al.          Expires December 17, 2021              [Page 5]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
       <maint:reason>
          The reason behind the maintenance; the values MUST either be
          "planned" or "emergency".
@@ -273,9 +280,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          The OPTIONAL URI to detailed maintenance description, formatted
          according to [RFC8820].
 
-Sattler, et al.          Expires October 14, 2021               [Page 5]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
       <maint:description>
          Zero or more OPTIONAL free-form descriptions of the maintenance
          without having to create and traverse an external resource
@@ -318,6 +322,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
          object modification. This element MUST NOT be present if the
          maintenance object has never been modified.
 
+Sattler, et al.          Expires December 17, 2021              [Page 6]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
 4.  EPP Command Mapping
 
    A detailed description of the EPP syntax and semantics can be found
@@ -331,10 +339,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    <check> to determine if an object is known to the server, <info> to
    retrieve detailed information associated with an object, and
    <transfer> to retrieve object transfer status information.
-
-Sattler, et al.          Expires October 14, 2021               [Page 6]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 4.1.1.  EPP <check> Command
 
@@ -376,6 +380,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    C:        <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6</maint:id>
    C:      </maint:info>
+
+Sattler, et al.          Expires December 17, 2021              [Page 7]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
    C:    </info>
    C:    <clTRID>ABC-12345</clTRID>
    C:  </command>
@@ -388,10 +397,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    Example of returning a specific maintenance item in an <info>
    response.
-
-Sattler, et al.          Expires October 14, 2021               [Page 7]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -434,6 +439,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:              <maint:implementation>false</maint:implementation>
    S:            </maint:intervention>
    S:            <maint:crDate>2021-09-08T22:10:00Z</maint:crDate>
+
+Sattler, et al.          Expires December 17, 2021              [Page 8]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
    S:          </maint:item>
    S:        </maint:infData>
    S:      </resData>
@@ -447,10 +457,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 4.1.3.2. Info Maintenance List
 
    The information for a list of maintenance items can be retrieved by
-
-Sattler, et al.          Expires October 14, 2021               [Page 8]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
    using the <info> command with the <maint:info> element and the empty
    <maint:list> child element. Server policy determines if previous
@@ -493,6 +499,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
       <maint:upDate>
          The OPTIONAL <maint:upDate> element defined in Section 3.3.
 
+Sattler, et al.          Expires December 17, 2021              [Page 9]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
    Example of returning the maintenance list in an <info> response.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
@@ -506,11 +516,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:          xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
    S:          <maint:list>
    S:            <maint:listItem>
-
-Sattler, et al.          Expires October 14, 2021               [Page 9]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
    S:              <maint:id>2e6df9b0-4092-4491-bcc8-9fb2166dcee6
    S:              </maint:id>
    S:              <maint:start>2021-12-30T06:00:00Z</maint:start>
@@ -552,6 +557,10 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    <maint:infData> element contains the <maint:item> element defined in
    Section 3.3.
 
+Sattler, et al.          Expires December 17, 2021             [Page 10]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
    Example <poll> command:
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -561,10 +570,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    C:    <clTRID>ABC-12345</clTRID>
    C:  </command>
    C:</epp>
-   
-Sattler, et al.          Expires October 14, 2021              [Page 10]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
    Example <poll> response:
 
@@ -610,6 +615,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:        <maint:crDate>2021-10-08T22:10:00Z</maint:crDate>
    S:      </maint:item>
    S:    </maint:infData>
+
+Sattler, et al.          Expires December 17, 2021             [Page 11]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
    S:  </resData>
    S:  <trID>
    S:    <clTRID>ABC-12345</clTRID>
@@ -617,10 +627,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    S:  </trID>
    S:  </response>
    S:</epp>
-
-Sattler, et al.          Expires October 14, 2021              [Page 11]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
    
 4.2.  EPP Transform Commands
 
@@ -668,6 +674,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
+
+Sattler, et al.          Expires December 17, 2021             [Page 12]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
      <schema targetNamespace="urn:ietf:params:xml:ns:epp:
        maintenance-1.0"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
@@ -675,10 +686,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0"
        xmlns="http://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
-
-Sattler, et al.          Expires October 14, 2021              [Page 12]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
      <!--
      Import common element types
@@ -726,15 +733,15 @@ Internet-Draft           EPP Registry Maintenance             April 2021
      -->
      <complexType name="infDataType">
        <choice>
+
+Sattler, et al.          Expires December 17, 2021             [Page 13]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
          <element name="list" type="maint:listDataType"/>
          <element name="item" type="maint:maintDataType"/>
        </choice>
      </complexType>
-
-Sattler, et al.          Expires October 14, 2021              [Page 13]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
      <!--
       Attributes associated with the list info response
      -->
@@ -785,15 +792,15 @@ Internet-Draft           EPP Registry Maintenance             April 2021
      -->
      <complexType name="systemsType">
        <sequence>
+
+Sattler, et al.          Expires December 17, 2021             [Page 14]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
          <element name="system" type="maint:systemType"
           maxOccurs="unbounded"/>
        </sequence>
      </complexType>
-
-Sattler, et al.          Expires October 14, 2021              [Page 14]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
      <!--
       Enumerated list of poll types
      -->
@@ -844,14 +851,14 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        <simpleContent>
          <extension base="string">
            <attribute name="lang" type="language" default="en"/>
+
+Sattler, et al.          Expires December 17, 2021             [Page 15]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
          </extension>
        </simpleContent>
      </complexType>
-
-Sattler, et al.          Expires October 14, 2021              [Page 15]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
-
      <!--
       system element
      -->
@@ -904,9 +911,9 @@ Internet-Draft           EPP Registry Maintenance             April 2021
        </sequence>
      </complexType>
 
-Sattler, et al.          Expires October 14, 2021              [Page 16]
+Sattler, et al.          Expires December 17, 2021             [Page 16]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
 
      <!--
       intervention element
@@ -954,9 +961,9 @@ Internet-Draft           EPP Registry Maintenance             April 2021
    Name of Extension: Registry Maintenance Notifications for the
    Extensible Provisioning Protocol (EPP)
 
-Sattler, et al.          Expires October 14, 2021              [Page 17]
+Sattler, et al.          Expires December 17, 2021             [Page 17]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
 
    Document status: Standards Track
 
@@ -1013,9 +1020,9 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
    Organization: GoDaddy Registry
 
-Sattler, et al.          Expires October 14, 2021              [Page 18]
+Sattler, et al.          Expires December 17, 2021             [Page 18]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
 
    Name: GoDaddy Registry
 
@@ -1055,12 +1062,6 @@ Internet-Draft           EPP Registry Maintenance             April 2021
 
 9.1.  Normative References
 
-   [I.D.draft-ietf-regext-unhandled-namespaces]
-              Gould, J. and Casanova, M., "Extensible Provisioning
-              Protocol (EPP) Unhandled Namespaces",
-              <https://datatracker.ietf.org/doc/draft-ietf-regext-
-              unhandled-namespaces/> (work in progress), February 2021.
-
    [W3C-HTML5]  Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
               Doyle Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5",
               W3C Recommendation REC-html5-20141028, October 2014,
@@ -1068,9 +1069,9 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               
               Latest version available at <http://www.w3.org/TR/html5/>.
 
-Sattler, et al.          Expires October 14, 2021              [Page 19]
+Sattler, et al.          Expires December 17, 2021             [Page 19]
 
-Internet-Draft           EPP Registry Maintenance             April 2021
+Internet-Draft           EPP Registry Maintenance              June 2021
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1107,6 +1108,11 @@ Internet-Draft           EPP Registry Maintenance             April 2021
               8820, DOI 10.17487/RFC8820, June 2020,
               <https://www.rfc-editor.org/info/rfc8820>.
 
+   [RFC9038]  Gould, J. and M. Casanova, "Extensible Provisioning
+              Protocol (EPP) Unhandled Namespaces", RFC 9038,
+              DOI 10.17487/RFC9038, May 2021,
+              <https://www.rfc-editor.org/info/rfc9038>.
+
 9.2.  Informative References
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
@@ -1120,14 +1126,14 @@ A.1.  Change from draft-sattler-epp-poll-maintenance-response to
 
    Updated to be EPP based instead of JSON document.
 
+Sattler, et al.          Expires December 17, 2021             [Page 20]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
 A.2.  Change from draft-sattler-epp-registry-maintenance to
    draft-ietf-regext-epp-registry-maintenance
 
    Adopted by the REGEXT working group.
-
-Sattler, et al.          Expires October 14, 2021              [Page 20]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 A.3.  Change from 00 to 01
 
@@ -1178,14 +1184,14 @@ A.11.  Change from 08 to 09
    Editoral changes. Added new section "Migrating to Newer Versions of
    This Extension".
 
+Sattler, et al.          Expires December 17, 2021             [Page 21]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
 A.12.  Change from 09 to 10
 
    Editoral changes. Renamed "msg" to "name". Added "courtesy" and "end"
    to pollType.
-
-Sattler, et al.          Expires October 14, 2021              [Page 21]
-
-Internet-Draft           EPP Registry Maintenance             April 2021
 
 A.13.  Change from 10 to 11
 
@@ -1203,6 +1209,10 @@ A.15.  Change from 12 to 13
 A.16.  Change from 13 to 14
 
    Accepted in WGLC. Changed XML namespace from 0.3 to 1.0.
+   
+A.17. Change from 14 to 15
+
+   Editoral changes.
 
 Acknowledgments
 
@@ -1211,11 +1221,15 @@ Acknowledgments
    Quoc-Anh Pham, Raymond Zylstra, Christopher Martens, Anthony Eden,
    Neal McPherson, Craig Marchant, and Andreas Huber.
 
+Sattler, et al.          Expires December 17, 2021             [Page 22]
+
+Internet-Draft           EPP Registry Maintenance              June 2021
+
 Authors' Addresses
 
    Tobias Sattler
 
-   Email: tobias.sattler@me.com
+   Email: mail@tobiassattler.com
    URI:   https://tobiassattler.com
 
    Roger Carney
@@ -1236,5 +1250,5 @@ Authors' Addresses
    Email: jkolker@godaddy.com
    URI:   http://www.godaddy.com
 
-Sattler, et al.          Expires October 14, 2021              [Page 22]
+Sattler, et al.          Expires December 17, 2021             [Page 23]
 
