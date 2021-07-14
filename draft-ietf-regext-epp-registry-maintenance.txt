@@ -1201,8 +1201,8 @@ A.11.  Change from 08 to 09
 
 A.12.  Change from 09 to 10
 
-   Editorial changes. Renamed "msg" to "name". Added "courtesy" and "end"
-   to pollType.
+   Editorial changes. Renamed "msg" to "name". Added "courtesy" and
+   "end" to pollType.
 
 A.13.  Change from 10 to 11
 
