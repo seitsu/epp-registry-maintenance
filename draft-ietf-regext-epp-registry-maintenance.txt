@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                           July 11, 2021
+                                                           July 14, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -11,7 +11,9 @@ Expires: December 17, 2021                                     J. Kolker
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
-   mapping for registry's maintenance notifications.
+   extension called "Registry Maintenance Notification", used by EPP
+   servers to notify EPP clients and allow EPP clients to query EPP
+   servers on maintenance events.
 
 Status of This Memo
    This Internet-Draft is submitted in full conformance with the
@@ -112,15 +114,15 @@ Internet-Draft           EPP Registry Maintenance              July 2021
 
 1.  Introduction
 
-   Registries usually conduct maintenances and inform registrars in
+   Registries usually conduct maintenance and inform registrars in
    different ways. Given the DNS namespace expansion, it is now
-   desirable to provide methods for EPP servers to notify EPP clients,
-   and EPP clients can query EPP servers for upcoming maintenances.
+   desirable to provide an efficient approach to notify registrars.
 
    This document describes an extension mapping for version 1.0 of the
-   Extensible Provision Protocol [RFC5730]. This mapping provides a
-   mechanism by which EPP servers may notify and EPP clients to query  
-   upcoming maintenances.
+   Extensible Provision Protocol (EPP), as defined in [RFC5730], to
+   provide a mechanism by which EPP servers may notify EPP clients and
+   allow EPP clients to query EPP servers on upcoming maintenance
+   events.
 
 1.1.  Terminology and Definitions
 
@@ -183,7 +185,7 @@ Internet-Draft           EPP Registry Maintenance              July 2021
 
 3.2.  Dates and Times
 
-   All dates and times attribute values MUST be expressed in Universal
+   All date and time attribute values MUST be expressed in Universal
    Coordinated Time (UTC) using the Gregorian calendar. The extended
    date-time form using upper case "T" and "Z" characters defined in ISO
    8601 [RFC3339] MUST be used to represent date-time values.
@@ -333,7 +335,7 @@ Internet-Draft           EPP Registry Maintenance              July 2021
    A detailed description of the EPP syntax and semantics can be found
    in the EPP core protocol specification [RFC5730]. The command
    mappings described here are specifically for the use to notify of
-   Registry Maintenances and Registry Maintenance object mapping.
+   registry maintenance events and object mapping.
 
 4.1.  EPP Query Commands
 
@@ -461,7 +463,7 @@ Internet-Draft           EPP Registry Maintenance              July 2021
    The information for a list of maintenance items can be retrieved by
    using the <info> command with the <maint:info> element and the empty
    <maint:list> child element. Server policy determines if previous
-   maintenances will be included in the list of maintenance items.
+   maintenance events will be included in the list of maintenance items.
 
    Example to retrieve the maintenance list in an <info> command.
 
@@ -1225,7 +1227,7 @@ A.17. Change from 14 to 15
 
 A.18. Change from 15 to 16
 
-   Editorial changes.
+   Editorial changes, added feedback from area director.
 
 Acknowledgments
 
