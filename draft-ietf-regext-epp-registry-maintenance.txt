@@ -3,11 +3,11 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                           July 25, 2021
+                                                           July 28, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-16
+              draft-ietf-regext-epp-registry-maintenance-17
 
 Abstract
    This document describes an Extensible Provision Protocol (EPP)
@@ -109,6 +109,7 @@ Internet-Draft           EPP Registry Maintenance              July 2021
      
      A.17. Change from 14 to 15  . . . . . . . . . . . . . . . . . .  22
      A.18. Change from 15 to 16  . . . . . . . . . . . . . . . . . .  22
+     A.19. Change from 16 to 17  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
@@ -160,11 +161,12 @@ Internet-Draft           EPP Registry Maintenance              July 2021
    version of the <info> command based on the maintenance <objURI>
    elements of the server <greeting>. The version of the maintenance
    <info> response MUST match the version of the maintenance <info>
-   command executed by the server.
 
 Sattler, et al.          Expires December 17, 2021              [Page 3]
 
 Internet-Draft           EPP Registry Maintenance              July 2021
+
+   command executed by the server.
    
    Servers MUST return a Registry Maintenance Notification poll message
    matching the newest version of the maintenance extension, based on an
@@ -197,16 +199,16 @@ Internet-Draft           EPP Registry Maintenance              July 2021
    item EPP <info> response and <poll> message.
 
    <maint:id>
-      The server unique identifier for the maintenance with the OPTIONAL
-      "name" attribute that includes a human-readable name of the
-      maintenance. The server unique identifier SHALL NOT be changed if
-      the maintenance is updated or deleted. When the "name" attribute
-      is set, the OPTIONAL "lang" attribute MAY be present to identify
-      the language if the negotiated value is something other than the
+      The server unique identifier for the maintenance event with the
+      OPTIONAL "name" attribute that includes a human-readable name of
+      the event. The server unique identifier SHALL NOT be changed if
+      the event is updated or deleted. When the "name" attribute is set,
+      the OPTIONAL "lang" attribute MAY be present to identify the
+      language if the negotiated value is something other than the
       default value of "en" (English).
 
    <maint:type>
-      Zero or more OPTIONAL types of the maintenance that has the
+      Zero or more OPTIONAL types of the maintenance event that has the
       possible set of values defined by server policy, such as
       "Routine Maintenance", "Software Update", "Software Upgrade", or
       "Extended Outage".
@@ -216,22 +218,21 @@ Internet-Draft           EPP Registry Maintenance              July 2021
       Notification poll message; values MUST either be "create",
       "update", "delete", "courtesy", or "end". For the "create" and
       "update" types, the server includes the state of the maintenance
-      after the create or update. For the "delete" type, the server
+      event after the create or update. For the "delete" type, the
       
 Sattler, et al.          Expires December 17, 2021              [Page 4]
 
 Internet-Draft           EPP Registry Maintenance              July 2021
       
-      includes the state of the maintenance prior to the delete. The
-      "courtesy" provides a reminder of a maintenance and the "end"
-      provides a notification of the end of the maintenance without
-      updating the maintenance object and includes the latest state of
-      the maintenance. This element MUST be present only for poll
-      messages.
+      server includes the state of the event prior to the delete. The
+      "courtesy" provides a reminder of an event and the "end" provides
+      a notification of the end of the event without updating the
+      maintenance object and includes the latest state of the event.
+      This element MUST be present only for poll messages.
 
    <maint:systems>
       One or more <maint:system> elements that are affected by the
-      maintenance.
+      maintenance event.
 
       <maint:system>
          The <maint:system> element contains the following child
@@ -264,10 +265,10 @@ Internet-Draft           EPP Registry Maintenance              July 2021
          <maint:environment type="custom" name="marketing"/>
 
       <maint:start>
-         The date and time of the start of the maintenance.
+         The date and time of the start of the maintenance event.
 
       <maint:end>
-         The date and time of the end of the maintenance. The
+         The date and time of the end of the maintenance event. The
          <maint:end> element MUST be equal to or greater than the
          <maint:start> element.
 
@@ -276,18 +277,18 @@ Sattler, et al.          Expires December 17, 2021              [Page 5]
 Internet-Draft           EPP Registry Maintenance              July 2021
 
       <maint:reason>
-         The reason behind the maintenance; the values MUST either be
-         "planned" or "emergency".
+         The reason behind the maintenance event; the values MUST either
+         be "planned" or "emergency".
 
       <maint:detail>
-         The OPTIONAL URI to detailed maintenance description, formatted
-         according to [RFC8820].
+         The OPTIONAL URI to detailed maintenance event description,
+         formatted according to [RFC8820].
 
       <maint:description>
          Zero or more OPTIONAL free-form descriptions of the maintenance
-         without having to create and traverse an external resource
-         defined by the <maint:detail> element. The OPTIONAL "lang"
-         attribute MAY be present to identify the language if the
+         event without having to create and traverse an external
+         resource defined by the <maint:detail> element. The OPTIONAL
+         "lang" attribute MAY be present to identify the language if the
          negotiated value is something other then the default value of
          "en" (English). The OPTIONAL "type" attribute MAY be present to
          identify the format of the description. It MUST either be
@@ -465,7 +466,8 @@ Internet-Draft           EPP Registry Maintenance              July 2021
    <maint:list> child element. Server policy determines if previous
    maintenance events will be included in the list of maintenance items.
 
-   Example to retrieve the maintenance list in an <info> command.
+   Example to retrieve the list of maintenance items in an <info>
+   command.
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -506,7 +508,8 @@ Sattler, et al.          Expires December 17, 2021              [Page 9]
 
 Internet-Draft           EPP Registry Maintenance              July 2021
 
-   Example of returning the maintenance list in an <info> response.
+   Example of returning the list of maintenance items in an <info>
+   response.
 
    S:<?xml version="1.0" encoding="UTF-8"?>
    S:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -551,14 +554,14 @@ Internet-Draft           EPP Registry Maintenance              July 2021
 
    For the Registry Maintenance Notification, there are five types of
    poll messages, defined by the <maint:pollType> element in Section
-   3.3. A poll message applies when a maintenance is created, updated or
-   deleted. A courtesy poll message can be sent as a reminder of
-   an impending maintenance. An end poll message can be sent when the
-   maintenance is completed. In the case of a Registry Maintenance
-   specific message, a <maint:infData> element will be included within
-   the <resData> element of the standard <poll> response. The
-   <maint:infData> element contains the <maint:item> element defined in
-   Section 3.3.
+   3.3. A poll message applies when a maintenance event is created,
+   updated or deleted. A courtesy poll message can be sent as a reminder
+   of an impending maintenance event. An end poll message can be sent
+   when the maintenance event is completed. In the case of a Registry
+   Maintenance specific message, a <maint:infData> element will be
+   included within the <resData> element of the standard <poll>
+   response. The <maint:infData> element contains the <maint:item>
+   element defined in Section 3.3.
 
 Sattler, et al.          Expires December 17, 2021             [Page 10]
 
@@ -1228,6 +1231,10 @@ A.17. Change from 14 to 15
 A.18. Change from 15 to 16
 
    Editorial changes, added feedback from area director.
+
+A.19. Change from 16 to 17
+
+   Editorial changes, added last call feedback.
 
 Acknowledgments
 
