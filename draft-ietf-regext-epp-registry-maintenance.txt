@@ -198,6 +198,8 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    The <maint:item> element describes a single registry maintenance
    event during a specific period. This element is used in a maintenance
    item EPP <info> response and <poll> message.
+   
+   If an element is not marked as optional, it is mandatory.
 
    <maint:id>
       The server unique identifier for the maintenance event with the
