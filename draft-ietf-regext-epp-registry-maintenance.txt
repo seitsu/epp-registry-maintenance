@@ -78,8 +78,8 @@ Table of Contents
      6.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
    8.  Implementation Status . . . . . . . . . . . . . . . . . . . .  18
-     8.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  18
-     8.2.  TANGO Registry Services . . . . . . . . . . . . . . . . .  18
+     8.1.  GoDaddy Registry  . . . . . . . . . . . . . . . . . . . .  19
+     8.2.  TANGO Registry Services . . . . . . . . . . . . . . . . .  19
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  20
@@ -161,12 +161,12 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    the newest version and allow clients to execute their preferred
    version of the <info> command based on the maintenance <objURI>
    elements of the server <greeting>. The version of the maintenance
-   <info> response MUST match the version of the maintenance <info>
 
 Sattler, et al.          Expires December 17, 2021              [Page 3]
 
 Internet-Draft           EPP Registry Maintenance            August 2021
 
+   <info> response MUST match the version of the maintenance <info>
    command executed by the server.
    
    Servers MUST return a Registry Maintenance Notification poll message
@@ -220,13 +220,13 @@ Internet-Draft           EPP Registry Maintenance            August 2021
       The OPTIONAL <maint:pollType> element for a Registry Maintenance
       Notification poll message; values MUST either be "create",
       "update", "delete", "courtesy", or "end". For the "create" and
-      "update" types, the server includes the state of the maintenance
-      event after the create or update. For the "delete" type, the
       
 Sattler, et al.          Expires December 17, 2021              [Page 4]
 
 Internet-Draft           EPP Registry Maintenance            August 2021
       
+      "update" types, the server includes the state of the maintenance
+      event after the create or update. For the "delete" type, the
       server includes the state of the event prior to the delete. The
       "courtesy" provides a reminder of an event and the "end" provides
       a notification of the end of the event without updating the
@@ -1027,13 +1027,13 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    is up to the individual working groups to use this information as
    they see fit".
 
-8.1.  GoDaddy Registry
-
-   Organization: GoDaddy Registry
-
 Sattler, et al.          Expires December 17, 2021             [Page 18]
 
 Internet-Draft           EPP Registry Maintenance            August 2021
+
+8.1.  GoDaddy Registry
+
+   Organization: GoDaddy Registry
 
    Name: GoDaddy Registry
 
