@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                         August 11, 2021
+                                                         August 13, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -1239,7 +1239,8 @@ A.18. Change from 15 to 16
 
 A.19. Change from 16 to 17
 
-   Editorial changes, added last call feedback.
+   Editorial changes, added last call feedback. Changed schema Uri
+   to urn:ietf:params:xml:schema:epp:maintenance-1.0.
 
 Acknowledgments
 
