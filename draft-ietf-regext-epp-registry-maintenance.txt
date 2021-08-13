@@ -956,7 +956,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
 
    Registration request for the maintenance schema:
 
-      URI: urn:ietf:params:xml:schema:maintenance-1.0
+      URI: urn:ietf:params:xml:schema:epp:maintenance-1.0
 
       Registrant Contact: IESG
 
