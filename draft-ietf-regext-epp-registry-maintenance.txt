@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                         August 13, 2021
+                                                         August 24, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -82,7 +82,7 @@ Table of Contents
      8.2.  TANGO Registry Services . . . . . . . . . . . . . . . . .  19
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  20
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  21
    Appendix A.  Change History . . . . . . . . . . . . . . . . . . .  21
      A.1.  Change from draft-sattler-epp-poll-maintenance-response to
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  21
@@ -94,7 +94,7 @@ Table of Contents
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  21
      A.7.  Change from 04 to 05  . . . . . . . . . . . . . . . . . .  21
      A.8.  Change from 05 to 06  . . . . . . . . . . . . . . . . . .  21
-     A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  21
+     A.9.  Change from 06 to 07  . . . . . . . . . . . . . . . . . .  22
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  22
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  22
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  22
@@ -110,7 +110,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
      A.17. Change from 14 to 15  . . . . . . . . . . . . . . . . . .  22
      A.18. Change from 15 to 16  . . . . . . . . . . . . . . . . . .  22
      A.19. Change from 16 to 17  . . . . . . . . . . . . . . . . . .  22
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  23
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
@@ -295,9 +295,9 @@ Internet-Draft           EPP Registry Maintenance            August 2021
          negotiated value is something other then the default value of
          "en" (English). The OPTIONAL "type" attribute MAY be present to
          identify the format of the description. It MUST either be
-         "plain" for plain text or "html" HTML text that is defined in
-         [W3C.REC-html5-20141028] and XML-escaped, with a default value
-         of "plain".
+         "plain" for plain text or "html" for HTML text that is defined
+         in [W3C.REC-html5-20141028] and XML-escaped, with a default
+         value of "plain".
 
       <maint:tlds>
          The OPTIONAL <maint:tlds> element contains one or more
@@ -446,7 +446,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    S:              <maint:connection>false</maint:connection>
    S:              <maint:implementation>false</maint:implementation>
    S:            </maint:intervention>
-   S:            <maint:crDate>2021-09-08T22:10:00Z</maint:crDate>
+   S:            <maint:crDate>2021-11-08T22:10:00Z</maint:crDate>
 
 Sattler, et al.          Expires December 17, 2021              [Page 8]
 
@@ -529,15 +529,15 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    S:              </maint:id>
    S:              <maint:start>2021-12-30T06:00:00Z</maint:start>
    S:              <maint:end>2021-12-30T07:00:00Z</maint:end>
-   S:              <maint:crDate>2021-09-08T22:10:00Z</maint:crDate>
+   S:              <maint:crDate>2021-11-08T22:10:00Z</maint:crDate>
    S:            </maint:listItem>
    S:            <maint:listItem>
    S:              <maint:id>91e9dabf-c4e9-4c19-a56c-78e3e89c2e2f
    S:              </maint:id>
    S:              <maint:start>2021-12-15T04:30:00Z</maint:start>
    S:              <maint:end>2021-12-15T05:30:00Z</maint:end>
-   S:              <maint:crDate>2021-09-08T22:11:00Z</maint:crDate>
-   S:              <maint:upDate>2021-10-17T15:00:00Z</maint:upDate>
+   S:              <maint:crDate>2021-11-08T22:11:00Z</maint:crDate>
+   S:              <maint:upDate>2021-11-17T15:00:00Z</maint:upDate>
    S:            </maint:listItem>
    S:          </maint:list>
    S:        </maint:infData>      
@@ -589,7 +589,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    S:      <msg>Command completed successfully; ack to dequeue</msg>
    S:    </result>
    S:  <msgQ count="1" id="12345">
-   S:    <qDate>2021-10-08T22:10:00Z</qDate>
+   S:    <qDate>2021-11-08T22:10:00Z</qDate>
    S:    <msg lang="en">Registry Maintenance Notification</msg>
    S:  </msgQ>
    S:  <resData>
@@ -621,7 +621,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
    S:          <maint:connection>false</maint:connection>
    S:          <maint:implementation>false</maint:implementation>
    S:        </maint:intervention>
-   S:        <maint:crDate>2021-10-08T22:10:00Z</maint:crDate>
+   S:        <maint:crDate>2021-11-08T22:10:00Z</maint:crDate>
    S:      </maint:item>
    S:    </maint:infData>
 
@@ -693,7 +693,7 @@ Internet-Draft           EPP Registry Maintenance            August 2021
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0"
-       xmlns="http://www.w3.org/2001/XMLSchema"
+       xmlns="https://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
 
      <!--
@@ -1091,6 +1091,9 @@ Internet-Draft           EPP Registry Maintenance            August 2021
               (XML) 1.1 (Second Edition)", World Wide Web Consortium
               Recommendation REC-xml11-20060816, 16 August 2006,
               <https://www.w3.org/TR/2006/REC-xml11-20060816>.
+              
+              Latest version available at
+              <https://www.w3.org/TR/xml11/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1132,15 +1135,15 @@ Internet-Draft           EPP Registry Maintenance            August 2021
               DOI 10.17487/RFC9038, May 2021,
               <https://www.rfc-editor.org/info/rfc9038>.
 
+Sattler, et al.          Expires December 17, 2021             [Page 20]
+
+Internet-Draft           EPP Registry Maintenance            August 2021
+
 9.2.  Informative References
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
               February 2015, <https://www.rfc-editor.org/info/rfc7451>.
-
-Sattler, et al.          Expires December 17, 2021             [Page 20]
-
-Internet-Draft           EPP Registry Maintenance            August 2021
 
 Appendix A.  Change History
 
@@ -1188,13 +1191,13 @@ A.8.  Change from 05 to 06
    Maintenance Item and List to Info Maintenance Item and List. Removed
    blackout in favor of full. Added GoDaddy Registry implementation.
 
-A.9.  Change from 06 to 07
-
-   Removed IP addresses for <maint:host>. Editorial changes.
-
 Sattler, et al.          Expires December 17, 2021             [Page 21]
 
 Internet-Draft           EPP Registry Maintenance            August 2021
+
+A.9.  Change from 06 to 07
+
+   Removed IP addresses for <maint:host>. Editorial changes.
 
 A.10.  Change from 07 to 08
 
@@ -1239,8 +1242,13 @@ A.18. Change from 15 to 16
 
 A.19. Change from 16 to 17
 
-   Editorial changes, added last call feedback. Changed schema Uri
-   to urn:ietf:params:xml:schema:epp:maintenance-1.0.
+   Editorial changes, added last call feedback. Changed schema URI
+   to urn:ietf:params:xml:schema:epp:maintenance-1.0. Changed dates in
+   examples to more recent dates.
+
+Sattler, et al.          Expires December 17, 2021             [Page 22]
+
+Internet-Draft           EPP Registry Maintenance            August 2021
 
 Acknowledgments
 
@@ -1248,10 +1256,6 @@ Acknowledgments
    and suggestions: James Gould, Michael Bauland, Patrick Mevzek,
    Quoc-Anh Pham, Raymond Zylstra, Christopher Martens, Anthony Eden,
    Neal McPherson, Craig Marchant, and Andreas Huber.
-
-Sattler, et al.          Expires December 17, 2021             [Page 22]
-
-Internet-Draft           EPP Registry Maintenance            August 2021
 
 Authors' Addresses
 
