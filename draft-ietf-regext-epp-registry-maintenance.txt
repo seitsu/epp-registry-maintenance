@@ -702,7 +702,6 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
-
      <schema targetNamespace="urn:ietf:params:xml:ns:epp:
        maintenance-1.0"
        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
@@ -710,7 +709,6 @@ Internet-Draft           EPP Registry Maintenance         September 2021
        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0"
        xmlns="https://www.w3.org/2001/XMLSchema"
        elementFormDefault="qualified">
-
      <!--
      Import common element types
      -->
