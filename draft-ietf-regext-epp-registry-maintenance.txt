@@ -152,7 +152,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
 
-   In examples, "C:" represents lines sent by a protocol client and
+   In examples, "C:" represents lines sent by a protocol client, and
    "S:" represents lines returned by a protocol server. Indentation and
    white space in examples are provided only to illustrate element
    relationships and are not a required feature of this protocol.
@@ -235,7 +235,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
       "update" types, the server includes the state of the maintenance
       event after the create or update. For the "delete" type, the
       server includes the state of the event prior to the delete. The
-      "courtesy" provides a reminder of an event and the "end" provides
+      "courtesy" provides a reminder of an event, and the "end" provides
       a notification of the end of the event without updating the
       maintenance object and includes the latest state of the event.
       This element MUST be present only for poll messages.
@@ -291,7 +291,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
       "planned" or "emergency".
 
    <maint:detail>
-      The OPTIONAL URI to detailed maintenance event description,
+      The OPTIONAL URI to the detailed maintenance event description,
       formatted according to [RFC8820].
 
    <maint:description>
@@ -571,16 +571,16 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    For the Registry Maintenance Notification, there are five types of
    poll messages, defined by the <maint:pollType> element in Section
    3.3. A poll message applies when a maintenance event is created,
-   updated or deleted. A courtesy poll message can be sent as a reminder
+   updated, or deleted. A courtesy poll message can be sent as a
 
 Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
-   of an impending maintenance event. An end poll message can be sent
-   when the maintenance event is completed. In the case of a Registry
-   Maintenance specific message, a <maint:infData> element will be
-   included within the <resData> element of the standard <poll>
+   reminder of an impending maintenance event. An end poll message can be
+   sent when the maintenance event is completed. In the case of a
+   Registry Maintenance specific message, a <maint:infData> element will
+   be included within the <resData> element of the standard <poll>
    response. The <maint:infData> element contains the <maint:item>
    element defined in Section 3.3.
 
