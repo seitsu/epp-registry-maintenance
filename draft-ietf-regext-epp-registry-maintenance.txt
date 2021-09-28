@@ -161,12 +161,11 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    
 2.  Migrating to Newer Versions of This Extension
 
-   Servers that implement this extension SHOULD provide a way for
-   
 Sattler, et al.          Expires December 17, 2021              [Page 3]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
-   
+
+   Servers that implement this extension SHOULD provide a way for
    clients to progressively update their implementations when a new
    version of the extension is deployed.
    
@@ -220,12 +219,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
       default value of "en" (English).
 
    <maint:type>
-      Zero or more OPTIONAL types of the maintenance event that has the
 
 Sattler, et al.          Expires December 17, 2021              [Page 4]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+      Zero or more OPTIONAL types of the maintenance event that has the
       possible set of values defined by server policy, such as
       "Routine Maintenance", "Software Update", "Software Upgrade", or
       "Extended Outage".
@@ -279,12 +278,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
       The date and time of the start of the maintenance event.
 
    <maint:end>
-      The date and time of the end of the maintenance event. The
 
 Sattler, et al.          Expires December 17, 2021              [Page 5]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+      The date and time of the end of the maintenance event. The
       <maint:end> element MUST be equal to or greater than the
       <maint:start> element.
       
@@ -338,11 +337,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
          the <main:description> element above.
 
    <maint:crDate>
-      The date and time of the maintenance object creation.
 
 Sattler, et al.          Expires December 17, 2021              [Page 6]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
+
+      The date and time of the maintenance object creation.
 
    <maint:upDate>
       The OPTIONAL date and time of the most recent maintenance object
@@ -396,13 +396,13 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    Example to retrieve a specific maintenance item in an <info> command.
 
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-   C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
-   C:  <command>
 
 Sattler, et al.          Expires December 17, 2021              [Page 7]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+   C:<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   C:  <command>
    C:    <info>
    C:      <maint:info
    C:        xmlns:maint="urn:ietf:params:xml:ns:epp:maintenance-1.0">
@@ -455,13 +455,13 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    S:            </maint:description>
    S:            <maint:tlds>
    S:              <maint:tld>example</maint:tld>
-   S:              <maint:tld>test</maint:tld>
-   S:            </maint:tlds>
 
 Sattler, et al.          Expires December 17, 2021              [Page 8]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+   S:              <maint:tld>test</maint:tld>
+   S:            </maint:tlds>
    S:            <maint:intervention>
    S:              <maint:connection>false</maint:connection>
    S:              <maint:implementation>false</maint:implementation>
@@ -514,11 +514,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
          The <maint:start> element defined in Section 3.3.
 
       <maint:end>
-         The <maint:end> element defined in Section 3.3.
 
 Sattler, et al.          Expires December 17, 2021              [Page 9]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
+
+         The <maint:end> element defined in Section 3.3.
 
       <maint:crDate>
          The <maint:crDate> element defined in Section 3.3.
@@ -572,13 +573,13 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    For the Registry Maintenance Notification, there are five types of
    poll messages, defined by the <maint:pollType> element in Section
-   3.3. A poll message applies when a maintenance event is created,
-   updated, or deleted. A courtesy poll message can be sent as a
 
 Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+   3.3. A poll message applies when a maintenance event is created,
+   updated, or deleted. A courtesy poll message can be sent as a
    reminder of an impending maintenance event. An end poll message can
    be sent when the maintenance event is completed. In the case of a
    Registry Maintenance specific message, a <maint:infData> element will
@@ -631,13 +632,13 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    S:        </maint:detail>
    S:        <maint:tlds>
    S:          <maint:tld>example</maint:tld>
-   S:          <maint:tld>test</maint:tld>
-   S:        </maint:tlds>
 
 Sattler, et al.          Expires December 17, 2021             [Page 11]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+   S:          <maint:tld>test</maint:tld>
+   S:        </maint:tlds>
    S:        <maint:intervention>
    S:          <maint:connection>false</maint:connection>
    S:          <maint:implementation>false</maint:implementation>
@@ -690,13 +691,13 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    The EPP Registry Maintenance schema is presented here.
    The formal syntax presented here is a complete schema representation
-   of the object mapping suitable for automated validation of EPP XML
-   instances. The  <CODE BEGINS> and <CODE ENDS> tags are not part of
 
 Sattler, et al.          Expires December 17, 2021             [Page 12]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+   of the object mapping suitable for automated validation of EPP XML
+   instances. The  <CODE BEGINS> and <CODE ENDS> tags are not part of
    the schema; they are used to note the beginning and end of the
    schema for URI registration purposes.
 
