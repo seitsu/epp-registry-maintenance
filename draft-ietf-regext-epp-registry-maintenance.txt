@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                      September 24, 2021
+                                                      September 28, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -151,6 +151,8 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    implementations MUST NOT depend on it and instead employ a proper
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
+   
+   "ote" is an abbreviation for "Operational Test and Evaluation".
 
    In examples, "C:" represents lines sent by a protocol client, and
    "S:" represents lines returned by a protocol server. Indentation and
@@ -160,12 +162,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 2.  Migrating to Newer Versions of This Extension
 
    Servers that implement this extension SHOULD provide a way for
-   clients to progressively update their implementations when a new
-
+   
 Sattler, et al.          Expires December 17, 2021              [Page 3]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
- 
+   
+   clients to progressively update their implementations when a new
    version of the extension is deployed.
    
    Servers SHOULD (for a temporary migration period up to server policy)
@@ -219,12 +221,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    <maint:type>
       Zero or more OPTIONAL types of the maintenance event that has the
-      possible set of values defined by server policy, such as
 
 Sattler, et al.          Expires December 17, 2021              [Page 4]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+      possible set of values defined by server policy, such as
       "Routine Maintenance", "Software Update", "Software Upgrade", or
       "Extended Outage".
 
@@ -258,10 +260,10 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
          <maint:impact>
             The impact level; the values MUST either be "full",
-            "partial", or "none". If access is intermittently
-            unavailable, it is "partial". If access is completely
-            unavailable, it is "full". If access is not affected, it is
-            "none".
+            "partial", or "none". If access is expected to be
+            intermittently unavailable, it is "partial". If access is
+            expected to be completely unavailable, it is "full". If
+            access is not affected, it is "none".
 
    <maint:environment>
       The type of the affected system; the attribute "type" is REQUIRED
@@ -278,12 +280,12 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    <maint:end>
       The date and time of the end of the maintenance event. The
-      <maint:end> element MUST be equal to or greater than the
 
 Sattler, et al.          Expires December 17, 2021              [Page 5]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
+      <maint:end> element MUST be equal to or greater than the
       <maint:start> element.
       
    <maint:reason>
@@ -577,8 +579,8 @@ Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance         September 2021
 
-   reminder of an impending maintenance event. An end poll message can be
-   sent when the maintenance event is completed. In the case of a
+   reminder of an impending maintenance event. An end poll message can
+   be sent when the maintenance event is completed. In the case of a
    Registry Maintenance specific message, a <maint:infData> element will
    be included within the <resData> element of the standard <poll>
    response. The <maint:infData> element contains the <maint:item>
