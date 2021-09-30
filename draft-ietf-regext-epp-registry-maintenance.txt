@@ -141,7 +141,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   XML [W3C.REC-xml11-20060816] is case sensitive. Unless stated
+   XML [W3C.REC-xml11-20060816] is case-sensitive. Unless stated
    otherwise, XML specification and examples provided in this document
    MUST be interpreted in the character case presented in order to
    develop a conforming implementation.
