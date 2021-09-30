@@ -3,7 +3,7 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                      September 28, 2021
+                                                      September 30, 2021
 
                Registry Maintenance Notifications for the
                  Extensible Provisioning Protocol (EPP)
@@ -300,7 +300,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
       event without having to create and traverse an external resource
       defined by the <maint:detail> element. The OPTIONAL "lang"
       attribute MAY be present to identify the language if the
-      negotiated value is something other then the default value of "en"
+      negotiated value is something other than the default value of "en"
       (English). The OPTIONAL "type" attribute MAY be present to
       identify the format of the description. It MUST either be "plain"
       for plain text or "html" for HTML text that is defined in
