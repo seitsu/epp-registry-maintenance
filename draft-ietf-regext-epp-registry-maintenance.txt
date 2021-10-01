@@ -167,7 +167,9 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    Servers that implement this extension SHOULD provide a way for
    clients to progressively update their implementations when a new
-   version of the extension is deployed.
+   version of the extension is deployed.  A newer version of the
+   extension is expected to use an XML namespace with a higher version
+   number than the prior versions.
    
    Servers SHOULD (for a temporary migration period up to server policy)
    provide support for older versions of the extension in parallel to
