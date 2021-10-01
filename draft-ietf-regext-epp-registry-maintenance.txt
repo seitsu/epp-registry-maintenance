@@ -148,7 +148,7 @@ Internet-Draft           EPP Registry Maintenance         September 2021
 
    "maint" is used as an abbreviation for "urn:ietf:params:xml:ns:epp:
    maintenance-1.0". The XML namespace prefix "maint" is used, but
-   implementations MUST NOT depend on it and instead employ a proper
+   implementations MUST NOT depend on it. Instead, they are to employ a proper
    namespace-aware XML parser and serializer to interpret and output
    the XML documents.
    
