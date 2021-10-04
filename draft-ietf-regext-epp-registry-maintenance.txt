@@ -257,11 +257,11 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
          <maint:name>
             The name of the affected system, such as "EPP", "WHOIS",
-            "DNS", "Portal", etc.
+            "DNS", "Portal", "RDAP", etc.
 
          <maint:host>
             The OPTIONAL affected maintained system's hostname, which
-            SHALL be an A-label according to [RFC5891].
+            SHALL be in A-label form, according to [RFC5891].
 
          <maint:impact>
             The impact level; the values MUST either be "full",
@@ -319,7 +319,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
       <maint:tld>
          The affected top-level domain or registry zone, which SHALL be
-         an A-label according to [RFC5891].
+         in A-label form, according to [RFC5891].
 
    <maint:intervention>
       The OPTIONAL <maint:intervention> element contains the following
