@@ -70,7 +70,7 @@ Table of Contents
        4.2.2.  EPP <delete> Command  . . . . . . . . . . . . . . . .  12
        4.2.3.  EPP <renew> Command . . . . . . . . . . . . . . . . .  12
        4.2.4.  EPP <transfer> Command  . . . . . . . . . . . . . . .  12
-       4.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  12
+       4.2.5.  EPP <update> Command  . . . . . . . . . . . . . . . .  13
    5.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  13
      5.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  13
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
@@ -331,20 +331,22 @@ Internet-Draft           EPP Registry Maintenance           October 2021
          reconnect. The attribute should only be used as a flag to
          indicate connections will be affected. Servers SHOULD include a
          description of how the connections are affected in the
-         <main:description> element above.
+         <maint:description> element or use the <maint:detail> element
+         above.
 
       <maint:implementation>
          The value SHALL be boolean and indicates if a client needs to
-         perform an action that is implementation-related, such as a
-         code change. The attribute should only be used as a flag to
 
 Sattler, et al.          Expires December 17, 2021              [Page 6]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+         perform an action that is implementation-related, such as a
+         code change. The attribute should only be used as a flag to
          indicate implementation will be affected. Servers SHOULD
          include a description of how the implementation is affected in
-         the <main:description> element above.
+         the <maint:description> element or use the <maint:detail>
+         element above.
          
    <maint:crDate>
       The date and time of the maintenance object creation.
@@ -394,13 +396,13 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
    The information regarding a specific maintenance item can be
    retrieved by using the <info> command with the <maint:info> element
-   and the <maint:id> child element, defined in Section 3.3. If the
-   maintenance identifier does not exist, the server MUST return an EPP
    
 Sattler, et al.          Expires December 17, 2021              [Page 7]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+   and the <maint:id> child element, defined in Section 3.3. If the
+   maintenance identifier does not exist, the server MUST return an EPP
    error result code of 2303 [RFC5730].
 
    Example to retrieve a specific maintenance item in an <info> command.
@@ -453,13 +455,13 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    S:            <maint:reason>planned</maint:reason>
    S:            <maint:detail>
    S:              https://www.registry.example/notice?123
-   S:            </maint:detail>
-   S:            <maint:description lang="en">free-text
 
 Sattler, et al.          Expires December 17, 2021              [Page 8]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+   S:            </maint:detail>
+   S:            <maint:description lang="en">free-text
    S:            </maint:description>
    S:            <maint:description lang="de">Freitext
    S:            </maint:description>
@@ -512,12 +514,12 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    <maint:listItem> child elements. The <maint:listItem> element
    contains the following child elements:
 
-      <maint:id>
-         The <maint:id> element defined in Section 3.3.
-
 Sattler, et al.          Expires December 17, 2021              [Page 9]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
+
+      <maint:id>
+         The <maint:id> element defined in Section 3.3.
 
       <maint:start>
          The <maint:start> element defined in Section 3.3.
@@ -571,13 +573,12 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
 4.1.4.  EPP <poll> Command
 
-   The EPP <poll> command and response is defined in Section 2.9.2.3 of
-   [RFC5730]. The Registry Maintenance Notification is included in the
-
 Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+   The EPP <poll> command and response is defined in Section 2.9.2.3 of
+   [RFC5730]. The Registry Maintenance Notification is included in the
    EPP <poll> response of [RFC5730].
    
    For the Registry Maintenance Notification, there are five types of
@@ -630,13 +631,13 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    S:        </maint:systems>
    S:        <maint:environment type="production"/>
    S:        <maint:start>2021-12-30T06:00:00Z</maint:start>
-   S:        <maint:end>2021-12-30T07:00:00Z</maint:end>
-   S:        <maint:reason>planned</maint:reason>
 
 Sattler, et al.          Expires December 17, 2021             [Page 11]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+   S:        <maint:end>2021-12-30T07:00:00Z</maint:end>
+   S:        <maint:reason>planned</maint:reason>
    S:        <maint:detail>
    S:          https://www.registry.example/notice?123
    S:        </maint:detail>
@@ -687,14 +688,14 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    Transfer semantics do not apply to maintenance objects, so there is
    no mapping defined for the EPP <transfer> command.
 
+Sattler, et al.          Expires December 17, 2021             [Page 12]
+
+Internet-Draft           EPP Registry Maintenance           October 2021
+
 4.2.5.  EPP <update> Command
 
    Update semantics do not apply to maintenance objects, so there is no
    mapping defined for the EPP <update> command.
-
-Sattler, et al.          Expires December 17, 2021             [Page 12]
-
-Internet-Draft           EPP Registry Maintenance           October 2021
 
 5.  Formal Syntax
 
@@ -746,15 +747,15 @@ Internet-Draft           EPP Registry Maintenance           October 2021
      <!--
      Human-readable text may describe the maintenance
      -->
-     <complexType name="idType">
-       <simpleContent>
-         <extension base="token">
-           <attribute name="name" type="token"/>
 
 Sattler, et al.          Expires December 17, 2021             [Page 13]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+     <complexType name="idType">
+       <simpleContent>
+         <extension base="token">
+           <attribute name="name" type="token"/>
            <attribute name="lang" type="language" default="en"/>
          </extension>
        </simpleContent>
@@ -806,13 +807,13 @@ Internet-Draft           EPP Registry Maintenance           October 2021
          <element name="environment" type="maint:envType"/>
          <element name="start" type="dateTime"/>
          <element name="end" type="dateTime"/>
-         <element name="reason" type="maint:reasonEnum"/>
-         <element name="detail" type="anyURI" minOccurs="0"/>
 
 Sattler, et al.          Expires December 17, 2021             [Page 14]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
+         <element name="reason" type="maint:reasonEnum"/>
+         <element name="detail" type="anyURI" minOccurs="0"/>
          <element name="description" type="maint:descriptionType"
           minOccurs="0" maxOccurs="unbounded"/>
          <element name="tlds" type="maint:tldsType" minOccurs="0"/>
