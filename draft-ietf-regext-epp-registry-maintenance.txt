@@ -298,7 +298,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
    <maint:detail>
       The OPTIONAL URI to the detailed maintenance event description,
-      formatted according to [RFC8820].
+      formatted according to [RFC3986].
 
    <maint:description>
       Zero or more OPTIONAL free-form descriptions of the maintenance
@@ -1125,6 +1125,11 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
               Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
               <https://www.rfc-editor.org/info/rfc3339>.
+              
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter,
+              "Uniform Resource Identifier (URI): Generic Syntax",
+              STD 66, RFC 3986, DOI 10.17487/RFC3986, January 2005,
+              <https://www.rfc-editor.org/info/rfc3986>.
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
@@ -1143,10 +1148,6 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
-
-   [RFC8820]  Nottingham, M., "URI Design and Ownership", BCP 190, RFC
-              8820, DOI 10.17487/RFC8820, June 2020,
-              <https://www.rfc-editor.org/info/rfc8820>.
 
    [RFC9038]  Gould, J. and M. Casanova, "Extensible Provisioning
               Protocol (EPP) Unhandled Namespaces", RFC 9038,
