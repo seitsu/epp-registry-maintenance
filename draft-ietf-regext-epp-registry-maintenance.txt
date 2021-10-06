@@ -289,8 +289,8 @@ Internet-Draft           EPP Registry Maintenance           October 2021
       
    <maint:end>
       The date and time of the end of the maintenance event. The
-      <maint:end> element MUST be equal to or greater than the
-      <maint:start> element.
+      <maint:end> element MUST be greater than the <maint:start>
+      element.
       
    <maint:reason>
       The reason behind the maintenance event; the values MUST either be
