@@ -449,7 +449,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    S:            </maint:systems>
    S:            <maint:environment type="production"/>
    S:            <maint:start>2021-12-30T06:00:00Z</maint:start>
-   S:            <maint:end>2021-12-30T14:25:57Z</maint:end>
+   S:            <maint:end>2021-12-30T07:00:00Z</maint:end>
    S:            <maint:reason>planned</maint:reason>
    S:            <maint:detail>
    S:              https://www.registry.example/notice?123
@@ -586,10 +586,11 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    created, updated, or deleted. A courtesy poll message can be sent as
    a reminder of an impending maintenance event. An end poll message can
    be sent when the maintenance event is completed. In the case of a
-   Registry Maintenance specific message, a <maint:infData> element will
-   be included within the <resData> element of the standard <poll>
-   response. The <maint:infData> element contains the <maint:item>
-   element defined in Section 3.3.
+   Registry Maintenance specific message, a <maint:infData> element,
+   that identifies the maintenance namespace, will be included within
+   the <resData> element of the standard <poll> response. The#
+   <maint:infData> element contains the <maint:item> element defined in
+   Section 3.3.
 
    Example <poll> command:
 
@@ -629,7 +630,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    S:        </maint:systems>
    S:        <maint:environment type="production"/>
    S:        <maint:start>2021-12-30T06:00:00Z</maint:start>
-   S:        <maint:end>2021-12-30T14:25:57Z</maint:end>
+   S:        <maint:end>2021-12-30T07:00:00Z</maint:end>
    S:        <maint:reason>planned</maint:reason>
 
 Sattler, et al.          Expires December 17, 2021             [Page 11]
@@ -1125,10 +1126,6 @@ Internet-Draft           EPP Registry Maintenance           October 2021
               Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
               <https://www.rfc-editor.org/info/rfc3339>.
 
-   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
-              DOI 10.17487/RFC3688, January 2004,
-              <https://www.rfc-editor.org/info/rfc3688>.
-
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
@@ -1151,16 +1148,20 @@ Internet-Draft           EPP Registry Maintenance           October 2021
               8820, DOI 10.17487/RFC8820, June 2020,
               <https://www.rfc-editor.org/info/rfc8820>.
 
-Sattler, et al.          Expires December 17, 2021             [Page 20]
-
-Internet-Draft           EPP Registry Maintenance           October 2021
-
    [RFC9038]  Gould, J. and M. Casanova, "Extensible Provisioning
               Protocol (EPP) Unhandled Namespaces", RFC 9038,
               DOI 10.17487/RFC9038, May 2021,
               <https://www.rfc-editor.org/info/rfc9038>.
 
+Sattler, et al.          Expires December 17, 2021             [Page 20]
+
+Internet-Draft           EPP Registry Maintenance           October 2021
+
 9.2.  Informative References
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/info/rfc3688>.
 
    [RFC7451]  Hollenbeck, S., "Extension Registry for the Extensible
               Provisioning Protocol", RFC 7451, DOI 10.17487/RFC7451,
