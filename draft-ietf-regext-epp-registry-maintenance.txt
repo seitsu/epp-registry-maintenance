@@ -577,7 +577,7 @@ Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
-   The EPP <poll> command and response is defined in Section 2.9.2.3 of
+   The EPP <poll> command and response are defined in Section 2.9.2.3 of
    [RFC5730]. The Registry Maintenance Notification is included in the
    EPP <poll> response of [RFC5730].
    
