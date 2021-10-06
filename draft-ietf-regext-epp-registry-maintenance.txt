@@ -1016,9 +1016,9 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    Additionally, a server MUST only provide maintenance information for
    clients that are authorized. If a client queries for a maintenance
    identifier, per Section 4.1.3.1 "Info Maintenance Item", that it is
-   not authorized to access, the server MUST return an EPP error result
-   code of 2201 or 2303 [RFC5730]. The list of top-level domains or
-   registry zones returned in the "Info Maintenance Item" response
+   not authorized to access, the server SHOULD return an EPP error
+   result code of 2201 or 2303 [RFC5730]. The list of top-level domains
+   or registry zones returned in the "Info Maintenance Item" response
    SHOULD be filtered based on the top-level domains or registry zones
    the client is authorized for. Authorization of poll messages is done
    at the time of poll message insertion and not at the time of poll
