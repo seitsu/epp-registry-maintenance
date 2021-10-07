@@ -989,8 +989,8 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    not exist") [RFC5730]. The list of top-level domains or registry
    zones returned in the "Info Maintenance Item" response SHOULD be
    filtered based on the top-level domains or registry zones for which
-   the client is authorized for. Authorization of poll messages is done
-   at the time of poll message insertion and not at the time of poll
+   the client is authorized. Authorization of poll messages is done at
+   the time of poll message insertion and not at the time of poll
    message consumption.
 
 8.  Implementation Status
