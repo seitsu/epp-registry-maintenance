@@ -81,7 +81,7 @@ Table of Contents
            draft-sattler-epp-registry-maintenance .  . . . . . . . .  20
      A.2.  Change from draft-sattler-epp-registry-maintenance to
            draft-ietf-regext-epp-registry-maintenance  . . . . . . .  20
-     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  20
+     A.3.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  21
      A.4.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  21
      A.5.  Change from 02 to 03  . . . . . . . . . . . . . . . . . .  21
      A.6.  Change from 03 to 04  . . . . . . . . . . . . . . . . . .  21
@@ -91,8 +91,8 @@ Table of Contents
      A.10. Change from 07 to 08  . . . . . . . . . . . . . . . . . .  21
      A.11. Change from 08 to 09  . . . . . . . . . . . . . . . . . .  21
      A.12. Change from 09 to 10  . . . . . . . . . . . . . . . . . .  21
-     A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  21
-     A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  21
+     A.13. Change from 10 to 11  . . . . . . . . . . . . . . . . . .  22
+     A.14. Change from 11 to 12  . . . . . . . . . . . . . . . . . .  22
      A.15. Change from 12 to 13  . . . . . . . . . . . . . . . . . .  22
      A.16. Change from 13 to 14  . . . . . . . . . . . . . . . . . .  22
      A.17. Change from 14 to 15  . . . . . . . . . . . . . . . . . .  22
@@ -1032,11 +1032,11 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    Coverage: All aspects of the protocol according to the draft version
    2 are implemented with further updates to come.
 
-   Licensing: Proprietary
-
 Sattler, et al.          Expires December 17, 2021             [Page 18]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
+
+   Licensing: Proprietary
 
    Contact: quoc@registry.godaddy
 
@@ -1145,15 +1145,15 @@ A.2.  Change from draft-sattler-epp-registry-maintenance to
 
    Adopted by the REGEXT working group.
 
+Sattler, et al.          Expires December 17, 2021             [Page 20]
+
+Internet-Draft           EPP Registry Maintenance           October 2021
+
 A.3.  Change from 00 to 01
 
    Clarified maint:description and maint:environment. Changed
    maint:description from complexType to simpleType. Fixed typo.
    Added acknowledgment.
-
-Sattler, et al.          Expires December 17, 2021             [Page 20]
-
-Internet-Draft           EPP Registry Maintenance           October 2021
 
 A.4.  Change from 01 to 02
 
@@ -1203,6 +1203,10 @@ A.12.  Change from 09 to 10
    Editorial changes. Renamed "msg" to "name". Added "courtesy" and
    "end" to pollType.
 
+Sattler, et al.          Expires December 17, 2021             [Page 21]
+
+Internet-Draft           EPP Registry Maintenance           October 2021
+
 A.13.  Change from 10 to 11
 
    Editorial changes. Added mime type to description.
@@ -1210,10 +1214,6 @@ A.13.  Change from 10 to 11
 A.14.  Change from 11 to 12
 
    Editorial changes. Changed XML namespace from 0.2 to 0.3.
-
-Sattler, et al.          Expires December 17, 2021             [Page 21]
-
-Internet-Draft           EPP Registry Maintenance           October 2021
 
 A.15.  Change from 12 to 13
 
