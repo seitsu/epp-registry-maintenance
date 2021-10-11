@@ -3,17 +3,17 @@ Internet-Draft
 Intended status: Standards Track                               R. Carney
 Expires: December 17, 2021                                     J. Kolker
                                                             GoDaddy Inc.
-                                                         October 8, 2021
+                                                        October 11, 2021
 
-               Registry Maintenance Notifications for the
-                 Extensible Provisioning Protocol (EPP)
-              draft-ietf-regext-epp-registry-maintenance-18
+                Registry Maintenance Notification for the
+                  Extensible Provisioning Protocol (EPP)
+              draft-ietf-regext-epp-registry-maintenance-19
 
 Abstract
    This document describes an Extensible Provisioning Protocol (EPP)
    extension called "Registry Maintenance Notification", used by EPP
-   servers to notify EPP clients and allow EPP clients to query EPP
-   servers on maintenance events.
+   servers to notify EPP clients and allow EPP clients query EPP servers
+   regarding maintenance events.
 
 Status of This Memo
    This Internet-Draft is submitted in full conformance with the
@@ -65,7 +65,7 @@ Table of Contents
        4.1.2.  EPP <poll> Command  . . . . . . . . . . . . . . . . .  10
      4.2.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  12
    5.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  12
-     5.1.  Registry Maintenance EPP Mapping Schema . . . . . . . . .  12
+     5.1.  Registry Maintenance Notification EPP Mapping Schema  . .  12
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
      6.1.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  17
      6.2.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  17
@@ -99,6 +99,7 @@ Table of Contents
      A.18. Change from 15 to 16  . . . . . . . . . . . . . . . . . .  22
      A.19. Change from 16 to 17  . . . . . . . . . . . . . . . . . .  22
      A.20. Change from 17 to 18  . . . . . . . . . . . . . . . . . .  22
+     A.21. Change from 18 to 19  . . . . . . . . . . . . . . . . . .  22
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
      
@@ -114,21 +115,21 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    and registrars.
 
    Registries routinely update systems to ensure a higher quality of
-   service, implement new services, or upgrade protocols to the newest
+   service, implement new services, or upgrade protocols to the latest
    standards.  These updates are pushed to various registry environments
-   during time frames that are communicated to registrars as
-   "maintenance events". This may require making services unavailable
-   for some limited time while the upgrade happens.  Registries usually
-   inform registrars for maintenance events in various formats, none of
-   which are standardized between registries.
+   during time frames communicated to registrars as "maintenance
+   events". Maintenance events may require making services unavailable
+   for some limited time while the upgrade happens. Registries usually
+   inform registrars about maintenance events in various formats, none
+   of which are standardized between registries.
    
-   The DNS namespace expansion has led to a number of additional
-   registries that registrars must interact with, each adding additional
-   maintenance events and even more formats. It is now desirable to
-   provide an efficient approach to notify registrars.
+   The DNS namespace expansion has led to many additional registries
+   that registrars must interact with, adding more maintenance events
+   and formats. It is now desirable to provide an efficient approach to
+   notify registrars.
    
    This document describes an extension mapping for version 1.0 of the
-   EPP, to provide a mechanism by which EPP servers may notify EPP
+   EPP to provide a mechanism by which EPP servers may notify EPP
    clients of and allow EPP clients to query EPP servers on upcoming
    maintenance events.
 
@@ -237,8 +238,8 @@ Internet-Draft           EPP Registry Maintenance           October 2021
       Notification poll message; values MUST either be "create",
       "update", "delete", "courtesy", or "end". For the "create" and
       "update" types, the server includes the state of the maintenance
-      event after the create or update. For the "delete" type, the
-      server includes the state of the event prior to the delete. The
+      event after the creation or update. For the "delete" type, the
+      server includes the state of the event before the delete. The
       "courtesy" provides a reminder of an event, and the "end" provides
       a notification of the end of the event without updating the
       maintenance object and includes the latest state of the event.
@@ -299,9 +300,9 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
    <maint:description>
       Zero or more OPTIONAL free-form descriptions of the maintenance
-      event, usable without having to create and traverse an external
-      resource as defined by the <maint:detail> element. The OPTIONAL
-      "lang" attribute MAY be present to identify the language if the
+      event, usable without creating and traversing an external resource
+      as defined by the <maint:detail> element. The OPTIONAL "lang"
+      attribute MAY be present to identify the language if the
       negotiated value is something other than the default value of "en"
       (English). The OPTIONAL "type" attribute MAY be present to
       identify the format of the description. It MUST either be "plain"
@@ -324,26 +325,25 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
       <maint:connection>
          The value SHALL be boolean and indicates if a client needs to
-         perform an action that is connection-related, such as a
-         reconnect. The attribute should only be used as a flag to
-         indicate connections will be affected. Servers SHOULD include a
-         description of how the connections are affected in the
-         <maint:description> element or use the <maint:detail> element
-         above.
+         perform a connection-related action, such as a reconnect. The
+         attribute should only be used as a flag to indicate connections
+         will be affected. Servers SHOULD include a description of how
+         the connections are affected in the <maint:description> element
+         or use the <maint:detail> element above.
 
       <maint:implementation>
          The value SHALL be boolean and indicates if a client needs to
-         perform an action that is implementation-related, such as a
+         perform an implementation-related action, such as a code
 
 Sattler, et al.          Expires December 17, 2021              [Page 6]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
 
-         code change. The attribute should only be used as a flag to
-         indicate implementation will be affected. Servers SHOULD
-         include a description of how the implementation is affected in
-         the <maint:description> element or use the <maint:detail>
-         element above.
+         change. The attribute should only be used as a flag to indicate
+         implementation will be affected. Servers SHOULD include a
+         description of how the implementation is affected in the
+         <maint:description> element or use the <maint:detail> element
+         above.
          
    <maint:crDate>
       The date and time of the maintenance object creation.
@@ -570,14 +570,14 @@ Sattler, et al.          Expires December 17, 2021             [Page 10]
 
 Internet-Draft           EPP Registry Maintenance           October 2021
    
-   For the Registry Maintenance Notification, there are five types of
-   poll messages, defined by the <maint:pollType> element in Section
-   3.3. A poll message might be generated when a maintenance event is
+   There are five types of poll messages for the Registry Maintenance
+   Notification, defined by the <maint:pollType> element in Section 3.3.
+   A poll message might be generated when a maintenance event is
    created, updated, or deleted. A courtesy poll message can be sent as
-   a reminder of an impending maintenance event. An end poll message can
+   a reminder of an upcoming maintenance event. An end poll message can
    be sent when the maintenance event is completed. In the case of a
    Registry Maintenance specific message, a <maint:infData> element,
-   that identifies the maintenance namespace, will be included within
+   that identifies the maintenance namespace will be included within
    the <resData> element of the standard <poll> response. The
    <maint:infData> element contains the <maint:item> element defined in
    Section 3.3.
@@ -662,7 +662,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
 5.  Formal Syntax
 
-   The EPP Registry Maintenance schema is presented here.
+   The EPP Registry Maintenance Notification schema is presented here.
    
    The formal syntax presented here is a complete schema representation
    of the object mapping suitable for automated validation of EPP XML
@@ -670,7 +670,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    the schema; they are used to note the beginning and end of the
    schema for URI registration purposes.
 
-5.1.  Registry Maintenance EPP Mapping Schema
+5.1.  Registry Maintenance Notification EPP Mapping Schema
 
    <CODE BEGINS>
    <?xml version="1.0" encoding="UTF-8"?>
@@ -694,7 +694,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
      <annotation>
        <documentation>
          Extensible Provisioning Protocol v1.0
-         Registry Maintenance Mapping Schema.
+         Registry Maintenance Notification Mapping Schema.
        </documentation>
      </annotation>
      <!--
@@ -957,7 +957,7 @@ Internet-Draft           EPP Registry Maintenance           October 2021
    The following registration of the EPP Extension Registry, described
    in [RFC7451], is requested:
 
-   Name of Extension: Registry Maintenance Notifications for the
+   Name of Extension: Registry Maintenance Notification for the
    Extensible Provisioning Protocol (EPP)
 
    Document status: Standards Track
@@ -982,16 +982,16 @@ Internet-Draft           EPP Registry Maintenance           October 2021
 
    The security considerations of [RFC5730] apply in this document.
    Additionally, a server MUST only provide maintenance information to
-   clients that are authorized. If a client queries for a maintenance
-   identifier, per Section 4.1.1.1 "Info Maintenance Item", that it is
-   not authorized to access, the server SHOULD return an EPP error
-   result code of 2201 ("Authorization error") or 2303 ("Object does
-   not exist") [RFC5730]. The list of top-level domains or registry
-   zones returned in the "Info Maintenance Item" response SHOULD be
-   filtered based on the top-level domains or registry zones for which
-   the client is authorized. Authorization of poll messages is done at
-   the time of poll message insertion and not at the time of poll
-   message consumption.
+   clients that are authorized. Suppose a client queries a maintenance
+   identifier that it is not authorized to access per Section 4.1.1.1
+   "Info Maintenance Item". In that case, the server SHOULD return an
+   EPP error result code of 2201 ("Authorization error") or 2303
+   ("Object does not exist") [RFC5730]. The list of top-level domains or
+   registry zones returned in the "Info Maintenance Item" response
+   SHOULD be filtered based on the top-level domains or registry zones
+   for which the client is authorized. Authorization of poll messages is
+   done at the time of poll message insertion and not at the time of
+   poll message consumption.
 
 8.  Implementation Status
 
@@ -1239,6 +1239,10 @@ A.19. Change from 16 to 17
    examples to more recent dates.
 
 A.20. Change from 17 to 18
+
+   Editorial changes.
+   
+A.21. Change from 18 to 19
 
    Editorial changes.
 
