@@ -12,8 +12,8 @@ Expires: December 17, 2021                                     J. Kolker
 Abstract
    This document describes an Extensible Provisioning Protocol (EPP)
    extension called "Registry Maintenance Notification", used by EPP
-   servers to notify EPP clients and allow EPP clients query EPP servers
-   regarding maintenance events.
+   servers to notify EPP clients and allow EPP clients to query EPP
+   servers regarding maintenance events.
 
 Status of This Memo
    This Internet-Draft is submitted in full conformance with the
