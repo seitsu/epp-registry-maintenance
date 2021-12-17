@@ -9,6 +9,9 @@ The author, [Tobias Sattler], raised the idea at the ICANN Registrar Stakeholder
 
 After refining the draft, it passed the REGEXT Working Group Last Call, and the Chairs submitted it to [IESG] for publishing. It then passed the Area Director's evaluation and was in Last Call at IESG, which was successful. Then it moved to the [RFC Editor Queue] and passed the steps there.
 
+## Acknowledgments
+The authors wish to thank the following persons for their feedback and suggestions: James Gould, Michael Bauland, Patrick Mevzek, Quoc-Anh Pham, Raymond Zylstra, Christopher Martens, Anthony Eden, Neal McPherson, Craig Marchant, and Andreas Huber.
+
 [document]: /draft-ietf-regext-epp-registry-maintenance.txt
 [Extensible Provisioning Protocol]: https://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol
 [Tobias Sattler]: https://tobiassattler.com
